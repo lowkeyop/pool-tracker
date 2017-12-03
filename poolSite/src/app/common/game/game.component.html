@@ -1,11 +1,11 @@
 <!-- Make your life easier and use the boostrap grid system -->
-<h4 style="text-align:center">Game #</h4>
+<h4 style="text-align:center">Game {{cGame.gameNo}}</h4>
 <table class="table table-borded table-stripped">
   <thead>
     <tr>
       <th></th>
-      <th>Player 1</th>
-      <th>Player 2</th>
+      <th>{{cGame.p1.fName + " " + cGame.p1.lName }}</th>
+      <th>{{cGame.p2.fName + " " + cGame.p2.lName}}</th>
     </tr>
   </thead>
   <tbody>
@@ -14,21 +14,48 @@
         Timeouts
       </th>
       <td>
-        <input type="number" name="" value="0" max="2" min="0" style="width:40px">
+        <input type="number" name="" value="{{cGame.p1.timeOuts}}" max="2" min="0" style="width:40px">
       </td>
       <td>
-        <input type="number" name="" value="0" max="2" min="0" style="width:40px">
+        <input type="number" name="" value="{{cGame.p2.timeOuts}}" max="2" min="0" style="width:40px">
       </td>
     </tr>
     <tr>
       <th>
         Innings
       </th>
-      <td>
-        <input type="number" name="" value="0" max="99" style="width:40px">
+      <td colspan="2">
+        <input type="number" name="" value="{{cGame.innings}}" max="99" >
       </td>
-      <td></td>
     </tr>
-
+    <tr>
+      <th>
+        Winner
+      </th>
+      <td colspan="2">
+        <input type="radio" id="p1" name="winner" value="{{cGame.p1.fName + ' ' + cGame.p1.lName }}" max="99" >
+        <label for="p1">{{cGame.p1.fName + " " + cGame.p1.lName}}</label>
+        <br/>
+        <input type="radio" id="p2" name="winner" value="{{cGame.p2.fName + ' ' + cGame.p2.lName }}" max="99" >
+        <label for="p2">{{cGame.p2.fName + " " + cGame.p2.lName}}</label>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Special
+      </th>
+      <td colspan="2">
+        <input type="checkbox" id="bnr" name="winner" value="{{cGame.p1.fName + ' ' + cGame.p1.lName }}" max="99" >
+        <label for="bnr">Break and Run</label>
+        <br/>
+        <input type="checkbox" id="eob" name="eob" value="{{cGame.eob}}" max="99" >
+        <label for="eob">8 on the Break</label>
+      </td>
+    </tr>
   </tbody>
 </table>
+<button class="btn btn-warning">End game</button>
+<button class="btn btn-info" (click)="viewPlayer1Stats()">Player 1 Stats</button>
+<button class="btn btn-info" (click)="viewPlayer2Stats()">Player 2 Stats</button>
+<button class="btn btn-info" (click)="viewGameStats()">Game Stats</button>
+<hr>

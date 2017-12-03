@@ -2,9 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FormatsComponent } from './formats/formats.component';
-import { EightBallComponent } from './formats/eight-ball/eight-ball.component';
-import { NineBallComponent } from './formats/nine-ball/nine-ball.component';
 import { AdminComponent } from './admin/admin.component';
 import { TeamsComponent } from './admin/teams/teams.component';
 import { UsersComponent } from './admin/users/users.component';
@@ -14,13 +11,12 @@ import { HeaderComponent } from './header/header.component';
 import { InningsComponent } from './common/game/innings/innings.component';
 import { GameComponent } from './common/game/game.component';
 import { TimeoutComponent } from './common/game/timeout/timeout.component';
+import { Game } from './common/game.model';
+import { ScoreSheetComponent } from './score-sheet/score-sheet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormatsComponent,
-    EightBallComponent,
-    NineBallComponent,
     AdminComponent,
     TeamsComponent,
     UsersComponent,
@@ -30,6 +26,7 @@ import { TimeoutComponent } from './common/game/timeout/timeout.component';
     InningsComponent,
     GameComponent,
     TimeoutComponent,
+    ScoreSheetComponent,
 
   ],
   imports: [

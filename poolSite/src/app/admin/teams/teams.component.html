@@ -1,4 +1,5 @@
-<h3>Team Name</h3>
+<h2>Host Location: {{hostLocation}}</h2>
+<h3>{{teamName}}</h3>
 <hr>
 <table>
   <thead>
@@ -7,32 +8,20 @@
       <th>Matches Played</th>
       <th>Player #</th>
       <th>Name</th>
+      <th>Choose Player</th>
+      <th>Match # Played</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>4</td>
-      <td>8</td>
-      <td>12345</td>
-      <td>Player Two</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>3</td>
-      <td>93782</td>
-      <td>Player Three</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>13</td>
-      <td>21534</td>
-      <td>Player Four</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>15</td>
-      <td>42154</td>
-      <td>Player Five</td>
+    <tr *ngFor="let player of team">
+      <td>{{player.playerSkillLevel}}</td>
+      <td>{{player.matchesPlayed}}</td>
+      <td>{{player.playerNumber}}</td>
+      <td>{{player.fName + " " + player.lName}} </td>
+      <td><button type="button" name="button" (click)="onChoosePlayer(player)" class="button btn-primary">Send to Match</button></td>
+      <td>
+        <input type="number" max="5" name="" id="" class="button" style="width:40px">
+      </td>
     </tr>
   </tbody>
 </table>
