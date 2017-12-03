@@ -1,0 +1,114 @@
+<p>
+  eight-ball works!
+</p>
+<p>
+  An 8-Ball APA Scoresheet:
+</p>
+
+<app-teams></app-teams>
+<app-teams></app-teams>
+<table class="table table-bordered table-stripped">
+  <thead>
+    <tr>
+      <th>Team Number</th>
+      <th>Player Name</th>
+      <th>Player Number</th>
+      <th>Games Must Win</th>
+      <th>Innings and Timeouts</th>
+      <th>8 on the Break (8-break)</th>
+      <th>8, Break and Run</th>
+      <th>Defensive Shots</th>
+      <th>Games Won</th>
+      <th>Match Points Earned</th>
+      <th>Running Total</th>
+    </tr>
+  </thead>
+  <caption>The first row will be captured as a match component.  A separate 8-ball match component will be created and a 9-ball match component will be created</caption>
+  <tbody>
+    <tr>
+      <td>1234</td>
+      <td>
+        <div class="">
+          Player 1
+        </div>
+        <div class="">
+          Player 2
+        </div>
+      </td>
+      <td>
+        <div class="">
+          06367
+        </div>
+        <div class="">
+          78140
+        </div>
+      </td>
+      <td>  <div class="">
+          3
+        </div>
+        <div class="">
+          3
+        </div></td>
+      <td>
+        <p>
+          game works!
+        </p>
+        Innings section (Will be it's own games component, counting innings, timeout and who won)
+        <div class="" *ngFor="let game of games">
+          <app-game></app-game>
+        </div>
+        <button class="btn btn-success" (click)="onAddGame()">Add Game</button>
+        <button class="btn btn-danger" (click)="onRemoveGame()">Remove Game</button>
+      </td>
+
+      <td>
+        <div class="">
+          <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
+        </div>
+        <div class="">
+          <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
+        </div>
+      </td>
+      <td>
+        <div class="">
+          <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
+        </div>
+        <div class="">
+          <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
+        </div>
+      </td>
+      <td>
+        <div class="">
+          <input type="number" name="player2" value="0" max="2" min="0" style="width:30px">
+        </div>
+        <div class="">
+          <input type="number" name="player2" value="0" max="2" min="0" style="width:30px">
+        </div>
+      </td>
+      <td>
+        <div class="">
+          (A computed number)
+        </div>
+        <div class="">
+          (A computed number)
+        </div>
+      </td>
+      <td>
+        <div class="">
+          (A computed number)
+        </div>
+        <div class="">
+          (A computed number)
+        </div>
+      </td>
+      <td>
+        <div class="">
+          (A computed number)
+        </div>
+        <div class="">
+          (A computed number)
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
