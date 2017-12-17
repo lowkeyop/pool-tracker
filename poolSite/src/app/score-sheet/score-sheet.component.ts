@@ -9,7 +9,7 @@ import { Player } from '../common/player.model';
 })
 export class ScoreSheetComponent implements OnInit {
 //need to emit player data to create the game component with correct data.
-  constructor() { this.gameCount =0;}
+  constructor() { this.gameCount = 1 }
   gameCount;
 
   p1:Player = new Player("Cordell", "Kennerly", "02342", 3, 3, 2,0,76);
@@ -21,7 +21,7 @@ export class ScoreSheetComponent implements OnInit {
   game : Game;
 
   onAddGame(){
-    this.gameCount++;
+
     this.game  = new Game(this.gameCount,this.p1, this.p2, false, false, "a");
     this.games.push(this.game);
     console.log(this.p1);
@@ -30,6 +30,7 @@ export class ScoreSheetComponent implements OnInit {
       player1: this.p1,
       player2: this.p2
     });
+    this.gameCount = this.games.length+1;
     console.log("emitting player objects and game number")
   }
   onRemoveGame(){
@@ -40,6 +41,14 @@ export class ScoreSheetComponent implements OnInit {
     else{
       console.log("There aren't any games to remove");
     }
+  }
+  setGameData( game: Game){
+    console.log("set game data. Game results are below:");
+    console.log(game);
+    this.games[game.gameNo-1]= game;
+  }
+  showGameList(){
+    console.log(this.games);
   }
   ngOnInit() {
   }

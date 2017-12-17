@@ -44,10 +44,10 @@
           3
         </div>
         <div class="">
-          3
+          3 <button class="btn btn-info" (click)="showGameList()">Show games</button>
         </div></td>
       <td>
-        <app-game *ngFor="let game of games " [gameCurrent]="game"></app-game>
+        <app-game *ngFor="let game of games " [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
         <button class="btn btn-success" (click)="onAddGame()">Add Game</button>
         <button class="btn btn-danger" (click)="onRemoveGame()">Remove Game</button>
       </td>

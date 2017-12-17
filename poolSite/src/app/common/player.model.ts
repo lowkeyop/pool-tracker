@@ -7,6 +7,8 @@ export class Player {
     public raceTo : number,
     public timeOuts: number,
     public defShots: number,
-    public matchesPlayed: number
+    public matchesPlayed: number,
+    public bNRun: boolean = false,
+    public eOBreak: boolean = false
   ){}
 }

@@ -33,10 +33,10 @@
         Winner
       </th>
       <td colspan="2">
-        <input type="radio" id="p1" name="winner" value="{{cGame.p1.fName + ' ' + cGame.p1.lName }}" max="99" >
+        <input type="radio" id="p1" name="winner" (click)="setWinner(cGame.p1)">
         <label for="p1">{{cGame.p1.fName + " " + cGame.p1.lName}}</label>
         <br/>
-        <input type="radio" id="p2" name="winner" value="{{cGame.p2.fName + ' ' + cGame.p2.lName }}" max="99" >
+        <input type="radio" id="p2" name="winner" (click)="setWinner(cGame.p2)">
         <label for="p2">{{cGame.p2.fName + " " + cGame.p2.lName}}</label>
       </td>
     </tr>
@@ -45,17 +45,15 @@
         Special
       </th>
       <td colspan="2">
-        <input type="checkbox" id="bnr" name="winner" value="{{cGame.p1.fName + ' ' + cGame.p1.lName }}" max="99" >
+        <input type="checkbox" id="bnr" name="winner" (change)="breakAndRun()">
         <label for="bnr">Break and Run</label>
         <br/>
-        <input type="checkbox" id="eob" name="eob" value="{{cGame.eob}}" max="99" >
+        <input type="checkbox" id="eob" name="eob"  (change)="eightOnBreak()" >
         <label for="eob">8 on the Break</label>
       </td>
     </tr>
   </tbody>
 </table>
-<button class="btn btn-warning">End game</button>
-<button class="btn btn-info" (click)="viewPlayer1Stats()">Player 1 Stats</button>
-<button class="btn btn-info" (click)="viewPlayer2Stats()">Player 2 Stats</button>
+<button class="btn btn-warning" (click)="saveStats()">End game</button>
 <button class="btn btn-info" (click)="viewGameStats()">Game Stats</button>
 <hr>
