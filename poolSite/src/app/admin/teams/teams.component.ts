@@ -27,7 +27,6 @@ export class TeamsComponent implements OnInit {
     console.log(player.fName + "  "+ player.lName + " selected.");
 
     this.playerSelected.emit({teamName: this.teamName, matchPlayer: player});
-    this.addPlayerToPlayedList(player, this.matchNumber);
   }
   addPlayerToPlayedList(player: Player, matchPlayed: number){
     console.log("adding player to played list");

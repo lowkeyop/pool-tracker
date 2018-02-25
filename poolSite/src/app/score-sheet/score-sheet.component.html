@@ -1,20 +1,24 @@
 <p>
   An 8-Ball APA Scoresheet:
 </p>
-
-<app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
-<app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
+<div class="col-md-5">
+  <app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
+</div>
+<div class="col-md-2"><h2>VS.</h2></div>
+<div class="col-md-5">
+  <app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
+</div>
 <div class="row">
   <div class="col-md-5">
     {{match.hTPlayer.fName + " " + match.hTPlayer.lName }}
   </div>
   <div class="col-md-2">
-    VS.
+    <h2>VS.</h2>
+    <button class="btn btn-primary" (click)="setOpponentsForMatch()">Send Opponents to Match</button>
   </div>
   <div class="col-md-5">
     {{match.aTPlayer.fName + " " + match.aTPlayer.lName}}
   </div>
-  <button class="btn btn-primary" (click)="setOpponents()">Send Opponents to Match</button>
 </div>
 <table class="table table-bordered table-stripped">
   <thead>

@@ -20,8 +20,8 @@ export class ScoreSheetComponent implements OnInit {
   ];
   game : Game;
   matchNo: number;
-  isHomeTeamPlayerReady: boolean;
-  isAwayTeamPlayerReady: boolean;
+  isHomeTeamPlayerReady: boolean = false;
+  isAwayTeamPlayerReady: boolean = false;
 
 
 
@@ -55,28 +55,33 @@ export class ScoreSheetComponent implements OnInit {
     console.log(this.games);
   }
   setMatchPlayer(playerInfo: { teamName: string, matchPlayer: Player}, isTeam1: boolean){
-    console.log("setting match players from each team.  Placing them in match array to later be used by game components");
-    console.log(playerInfo);
-    console.log(isTeam1);
     if( isTeam1){
-      console.log("it's team1");
+      console.log("Setting the home team's player");
       this.match.hTPlayer = playerInfo.matchPlayer;
+      this.isHomeTeamPlayerReady = true;
     }
     else {
+      console.log("Setting the away team's player");
       this.match.aTPlayer = playerInfo.matchPlayer;
+      this.isAwayTeamPlayerReady = true;
     }
 
-    console.log("The match players:");
-    console.log(this.match);
   }
-  setOpponents(){
-
-    if(this.matchNo < 5){
-      console.log("Lock players in and add them to their team's already played list");
-      this.matchNo++;
-    }
-    else
-      console.log("All Matches done for the night");
+  setOpponentsForMatch(){
+    if(this.isHomeTeamPlayerReady && this.isAwayTeamPlayerReady){
+      if(this.matchNo < 5){
+        console.log("Lock players in and add them to their team's already played list");
+        this.matchNo++;
+        this.isHomeTeamPlayerReady = false;
+        this.isAwayTeamPlayerReady = false;
+      }
+      else
+        console.log("All Matches done for the night");
+      } if(!this.isHomeTeamPlayerReady){
+        console.log("The home team needs to read a player");
+      } if(!this.isAwayTeamPlayerReady){
+        console.log("The away team needs to read a player");
+      }
   }
   ngOnInit() {
   }
