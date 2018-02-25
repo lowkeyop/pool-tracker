@@ -6,13 +6,13 @@
 <app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
 <div class="row">
   <div class="col-md-5">
-    {{match.p1.fName + " " + match.p1.lName }}
+    {{match.hTPlayer.fName + " " + match.hTPlayer.lName }}
   </div>
   <div class="col-md-2">
     VS.
   </div>
   <div class="col-md-5">
-    {{match.p2.fName + " " + match.p2.lName}}
+    {{match.aTPlayer.fName + " " + match.aTPlayer.lName}}
   </div>
   <button class="btn btn-primary" (click)="setOpponents()">Send Opponents to Match</button>
 </div>
@@ -38,25 +38,25 @@
       <td>1234</td>
       <td>
         <div class="">
-          {{match.p1.fName + " " + match.p1.lName }}
+          {{match.hTPlayer.fName + " " + match.hTPlayer.lName }}
         </div>
         <div class="">
-          {{match.p2.fName + " " + match.p2.lName }}
+          {{match.aTPlayer.fName + " " + match.aTPlayer.lName }}
         </div>
       </td>
       <td>
         <div class="">
-          {{match.p1.playerNumber }}
+          {{match.hTPlayer.playerNumber }}
         </div>
         <div class="">
-          {{match.p2.playerNumber }}
+          {{match.aTPlayer.playerNumber }}
         </div>
       </td>
       <td>  <div class="">
-          {{match.p1.raceTo }}
+          {{match.hTPlayer.raceTo }}
         </div>
         <div class="">
-          {{match.p2.raceTo }} <button class="btn btn-info" (click)="showGameList()">Show games</button>
+          {{match.aTPlayer.raceTo }} <button class="btn btn-info" (click)="showGameList()">Show games</button>
         </div></td>
       <td>
         <app-game *ngFor="let game of games " [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>

@@ -12,25 +12,27 @@ export class ScoreSheetComponent implements OnInit {
   constructor() { this.gameCount = 1; this.matchNo = 1}
   gameCount;
 
-  p1:Player = new Player("Cordell", "Kennerly", "02342", 3, 3);
-  p2:Player = new Player("Oppenent", "Last Name", "02342", 3, 3);
-  match = {p1:this.p1, p2: this.p2};
-  @Output() newGameCreated = new EventEmitter<{gameNo: number, player1 : Player, player2 : Player}>();
+  homeTeamPlayer:Player = new Player("", "", "0000", 3, 3);
+  awayTeamPlayer:Player = new Player("", "", "0000", 3, 3);
+  match = {hTPlayer:this.homeTeamPlayer, aTPlayer: this.awayTeamPlayer};
+  @Output() newGameCreated = new EventEmitter<{gameNo: number, homeTeamPlayer : Player, awayTeamPlayer : Player}>();
   games: Game[] = [
   ];
   game : Game;
   matchNo: number;
+  isHomeTeamPlayerReady: boolean;
+  isAwayTeamPlayerReady: boolean;
+
 
 
   onAddGame(){
 
-    this.game  = new Game(this.gameCount,this.match.p1, this.match.p2, false, false, "a");
+    this.game  = new Game(this.gameCount,this.match.hTPlayer, this.match.aTPlayer, false, false, "a");
     this.games.push(this.game);
-    console.log(this.p1);
     this.newGameCreated.emit({
       gameNo: this.gameCount,
-      player1: this.match.p1,
-      player2: this.match.p2
+      homeTeamPlayer: this.match.hTPlayer,
+      awayTeamPlayer: this.match.aTPlayer
     });
     this.gameCount = this.games.length+1;
     console.log("emitting player objects and game number")
@@ -58,10 +60,10 @@ export class ScoreSheetComponent implements OnInit {
     console.log(isTeam1);
     if( isTeam1){
       console.log("it's team1");
-      this.match.p1 = playerInfo.matchPlayer;
+      this.match.hTPlayer = playerInfo.matchPlayer;
     }
     else {
-      this.match.p2 = playerInfo.matchPlayer;
+      this.match.aTPlayer = playerInfo.matchPlayer;
     }
 
     console.log("The match players:");

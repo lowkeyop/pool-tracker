@@ -8,7 +8,7 @@ import { Player } from '../../common/player.model';
 })
 export class TeamsComponent implements OnInit {
 
-  constructor() { }
+  constructor() { this.playedPlayers =[];}
   team: Player[] = [
     new Player("Cordell", "Kennerly", "02342", 3, 3,),
     new Player("Jacob", "Atoms", "032416", 8, 3),
@@ -22,6 +22,7 @@ export class TeamsComponent implements OnInit {
   teamName : string = "Leave'em with Skittles"
 
   @Output() playerSelected = new EventEmitter<{teamName : string ,matchPlayer: Player}>();
+
   onChoosePlayer(player: Player){
     console.log(player.fName + "  "+ player.lName + " selected.");
 

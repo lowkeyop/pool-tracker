@@ -1,16 +1,15 @@
 <h2>Host Location: {{hostLocation}}</h2>
 <h3>{{teamName}}</h3>
 <hr>
-<h3>Currently in Match {{matchNumber}} of 5.  {{5 - matchNumber == 1? "Final Match" : (5-matchNumber) + " matches remaining"}} </h3>
+<h3>Currently in Match {{matchNumber}} of 5.  {{5 - matchNumber == 0? "Final Match" : (5-matchNumber) + " matches remaining"}} </h3>
 <table>
   <thead>
-    <tr><th>Roster</th></tr>
+    <tr><th><h2>Roster</h2></th></tr>
     <tr>
       <th>SL</th>
       <th>Player#</th>
       <th>Name</th>
       <th>Choose Player</th>
-      <th>Match # Played</th>
     </tr>
   </thead>
   <tbody>
@@ -19,8 +18,28 @@
       <td>{{player.playerNumber}}</td>
       <td>{{player.fName + " " + player.lName}} </td>
       <td><button type="button" name="button" (click)="onChoosePlayer(player)" class="button btn-primary">Send to Match</button></td>
+
+    </tr>
+  </tbody>
+</table>
+<hr>
+<table>
+  <thead>
+    <tr><th><h2>Players Played</h2></th></tr>
+    <tr>
+      <th>SL</th>
+      <th>Player#</th>
+      <th>Name</th>
+      <th>Match Played</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of playedPlayers; let i = index">
+      <td>{{player.playerSkillLevel}}</td>
+      <td>{{player.playerNumber}}</td>
+      <td>{{player.fName + " " + player.lName}} </td>
       <td>
-        <input type="number" max="5" name="" id="" class="button" style="width:40px">
+        {{i+1}}
       </td>
     </tr>
   </tbody>
