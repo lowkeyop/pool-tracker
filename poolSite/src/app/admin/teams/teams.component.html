@@ -1,12 +1,13 @@
 <h2>Host Location: {{hostLocation}}</h2>
 <h3>{{teamName}}</h3>
 <hr>
+<h3>Currently in Match {{matchNumber}} of 5.  {{5 - matchNumber == 1? "Final Match" : (5-matchNumber) + " matches remaining"}} </h3>
 <table>
   <thead>
+    <tr><th>Roster</th></tr>
     <tr>
-      <th>Skill Level</th>
-      <th>Matches Played</th>
-      <th>Player #</th>
+      <th>SL</th>
+      <th>Player#</th>
       <th>Name</th>
       <th>Choose Player</th>
       <th>Match # Played</th>
@@ -15,7 +16,6 @@
   <tbody>
     <tr *ngFor="let player of team">
       <td>{{player.playerSkillLevel}}</td>
-      <td>{{player.matchesPlayed}}</td>
       <td>{{player.playerNumber}}</td>
       <td>{{player.fName + " " + player.lName}} </td>
       <td><button type="button" name="button" (click)="onChoosePlayer(player)" class="button btn-primary">Send to Match</button></td>

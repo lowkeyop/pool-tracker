@@ -2,8 +2,20 @@
   An 8-Ball APA Scoresheet:
 </p>
 
-<app-teams></app-teams>
-<app-teams></app-teams>
+<app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
+<app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
+<div class="row">
+  <div class="col-md-5">
+    {{match.p1.fName + " " + match.p1.lName }}
+  </div>
+  <div class="col-md-2">
+    VS.
+  </div>
+  <div class="col-md-5">
+    {{match.p2.fName + " " + match.p2.lName}}
+  </div>
+  <button class="btn btn-primary" (click)="setOpponents()">Send Opponents to Match</button>
+</div>
 <table class="table table-bordered table-stripped">
   <thead>
     <tr>
@@ -26,25 +38,25 @@
       <td>1234</td>
       <td>
         <div class="">
-          Player 1
+          {{match.p1.fName + " " + match.p1.lName }}
         </div>
         <div class="">
-          Player 2
+          {{match.p2.fName + " " + match.p2.lName }}
         </div>
       </td>
       <td>
         <div class="">
-          06367
+          {{match.p1.playerNumber }}
         </div>
         <div class="">
-          78140
+          {{match.p2.playerNumber }}
         </div>
       </td>
       <td>  <div class="">
-          3
+          {{match.p1.raceTo }}
         </div>
         <div class="">
-          3 <button class="btn btn-info" (click)="showGameList()">Show games</button>
+          {{match.p2.raceTo }} <button class="btn btn-info" (click)="showGameList()">Show games</button>
         </div></td>
       <td>
         <app-game *ngFor="let game of games " [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
