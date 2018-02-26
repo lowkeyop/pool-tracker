@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { GameComponent } from './common/game/game.component';
 import { Game } from './common/game.model';
 import { ScoreSheetComponent } from './score-sheet/score-sheet.component';
+import { MatchComponent } from './common/match/match.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ScoreSheetComponent } from './score-sheet/score-sheet.component';
     HeaderComponent,
     GameComponent,
     ScoreSheetComponent,
+    MatchComponent
 
   ],
   imports: [

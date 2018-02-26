@@ -30,11 +30,11 @@ export class ScoreSheetComponent implements OnInit {
 
     this.game  = new Game(this.gameCount,this.match.hTPlayer, this.match.aTPlayer, false, false, "a");
     this.games.push(this.game);
-    this.newGameCreated.emit({
+    /*this.newGameCreated.emit({
       gameNo: this.gameCount,
       homeTeamPlayer: this.match.hTPlayer,
       awayTeamPlayer: this.match.aTPlayer
-    });
+    });*/
     this.gameCount = this.games.length+1;
     console.log("emitting player objects and game number")
   }

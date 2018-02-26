@@ -1,13 +1,16 @@
 <p>
   An 8-Ball APA Scoresheet:
 </p>
-<div class="col-md-5">
-  <app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
+<div class="row">
+  <div class="col-md-5">
+    <app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
+  </div>
+  <div class="col-md-2"><h2>VS.</h2></div>
+  <div class="col-md-5">
+    <app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
+  </div>
 </div>
-<div class="col-md-2"><h2>VS.</h2></div>
-<div class="col-md-5">
-  <app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
-</div>
+<hr>
 <div class="row">
   <div class="col-md-5">
     {{match.hTPlayer.fName + " " + match.hTPlayer.lName }}
@@ -20,6 +23,7 @@
     {{match.aTPlayer.fName + " " + match.aTPlayer.lName}}
   </div>
 </div>
+  <hr>
 <ng-template [ngIf]="areBothTeamsReady">
   <div class="row">
     <table class="table table-bordered table-stripped">
