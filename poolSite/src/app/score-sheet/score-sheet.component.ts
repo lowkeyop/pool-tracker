@@ -22,6 +22,7 @@ export class ScoreSheetComponent implements OnInit {
   matchNo: number;
   isHomeTeamPlayerReady: boolean = false;
   isAwayTeamPlayerReady: boolean = false;
+  areBothTeamsReady: boolean = false;
 
 
 
@@ -68,20 +69,21 @@ export class ScoreSheetComponent implements OnInit {
 
   }
   setOpponentsForMatch(){
-    if(this.isHomeTeamPlayerReady && this.isAwayTeamPlayerReady){
-      if(this.matchNo < 5){
-        console.log("Lock players in and add them to their team's already played list");
-        this.matchNo++;
-        this.isHomeTeamPlayerReady = false;
-        this.isAwayTeamPlayerReady = false;
-      }
-      else
-        console.log("All Matches done for the night");
-      } if(!this.isHomeTeamPlayerReady){
-        console.log("The home team needs to read a player");
-      } if(!this.isAwayTeamPlayerReady){
-        console.log("The away team needs to read a player");
-      }
+    this.areBothTeamsReady = this.isHomeTeamPlayerReady && this.isAwayTeamPlayerReady;
+    if(!this.isHomeTeamPlayerReady){
+      console.log("The home team needs to read a player");
+    } if(!this.isAwayTeamPlayerReady){
+      console.log("The away team needs to read a player");
+    } if(this.areBothTeamsReady){
+        if(this.matchNo < 5){
+          console.log("Lock players in and add them to their team's already played list");
+          this.matchNo++;
+          this.isHomeTeamPlayerReady = false;
+          this.isAwayTeamPlayerReady = false;
+        }
+        else
+          console.log("All Matches done for the night");
+        }
   }
   ngOnInit() {
   }
