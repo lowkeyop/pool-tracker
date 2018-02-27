@@ -3,11 +3,11 @@
 </p>
 <div class="row">
   <div class="col-md-5">
-    <app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
+    <app-teams [matchNumber]="matchNo" [arePlayersSelected]="areBothTeamsReady" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
   </div>
   <div class="col-md-2"><h2>VS.</h2></div>
   <div class="col-md-5">
-    <app-teams [matchNumber]="matchNo" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
+    <app-teams [matchNumber]="matchNo" [arePlayersSelected]="areBothTeamsReady" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
   </div>
 </div>
 <hr>

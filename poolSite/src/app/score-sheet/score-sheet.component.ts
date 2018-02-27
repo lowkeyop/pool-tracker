@@ -80,6 +80,7 @@ export class ScoreSheetComponent implements OnInit {
           this.matchNo++;
           this.isHomeTeamPlayerReady = false;
           this.isAwayTeamPlayerReady = false;
+          this.areBothTeamsReady = false;
         }
         else
           console.log("All Matches done for the night");

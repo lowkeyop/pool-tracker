@@ -1,6 +1,6 @@
 
 import { Game } from './game.model';
-import { Player } from './common/player.model';
+import { Player } from './player.model';
 
 export class Match {
   constructor(
