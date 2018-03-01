@@ -8,14 +8,14 @@ import { Player } from '../../common/player.model';
 })
 export class TeamsComponent implements OnInit {
 
-  constructor() { this.playedPlayers =[];this.arePlayersSelected= false;}
+  constructor() { this.playedPlayers =[];this.arePlayersInMatch= false;}
   team: Player[] = [
     new Player("Cordell", "Kennerly", "02342", 3, 3,),
     new Player("Jacob", "Atoms", "032416", 8, 3),
     new Player("Steve", "Arnoldstlyn", "063484", 4, 3)
   ];
   playedPlayers : Player[];
-  @Input() arePlayersSelected: boolean;
+  @Input() arePlayersInMatch: boolean;
   @Input() matchNumber: number;
   hostLocation: string = "Cue Club Cafe";
   teamNumber: string = "84313";

@@ -3,11 +3,11 @@
 </p>
 <div class="row">
   <div class="col-md-5">
-    <app-teams [matchNumber]="matchNo" [arePlayersSelected]="areBothTeamsReady" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
+    <app-teams [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
   </div>
   <div class="col-md-2"><h2>VS.</h2></div>
   <div class="col-md-5">
-    <app-teams [matchNumber]="matchNo" [arePlayersSelected]="areBothTeamsReady" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
+    <app-teams [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
   </div>
 </div>
 <hr>
@@ -17,7 +17,7 @@
   </div>
   <div class="col-md-2">
     <h2>VS.</h2>
-    <button class="btn btn-primary" (click)="setOpponentsForMatch()">Send Opponents to Match</button>
+    <button class="btn btn-primary" [disabled]="isMatchStarted" (click)="setOpponentsForMatch()">{{!isMatchStarted?"Ready Next Match Players" : "Match In Progress"}}</button>
   </div>
   <div class="col-md-5">
     {{match.aTPlayer.fName + " " + match.aTPlayer.lName}}
@@ -25,105 +25,109 @@
 </div>
   <hr>
 <ng-template [ngIf]="areBothTeamsReady">
-  <div class="row">
-    <table class="table table-bordered table-stripped">
-      <thead>
-        <tr>
-          <th>Team Number</th>
-          <th>Player Name</th>
-          <th>Player Number</th>
-          <th>Games Must Win</th>
-          <th>Innings and Timeouts</th>
-          <th>8 on the Break (8-break)</th>
-          <th>8, Break and Run</th>
-          <th>Defensive Shots</th>
-          <th>Games Won</th>
-          <th>Match Points Earned</th>
-          <th>Running Total</th>
-        </tr>
-      </thead>
-      <caption>The first row will be captured as a match component.  A separate 8-ball match component will be created and a 9-ball match component will be created</caption>
-      <tbody>
-        <tr>
-          <td>1234</td>
-          <td>
-            <div class="">
-              {{match.hTPlayer.fName + " " + match.hTPlayer.lName }}
-            </div>
-            <div class="">
-              {{match.aTPlayer.fName + " " + match.aTPlayer.lName }}
-            </div>
-          </td>
-          <td>
-            <div class="">
-              {{match.hTPlayer.playerNumber }}
-            </div>
-            <div class="">
-              {{match.aTPlayer.playerNumber }}
-            </div>
-          </td>
-          <td>  <div class="">
-              {{match.hTPlayer.raceTo }}
-            </div>
-            <div class="">
-              {{match.aTPlayer.raceTo }} <button class="btn btn-info" (click)="showGameList()">Show games</button>
-            </div></td>
-          <td>
-            <app-game *ngFor="let game of games " [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
-            <button class="btn btn-success" (click)="onAddGame()">Add Game</button>
-            <button class="btn btn-danger" (click)="onRemoveGame()">Remove Game</button>
-          </td>
+  <div id="team-matches">
+    <div class="row">
+      <table class="table table-bordered table-stripped">
+        <thead>
+          <tr>
+            <th>Team Number</th>
+            <th>Player Name</th>
+            <th>Player Number</th>
+            <th>Games Must Win</th>
+            <th>Innings and Timeouts</th>
+            <th>8 on the Break (8-break)</th>
+            <th>8, Break and Run</th>
+            <th>Defensive Shots</th>
+            <th>Games Won</th>
+            <th>Match Points Earned</th>
+            <th>Running Total</th>
+          </tr>
+        </thead>
+        <caption>The first row will be captured as a match component.  A separate 8-ball match component will be created and a 9-ball match component will be created</caption>
+        <tbody>
+          <tr>
+            <td>1234<hr>5678</td>
+            <td>
+              <div class="">
+                {{match.hTPlayer.fName + " " + match.hTPlayer.lName }}
+              </div><hr>
+              <div class="">
+                {{match.aTPlayer.fName + " " + match.aTPlayer.lName }}
+              </div>
+            </td>
+            <td>
+              <div class="">
+                {{match.hTPlayer.playerNumber }}
+              </div><hr>
+              <div class="">
+                {{match.aTPlayer.playerNumber }}
+              </div>
+            </td>
+            <td>  <div class="">
+                {{match.hTPlayer.raceTo }}
+              </div><hr>
+              <div class="">
+                {{match.aTPlayer.raceTo }}
+              </div></td>
+            <td>
+              <app-game *ngFor="let game of games " [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
+              <button class="btn btn-info" (click)="showGameList()">Show games</button>
+              <button class="btn btn-success" (click)="onAddGame()">Add Game</button>
+              <button class="btn btn-danger" (click)="onRemoveGame()">Remove Game</button>
+            </td>
 
-          <td>
-            <div class="">
-              <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
-            </div>
-            <div class="">
-              <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
-            </div>
-          </td>
-          <td>
-            <div class="">
-              <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
-            </div>
-            <div class="">
-              <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
-            </div>
-          </td>
-          <td>
-            <div class="">
-              <input type="number" name="player2" value="0" max="2" min="0" style="width:30px">
-            </div>
-            <div class="">
-              <input type="number" name="player2" value="0" max="2" min="0" style="width:30px">
-            </div>
-          </td>
-          <td>
-            <div class="">
-              (A computed number)
-            </div>
-            <div class="">
-              (A computed number)
-            </div>
-          </td>
-          <td>
-            <div class="">
-              (A computed number)
-            </div>
-            <div class="">
-              (A computed number)
-            </div>
-          </td>
-          <td>
-            <div class="">
-              (A computed number)
-            </div>
-            <div class="">
-              (A computed number)
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <td>
+              <div class="">
+                <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
+              </div><hr>
+              <div class="">
+                <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
+              </div>
+            </td>
+            <td>
+              <div class="">
+                <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
+              </div><hr>
+              <div class="">
+                <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
+              </div>
+            </td>
+            <td>
+              <div class="">
+                <input type="number" name="player2" value="0" max="2" min="0" style="width:30px">
+              </div><hr>
+              <div class="">
+                <input type="number" name="player2" value="0" max="2" min="0" style="width:30px">
+              </div>
+            </td>
+            <td>
+              <div class="">
+                (A computed number)
+              </div><hr>
+              <div class="">
+                (A computed number)
+              </div>
+            </td>
+            <td>
+              <div class="">
+                (A computed number)
+              </div><hr>
+              <div class="">
+                (A computed number)
+              </div>
+            </td>
+            <td>
+              <div class="">
+                (A computed number)
+              </div><hr>
+              <div class="">
+                (A computed number)
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <button class="btn btn-danger" [disabled]="!isMatchStarted" (click)="endCurrentMatch()">{{isMatchOver?"Match Not Started" : "End Match"}}</button>
 </ng-template>

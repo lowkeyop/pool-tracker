@@ -15,19 +15,20 @@ export class ScoreSheetComponent implements OnInit {
   homeTeamPlayer:Player = new Player("", "", "0000", 3, 3);
   awayTeamPlayer:Player = new Player("", "", "0000", 3, 3);
   match = {hTPlayer:this.homeTeamPlayer, aTPlayer: this.awayTeamPlayer};
+  matches: any[];
   @Output() newGameCreated = new EventEmitter<{gameNo: number, homeTeamPlayer : Player, awayTeamPlayer : Player}>();
-  games: Game[] = [
-  ];
+  games: Game[] = [];
   game : Game;
   matchNo: number;
   isHomeTeamPlayerReady: boolean = false;
   isAwayTeamPlayerReady: boolean = false;
   areBothTeamsReady: boolean = false;
+  isMatchOver: boolean = false;
+  isMatchStarted: boolean = false;
 
 
 
   onAddGame(){
-
     this.game  = new Game(this.gameCount,this.match.hTPlayer, this.match.aTPlayer, false, false, "a");
     this.games.push(this.game);
     /*this.newGameCreated.emit({
@@ -80,11 +81,16 @@ export class ScoreSheetComponent implements OnInit {
           this.matchNo++;
           this.isHomeTeamPlayerReady = false;
           this.isAwayTeamPlayerReady = false;
-          this.areBothTeamsReady = false;
+          this.isMatchStarted = true;
         }
         else
           console.log("All Matches done for the night");
         }
+  }
+  endCurrentMatch(){
+    this.isMatchStarted = !this.isMatchStarted;
+    this.isMatchOver = !this.isMatchOver;
+
   }
   ngOnInit() {
   }
