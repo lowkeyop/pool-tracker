@@ -90,6 +90,7 @@ export class ScoreSheetComponent implements OnInit {
   endCurrentMatch(){
     this.isMatchStarted = !this.isMatchStarted;
     this.isMatchOver = !this.isMatchOver;
+    this.areBothTeamsReady = false;
 
   }
   ngOnInit() {
