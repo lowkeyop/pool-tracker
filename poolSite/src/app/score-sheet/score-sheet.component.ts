@@ -14,7 +14,7 @@ export class ScoreSheetComponent implements OnInit {
 
   homeTeamPlayer:Player = new Player("", "", "0000", 3, 3);
   awayTeamPlayer:Player = new Player("", "", "0000", 3, 3);
-  match = {hTPlayer:this.homeTeamPlayer, aTPlayer: this.awayTeamPlayer};
+  currentMatch = {hTPlayer:this.homeTeamPlayer, aTPlayer: this.awayTeamPlayer};
   matches: any[];
   @Output() newGameCreated = new EventEmitter<{gameNo: number, homeTeamPlayer : Player, awayTeamPlayer : Player}>();
   games: Game[] = [];
@@ -29,15 +29,9 @@ export class ScoreSheetComponent implements OnInit {
 
 
   onAddGame(){
-    this.game  = new Game(this.gameCount,this.match.hTPlayer, this.match.aTPlayer, false, false,new Player("","","",0,0));
+    this.game  = new Game(this.gameCount,this.currentMatch.hTPlayer, this.currentMatch.aTPlayer,new Player("","","",0,0));
     this.games.push(this.game);
-    /*this.newGameCreated.emit({
-      gameNo: this.gameCount,
-      homeTeamPlayer: this.match.hTPlayer,
-      awayTeamPlayer: this.match.aTPlayer
-    });*/
     this.gameCount = this.games.length+1;
-    console.log("emitting player objects and game number")
   }
   onRemoveGame(){
     if(this.gameCount > 0){
@@ -59,12 +53,12 @@ export class ScoreSheetComponent implements OnInit {
   setMatchPlayer(playerInfo: { teamName: string, matchPlayer: Player}, isTeam1: boolean){
     if( isTeam1){
       console.log("Setting the home team's player");
-      this.match.hTPlayer = playerInfo.matchPlayer;
+      this.currentMatch.hTPlayer = playerInfo.matchPlayer;
       this.isHomeTeamPlayerReady = true;
     }
     else {
       console.log("Setting the away team's player");
-      this.match.aTPlayer = playerInfo.matchPlayer;
+      this.currentMatch.aTPlayer = playerInfo.matchPlayer;
       this.isAwayTeamPlayerReady = true;
     }
 
@@ -88,7 +82,7 @@ export class ScoreSheetComponent implements OnInit {
         }
   }
   endCurrentMatch(){
-    this.isMatchStarted = !this.isMatchStarted;
+    this.isMatchStarted = false;
     this.areBothTeamsReady = false;
 
   }

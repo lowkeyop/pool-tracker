@@ -18,7 +18,9 @@ export class GameComponent implements OnInit {
 
   @Input('gameCurrent') cGame: Game;
   @Output() saveGame  = new EventEmitter<Game>();
-  @ViewChild('innings') innings: ElementRef
+  @ViewChild('innings') innings: ElementRef;
+  @ViewChild('p1TO') p1TimeOuts: ElementRef;
+  @ViewChild('p2TO') p2TimeOuts: ElementRef;
 
   saveStats(){
     console.log("pushing game stats to game log")
@@ -40,6 +42,14 @@ export class GameComponent implements OnInit {
   }
   setInnings(){
     this.cGame.innings=parseInt(this.innings.nativeElement.value);
+  }
+
+  setP1Timeouts(){
+    this.cGame.p1TimeoutsTaken=parseInt(this.p1TimeOuts.nativeElement.value);
+  }
+
+  setP2Timeouts(){
+    this.cGame.p2TimeoutsTaken=parseInt(this.p2TimeOuts.nativeElement.value);
   }
   ngOnInit() {
   }

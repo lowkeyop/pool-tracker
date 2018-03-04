@@ -14,10 +14,10 @@
         Timeouts
       </th>
       <td>
-        <input type="number" name="" value="{{cGame.p1.timeOuts}}" max="2" min="0" style="width:40px">
+        <input type="number" name="" value="{{cGame.p1TimeoutsTaken}}" max="2" min="0" style="width:40px" #p1TO (change)=setP1Timeouts()>
       </td>
       <td>
-        <input type="number" name="" value="{{cGame.p2.timeOuts}}" max="2" min="0" style="width:40px">
+        <input type="number" name="" value="{{cGame.p2TimeoutsTaken}}" max="2" min="0" style="width:40px" #p2TO (change)=setP2Timeouts()>
       </td>
     </tr>
     <tr>

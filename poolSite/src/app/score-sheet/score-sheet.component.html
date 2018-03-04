@@ -13,14 +13,14 @@
 <hr>
 <div class="row">
   <div class="col-md-5">
-    {{match.hTPlayer.fName + " " + match.hTPlayer.lName }}
+    {{currentMatch.hTPlayer.fName + " " + currentMatch.hTPlayer.lName }}
   </div>
   <div class="col-md-2">
     <h2>VS.</h2>
     <button class="btn btn-primary" [disabled]="isMatchStarted" (click)="setOpponentsForMatch()">{{!isMatchStarted?"Ready Next Match Players" : "Match In Progress"}}</button>
   </div>
   <div class="col-md-5">
-    {{match.aTPlayer.fName + " " + match.aTPlayer.lName}}
+    {{currentMatch.aTPlayer.fName + " " + currentMatch.aTPlayer.lName}}
   </div>
 </div>
   <hr>
@@ -35,8 +35,8 @@
             <th>Player Number</th>
             <th>Games Must Win</th>
             <th>Innings and Timeouts</th>
-            <th>8 on the Break (8-break)</th>
-            <th>8, Break and Run</th>
+            <th>8 on Break (8oB)</th>
+            <th>Break and Run (BnR)</th>
             <th>Defensive Shots</th>
             <th>Games Won</th>
             <th>Match Points Earned</th>
@@ -49,33 +49,36 @@
             <td>1234<hr>5678</td>
             <td>
               <div class="">
-                {{match.hTPlayer.fName + " " + match.hTPlayer.lName }}
+                {{currentMatch.hTPlayer.fName + " " + currentMatch.hTPlayer.lName }}
               </div><hr>
               <div class="">
-                {{match.aTPlayer.fName + " " + match.aTPlayer.lName }}
+                {{currentMatch.aTPlayer.fName + " " + currentMatch.aTPlayer.lName }}
               </div>
             </td>
             <td>
               <div class="">
-                {{match.hTPlayer.playerNumber }}
+                {{currentMatch.hTPlayer.playerNumber }}
               </div><hr>
               <div class="">
-                {{match.aTPlayer.playerNumber }}
+                {{currentMatch.aTPlayer.playerNumber }}
               </div>
             </td>
             <td>  <div class="">
-                {{match.hTPlayer.raceTo }}
+                {{currentMatch.hTPlayer.raceTo }}
               </div><hr>
               <div class="">
-                {{match.aTPlayer.raceTo }}
+                {{currentMatch.aTPlayer.raceTo }}
               </div></td>
             <td>
-              <app-game *ngFor="let game of games " [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
+              <div class="row" >
+                <div class="col-md-4" *ngFor="let game of games; let i=index">
+                  <app-game [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
+                </div>
+              </div>
               <button class="btn btn-info" (click)="showGameList()">Show games</button>
               <button class="btn btn-success" (click)="onAddGame()">Add Game</button>
               <button class="btn btn-danger" (click)="onRemoveGame()">Remove Game</button>
             </td>
-
             <td>
               <div class="">
                 <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">

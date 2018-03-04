@@ -5,9 +5,11 @@ export class Game {
     public gameNo: number,
     public p1: Player,
     public p2 : Player,
+    public winner: Player,
     public eob:boolean = false,
     public bnr: boolean = false,
-    public winner: Player,
-    public innings: number=0){}
+    public innings: number=0,
+    public p1TimeoutsTaken: number=0,
+    public p2TimeoutsTaken: number=0){}
 
 }
