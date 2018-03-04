@@ -1,4 +1,4 @@
-import { EventEmitter, Component, OnInit,Input, Output,SimpleChanges } from '@angular/core';
+import { EventEmitter, Component, OnInit,Input, Output,SimpleChanges,ElementRef,ViewChild, ContentChild } from '@angular/core';
 import { Game } from '../../common/game.model';
 import { Player } from '../../common/player.model'
 @Component({
@@ -18,6 +18,7 @@ export class GameComponent implements OnInit {
 
   @Input('gameCurrent') cGame: Game;
   @Output() saveGame  = new EventEmitter<Game>();
+  @ViewChild('innings') innings: ElementRef
 
   saveStats(){
     console.log("pushing game stats to game log")
@@ -35,7 +36,10 @@ export class GameComponent implements OnInit {
   }
 
   setWinner(victor: Player){
-    this.cGame.winner = victor.fName + " " + victor.lName;
+    this.cGame.winner = victor;
+  }
+  setInnings(){
+    this.cGame.innings=parseInt(this.innings.nativeElement.value);
   }
   ngOnInit() {
   }

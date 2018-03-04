@@ -3,7 +3,7 @@ import { Game } from './game.model';
 import { Player } from './player.model';
 
 export class Match {
-  constructor(
+  constructor(  
     public homeTeamPlayer: Player,
     public awayTeamPlayer: Player,
     public winner: Player,
@@ -14,5 +14,7 @@ export class Match {
     public awayTeamPlayerTotalDefensiveShots: number,
     public homeTeamPlayerPointsEarned: number,
     public awayTeamPlayerPointsEarned: number,
+    public awayTeamPlayerBreakAndRuns: number,
+    public homeTeamPlayerBreakAndRuns: number
   ){}
 }

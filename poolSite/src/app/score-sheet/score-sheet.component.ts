@@ -23,13 +23,13 @@ export class ScoreSheetComponent implements OnInit {
   isHomeTeamPlayerReady: boolean = false;
   isAwayTeamPlayerReady: boolean = false;
   areBothTeamsReady: boolean = false;
-  isMatchOver: boolean = false;
+
   isMatchStarted: boolean = false;
 
 
 
   onAddGame(){
-    this.game  = new Game(this.gameCount,this.match.hTPlayer, this.match.aTPlayer, false, false, "a");
+    this.game  = new Game(this.gameCount,this.match.hTPlayer, this.match.aTPlayer, false, false,new Player("","","",0,0));
     this.games.push(this.game);
     /*this.newGameCreated.emit({
       gameNo: this.gameCount,
@@ -89,7 +89,6 @@ export class ScoreSheetComponent implements OnInit {
   }
   endCurrentMatch(){
     this.isMatchStarted = !this.isMatchStarted;
-    this.isMatchOver = !this.isMatchOver;
     this.areBothTeamsReady = false;
 
   }
