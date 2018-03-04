@@ -133,29 +133,34 @@ export class Match {
     }
     else
       pointsEarned = 3;
+
+    return pointsEarned;
   }
 
   summarizeMatchInfo(){
 
-    var hWinGoal = this.determineWinPlayerWinGoal(this.homeTeamPlayer, this.awayTeamPlayer);
-    var aWinGoal = this.determineWinPlayerWinGoal(this.awayTeamPlayer, this.homeTeamPlayer);
+    this.homeTeamWinGoal = this.determineWinPlayerWinGoal(this.homeTeamPlayer, this.awayTeamPlayer);
+    this.awayTeamWinGoal = this.determineWinPlayerWinGoal(this.awayTeamPlayer, this.homeTeamPlayer);
 
-    var homeTeamPlayerTOs = this.takenTimeOutsForPlayer(this.homeTeamPlayer);
-    var awayTeamPlayerTOs = this.takenTimeOutsForPlayer(this.awayTeamPlayer);
+    this.totalHomeTeamTimeoutsTaken = this.takenTimeOutsForPlayer(this.homeTeamPlayer);
+    this.totalAwayTeamTimeoutsTaken = this.takenTimeOutsForPlayer(this.awayTeamPlayer);
 
-    var totalInnings = this.countTotalInnings();
+    this.totalInnings = this.countTotalInnings();
 
-    var homeTeamEOBs = this.eightOnBreaksForPlayer(this.homeTeamPlayer);
-    var awayTeamEOBs = this.eightOnBreaksForPlayer(this.awayTeamPlayer);
+    this.homeTeamPlayerEightOnBreak= this.eightOnBreaksForPlayer(this.homeTeamPlayer);
+    this.awayTeamPlayerEightOnBreak = this.eightOnBreaksForPlayer(this.awayTeamPlayer);
 
-    var homeTeamBNRs = this.breakNRunsForPlayer(this.homeTeamPlayer);
-    var awayTeamBNRs = this.breakNRunsForPlayer(this.awayTeamPlayer);
+    this.homeTeamPlayerBreakAndRuns = this.breakNRunsForPlayer(this.homeTeamPlayer);
+    this.awayTeamPlayerBreakAndRuns = this.breakNRunsForPlayer(this.awayTeamPlayer);
 
-    var hTDefShotsTotal : number;
-    var aTDefShotsTotal : number;
+    this.homeTeamPlayerTotalDefensiveShots = 0;//TODO: will need to capture this information in Game model
+    this.awayTeamPlayerTotalDefensiveShots =0;;//TODO: will need to capture this information in Game model 
 
-    var htGamesWon = this.determineGamesWon(this.homeTeamPlayer);
-    var atGamesWon = this.determineGamesWon(this.awayTeamPlayer);
+    this.homeTeamPlayerGamesWon = this.determineGamesWon(this.homeTeamPlayer);
+    this.awayTeamPlayerGamesWon = this.determineGamesWon(this.awayTeamPlayer);
+
+    this.homeTeamPlayerPointsEarned = this.determinePointsEarned(this.homeTeamPlayer);
+    this.awayTeamPlayerPointsEarned = this.determinePointsEarned(this.awayTeamPlayer);
 
   }
 }
