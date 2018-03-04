@@ -10,6 +10,9 @@ export class Game {
     public bnr: boolean = false,
     public innings: number=0,
     public p1TimeoutsTaken: number=0,
-    public p2TimeoutsTaken: number=0){}
+    public p2TimeoutsTaken: number=0,
+    public p1DefensiveShots: number=0,
+    public p2DefensiveShots: number=0){}
+
 
 }

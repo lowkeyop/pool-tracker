@@ -21,6 +21,8 @@ export class GameComponent implements OnInit {
   @ViewChild('innings') innings: ElementRef;
   @ViewChild('p1TO') p1TimeOuts: ElementRef;
   @ViewChild('p2TO') p2TimeOuts: ElementRef;
+  @ViewChild('p1Def') p1Def: ElementRef;
+  @ViewChild('p2Def') p2Def: ElementRef;
 
   saveStats(){
     console.log("pushing game stats to game log")
@@ -51,6 +53,13 @@ export class GameComponent implements OnInit {
   setP2Timeouts(){
     this.cGame.p2TimeoutsTaken=parseInt(this.p2TimeOuts.nativeElement.value);
   }
+  setP1DefensiveShots(){
+    this.cGame.p1DefensiveShots=parseInt(this.p1Def.nativeElement.value);
+  }
+  setP2DefensiveShots(){
+    this.cGame.p2DefensiveShots=parseInt(this.p2Def.nativeElement.value);
+  }
+  
   ngOnInit() {
   }
 

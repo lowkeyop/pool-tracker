@@ -30,6 +30,17 @@
     </tr>
     <tr>
       <th>
+        Defensive Shots
+      </th>
+      <td>
+        <input type="number" name="" value="{{cGame.p1DefensiveShots}}" style="width:40px" #p1Def (change)=setP1DefensiveShots()>
+      </td>
+      <td>
+        <input type="number" name="" value="{{cGame.p2DefensiveShots}}" style="width:40px" #p2Def (change)=setP2DefensiveShots()>
+      </td>
+    </tr>
+    <tr>
+      <th>
         Winner
       </th>
       <td colspan="2">

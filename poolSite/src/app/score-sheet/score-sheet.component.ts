@@ -30,7 +30,7 @@ export class ScoreSheetComponent implements OnInit {
 
 
   onAddGame(){
-    this.game  = new Game(this.gameCount,this.currentMatch.hTPlayer, this.currentMatch.aTPlayer,new Player("","","",0,0));
+    this.game  = new Game(this.gameCount,this.currentMatch.hTPlayer, this.currentMatch.aTPlayer,new Player("","",""));
     this.games.push(this.game);
     this.gameCount = this.games.length+1;
   }
