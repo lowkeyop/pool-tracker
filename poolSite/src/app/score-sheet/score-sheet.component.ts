@@ -11,7 +11,7 @@ import { Match } from '../common/match.model';
 export class ScoreSheetComponent implements OnInit {
 //need to emit player data to create the game component with correct data.
   constructor() { this.gameCount = 1; this.matchNo = 1}
-  gameCount;
+  gameCount: number;
 
   homeTeamPlayer:Player = new Player("", "", "0000", 3, 3);
   awayTeamPlayer:Player = new Player("", "", "0000", 3, 3);
@@ -30,7 +30,7 @@ export class ScoreSheetComponent implements OnInit {
 
 
   onAddGame(){
-    this.game  = new Game(this.gameCount,this.currentMatch.hTPlayer, this.currentMatch.aTPlayer,new Player("","",""));
+    this.game  = new Game(this.gameCount,this.currentMatch.hTPlayer, this.currentMatch.aTPlayer,new Player());
     this.games.push(this.game);
     this.gameCount = this.games.length+1;
   }
@@ -83,9 +83,25 @@ export class ScoreSheetComponent implements OnInit {
         }
   }
 
+  resetGames(){
+    this.games = [];
+    this.gameCount = 0;
+  }
+
   endCurrentMatch(){
     this.isMatchStarted = false;
     this.areBothTeamsReady = false;
+    var aMatch: Match;
+    console.log("The home team player: "); console.log(this.currentMatch.hTPlayer);
+    console.log("The away team player: "); console.log( this.currentMatch.aTPlayer);
+    aMatch = new Match(this.currentMatch.hTPlayer,this.currentMatch.aTPlayer,this.games,null);
+    console.log("before end of match values");
+    console.log(aMatch);
+    aMatch.summarizeMatchInfo();
+    console.log("after end of match values");
+    console.log(aMatch);
+    this.resetGames();
+
   }
   ngOnInit() {
   }

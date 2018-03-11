@@ -7,12 +7,13 @@ export class Match {
     public homeTeamPlayer: Player,
     public awayTeamPlayer: Player,
 
-    public homeTeamWinGoal: number,
-    public awayTeamWinGoal: number,
-
-
-    public winner: Player,
     public games: Game[],
+    public winner: Player,
+
+    public homeTeamWinGoal: number = 0,
+    public awayTeamWinGoal: number = 0,
+
+
     public totalHomeTeamTimeoutsTaken: number=0,
     public totalAwayTeamTimeoutsTaken: number=0,
     public totalInnings: number=0,
@@ -35,6 +36,8 @@ export class Match {
 
 
   determineWinPlayerWinGoal(player: Player, opp: Player){
+    console.log(player);
+    console.log(opp);
     var tSkillLevel = player.playerSkillLevel;
     var oSkillLevel = opp.playerSkillLevel;
     var winGoal = 0;
@@ -71,10 +74,10 @@ export class Match {
   eightOnBreaksForPlayer(player: Player){
     var totalEightOnBreaks :number =0;
     for(let game of this.games){
-      if(player == this.homeTeamPlayer && game.bnr && game.winner == player){
+      if(player == this.homeTeamPlayer && game.eob && game.winner == player){
         totalEightOnBreaks++;
       }
-      if(player == this.awayTeamPlayer && game.bnr && game.winner == player){
+      if(player == this.awayTeamPlayer && game.eob && game.winner == player){
         totalEightOnBreaks++;
       }
     }
@@ -152,15 +155,15 @@ export class Match {
 
     this.homeTeamPlayerBreakAndRuns = this.breakNRunsForPlayer(this.homeTeamPlayer);
     this.awayTeamPlayerBreakAndRuns = this.breakNRunsForPlayer(this.awayTeamPlayer);
-
-    this.homeTeamPlayerTotalDefensiveShots = 0;//TODO: will need to capture this information in Game model
-    this.awayTeamPlayerTotalDefensiveShots =0;;//TODO: will need to capture this information in Game model 
-
-    this.homeTeamPlayerGamesWon = this.determineGamesWon(this.homeTeamPlayer);
-    this.awayTeamPlayerGamesWon = this.determineGamesWon(this.awayTeamPlayer);
-
-    this.homeTeamPlayerPointsEarned = this.determinePointsEarned(this.homeTeamPlayer);
-    this.awayTeamPlayerPointsEarned = this.determinePointsEarned(this.awayTeamPlayer);
+    //
+    // this.homeTeamPlayerTotalDefensiveShots = 0;//TODO: will need to capture this information in Game model
+    // this.awayTeamPlayerTotalDefensiveShots =0;;//TODO: will need to capture this information in Game model
+    //
+    // this.homeTeamPlayerGamesWon = this.determineGamesWon(this.homeTeamPlayer);
+    // this.awayTeamPlayerGamesWon = this.determineGamesWon(this.awayTeamPlayer);
+    //
+    // this.homeTeamPlayerPointsEarned = this.determinePointsEarned(this.homeTeamPlayer);
+    // this.awayTeamPlayerPointsEarned = this.determinePointsEarned(this.awayTeamPlayer);
 
   }
 }

@@ -44,10 +44,10 @@
         Winner
       </th>
       <td colspan="2">
-        <input type="radio" id="p1" name="winner" (click)="setWinner(cGame.p1)">
+        <input type="radio" id="p1-game{{gameNo}}" name="winner" (click)="setWinner(cGame.p1)">
         <label for="p1">{{cGame.p1.fName + " " + cGame.p1.lName}}</label>
         <br/>
-        <input type="radio" id="p2" name="winner" (click)="setWinner(cGame.p2)">
+        <input type="radio" id="p2-game{{gameNo}}" name="winner" (click)="setWinner(cGame.p2)">
         <label for="p2">{{cGame.p2.fName + " " + cGame.p2.lName}}</label>
       </td>
     </tr>
