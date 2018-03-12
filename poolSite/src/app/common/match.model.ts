@@ -104,42 +104,38 @@ export class Match {
     }
     return winCount;
   }
-  determinePointsEarned(player: Player){
-    var winGoal: number;
-    var totalWins: number;
-    var pointsEarned: number;
-    var opponent: Player;
-    var oppMadeItToHill: boolean
-    var madeItToHill: boolean;
 
-    if(player == this.homeTeamPlayer && player == this.winner){
-      winGoal = this.determineWinPlayerWinGoal(this.homeTeamPlayer, this.awayTeamPlayer);
-      totalWins = this.determineGamesWon(this.homeTeamPlayer);
-      opponent = this.awayTeamPlayer;
-    } else if(player == this.homeTeamPlayer && player == this.winner){
-      winGoal = this.determineWinPlayerWinGoal(this.awayTeamPlayer, this.homeTeamPlayer);
-      totalWins = this.determineGamesWon(this.awayTeamPlayer);
-      opponent = this.homeTeamPlayer;
+  determinePointsEarned(player: Player){
+    var pointsEarned: number;
+
+    if(player == this.winner){
+      var opponentGamesWon = (isHomeTeamWinner? this.awayTeamPlayerGamesWon: this.homeTeamPlayerGamesWon);
+      pointsEarned = opponentGamesWon > 0? 2 : 3;
     }
-    oppMadeItToHill = this.determineWinPlayerWinGoal(opponent, player) - this.determineGamesWon(opponent) == 1;
-    madeItToHill = this.determineWinPlayerWinGoal(player, opponent) - this.determineGamesWon(player) == 1;
-    var isShutout = totalWins = 0;
-    var wonAGame = totalWins > 0;
-    if(isShutout){
-      pointsEarned = 0;
+    if(player != this.winner){
+      var gamesWon = (!isHomeTeamWinner? this.homeTeamPlayerGamesWon :this.awayTeamPlayerGamesWon);
+      var gameGoal = (!isHomeTeamWinner? this.homeTeamWinGoal:this.awayTeamWinGoal);
+      if(gameGoal - gamesWon == 1){
+        pointsEarned = 1;
+      }
+      if(gameGoal - gamesWon > 1 ){
+        pointsEarned = 0;
+      }
     }
-    if(player != this.winner && madeItToHill){
-      pointsEarned = 1;
-    }
-    if(player == this.winner && oppMadeItToHill){
-      pointsEarned = 2;
-    }
-    else
-      pointsEarned = 3;
 
     return pointsEarned;
   }
 
+  determineMatchWinner(){
+    if(this.homeTeamPlayerGamesWon >= this.homeTeamWinGoal){
+      this.winner = this.homeTeamPlayer
+    }
+    else if(this.awayTeamPlayerGamesWon >= this.awayTeamWinGoal){
+      this.winner = this.awayTeamPlayer;
+    }
+    else
+    console.log("Neither player has reached their goal");
+  }
   summarizeMatchInfo(){
 
     this.homeTeamWinGoal = this.determineWinPlayerWinGoal(this.homeTeamPlayer, this.awayTeamPlayer);
@@ -155,15 +151,18 @@ export class Match {
 
     this.homeTeamPlayerBreakAndRuns = this.breakNRunsForPlayer(this.homeTeamPlayer);
     this.awayTeamPlayerBreakAndRuns = this.breakNRunsForPlayer(this.awayTeamPlayer);
-    //
-    // this.homeTeamPlayerTotalDefensiveShots = 0;//TODO: will need to capture this information in Game model
-    // this.awayTeamPlayerTotalDefensiveShots =0;;//TODO: will need to capture this information in Game model
-    //
-    // this.homeTeamPlayerGamesWon = this.determineGamesWon(this.homeTeamPlayer);
-    // this.awayTeamPlayerGamesWon = this.determineGamesWon(this.awayTeamPlayer);
-    //
-    // this.homeTeamPlayerPointsEarned = this.determinePointsEarned(this.homeTeamPlayer);
-    // this.awayTeamPlayerPointsEarned = this.determinePointsEarned(this.awayTeamPlayer);
+
+    this.homeTeamPlayerTotalDefensiveShots = 0;//TODO: will need to capture this information in Game model
+    this.awayTeamPlayerTotalDefensiveShots =0;;//TODO: will need to capture this information in Game model
+
+    this.homeTeamPlayerGamesWon = this.determineGamesWon(this.homeTeamPlayer);
+    this.awayTeamPlayerGamesWon = this.determineGamesWon(this.awayTeamPlayer);
+
+    this.determineMatchWinner();
+
+    this.homeTeamPlayerPointsEarned = this.determinePointsEarned(this.homeTeamPlayer);
+    this.awayTeamPlayerPointsEarned = this.determinePointsEarned(this.awayTeamPlayer);
+
 
   }
 }
