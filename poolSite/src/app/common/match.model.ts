@@ -107,6 +107,7 @@ export class Match {
 
   determinePointsEarned(player: Player){
     var pointsEarned: number;
+    var isHomeTeamWinner:boolean = this.winner == this.homeTeamPlayer;
 
     if(player == this.winner){
       var opponentGamesWon = (isHomeTeamWinner? this.awayTeamPlayerGamesWon: this.homeTeamPlayerGamesWon);
