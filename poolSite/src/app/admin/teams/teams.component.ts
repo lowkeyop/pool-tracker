@@ -14,7 +14,7 @@ export class TeamsComponent implements OnInit {
     new Player("Jacob", "Atoms", "032416", 8, 3),
     new Player("Steve", "Arnoldstlyn", "063484", 4, 3)
   ];
-  playedPlayers : Player[];
+  playedPlayers : Player[] = [];
   @Input() arePlayersInMatch: boolean;
   @Input() matchNumber: number;
   hostLocation: string = "Cue Club Cafe";
@@ -31,8 +31,9 @@ export class TeamsComponent implements OnInit {
   }
   addPlayerToPlayedList(player: Player, matchPlayed: number){
     console.log("adding player to played list");
-    this.playedPlayers[matchPlayed-1] = player;
-    console.log(player.fName + "has already been sent to match");
+    console.log(player);
+    console.log("match number: " + matchPlayed);
+    this.playedPlayers[matchPlayed] = player;
   }
   ngOnInit() {
   }

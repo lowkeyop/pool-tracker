@@ -10,13 +10,13 @@ import { Match } from '../common/match.model';
 })
 export class ScoreSheetComponent implements OnInit {
 //need to emit player data to create the game component with correct data.
-  constructor() { this.gameCount = 1; this.matchNo = 1}
+  constructor() { this.gameCount = 1; this.matchNo = 0}
   gameCount: number;
 
   homeTeamPlayer:Player = new Player("", "", "0000", 3, 3);
   awayTeamPlayer:Player = new Player("", "", "0000", 3, 3);
   currentMatch = {hTPlayer:this.homeTeamPlayer, aTPlayer: this.awayTeamPlayer};
-  matches: Match[];
+  matches: Match[] = [];
   @Output() newGameCreated = new EventEmitter<{gameNo: number, homeTeamPlayer : Player, awayTeamPlayer : Player}>();
   games: Game[] = [];
   game : Game;
@@ -24,6 +24,9 @@ export class ScoreSheetComponent implements OnInit {
   isHomeTeamPlayerReady: boolean = false;
   isAwayTeamPlayerReady: boolean = false;
   areBothTeamsReady: boolean = false;
+
+  homeTotalGamesWon : number;
+  awayTotalGamesWon : number;
 
   isMatchStarted: boolean = false;
 
@@ -89,19 +92,18 @@ export class ScoreSheetComponent implements OnInit {
   }
 
   endCurrentMatch(){
+
+    var aMatch: Match;
+    aMatch = new Match(this.matchNo,this.currentMatch.hTPlayer,this.currentMatch.aTPlayer,this.games,null);
+
+    aMatch.summarizeMatchInfo();
+      console.log(aMatch);
+    this.matches[this.matchNo]= aMatch;
+  }
+  prepareNextMatch(){
     this.isMatchStarted = false;
     this.areBothTeamsReady = false;
-    var aMatch: Match;
-    console.log("The home team player: "); console.log(this.currentMatch.hTPlayer);
-    console.log("The away team player: "); console.log( this.currentMatch.aTPlayer);
-    aMatch = new Match(this.currentMatch.hTPlayer,this.currentMatch.aTPlayer,this.games,null);
-    console.log("before end of match values");
-    console.log(aMatch);
-    aMatch.summarizeMatchInfo();
-    console.log("after end of match values");
-    console.log(aMatch);
     this.resetGames();
-
   }
   ngOnInit() {
   }

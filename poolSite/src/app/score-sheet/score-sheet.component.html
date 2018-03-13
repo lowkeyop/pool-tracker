@@ -133,4 +133,6 @@
     </div>
   </div>
   <button class="btn btn-danger" [disabled]="!isMatchStarted" (click)="endCurrentMatch()">{{isMatchOver?"Match Not Started" : "End Match"}}</button>
+  <button class="btn btn-info" (click)="prepareNextMatch()">Prepare Next Match</button>
+
 </ng-template>

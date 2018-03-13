@@ -4,6 +4,7 @@ import { Player } from './player.model';
 
 export class Match {
   constructor(
+    public matchNo: number,
     public homeTeamPlayer: Player,
     public awayTeamPlayer: Player,
 
