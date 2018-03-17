@@ -13,13 +13,12 @@ export class ScoreSheetComponent implements OnInit {
   constructor() { this.gameCount = 1; this.matchNo = 0}
   gameCount: number;
 
-  homeTeamPlayer:Player = new Player("", "", "0000", 3, 3);
-  awayTeamPlayer:Player = new Player("", "", "0000", 3, 3);
-  currentMatch = {hTPlayer:this.homeTeamPlayer, aTPlayer: this.awayTeamPlayer};
+  homeTeamPlayer:Player;
+  awayTeamPlayer:Player;
+
   matches: Match[] = [];
   @Output() newGameCreated = new EventEmitter<{gameNo: number, homeTeamPlayer : Player, awayTeamPlayer : Player}>();
-  games: Game[] = [];
-  game : Game;
+
   matchNo: number;
   isHomeTeamPlayerReady: boolean = false;
   isAwayTeamPlayerReady: boolean = false;
@@ -30,39 +29,15 @@ export class ScoreSheetComponent implements OnInit {
 
   isMatchStarted: boolean = false;
 
-
-
-  onAddGame(){
-    this.game  = new Game(this.gameCount,this.currentMatch.hTPlayer, this.currentMatch.aTPlayer,new Player());
-    this.games.push(this.game);
-    this.gameCount = this.games.length+1;
-  }
-  onRemoveGame(){
-    if(this.gameCount > 0){
-      this.games.pop();
-      this.gameCount--;
-    }
-    else{
-      console.log("There aren't any games to remove");
-    }
-  }
-  setGameData( game: Game){
-    console.log("set game data. Game results are below:");
-    console.log(game);
-    this.games[game.gameNo-1]= game;
-  }
-  showGameList(){
-    console.log(this.games);
-  }
   setMatchPlayer(playerInfo: { teamName: string, matchPlayer: Player}, isTeam1: boolean){
     if( isTeam1){
       console.log("Setting the home team's player");
-      this.currentMatch.hTPlayer = playerInfo.matchPlayer;
+      this.homeTeamPlayer = playerInfo.matchPlayer;
       this.isHomeTeamPlayerReady = true;
     }
     else {
       console.log("Setting the away team's player");
-      this.currentMatch.aTPlayer = playerInfo.matchPlayer;
+      this.awayTeamPlayer = playerInfo.matchPlayer;
       this.isAwayTeamPlayerReady = true;
     }
 
@@ -86,26 +61,19 @@ export class ScoreSheetComponent implements OnInit {
         }
   }
 
-  resetGames(){
-    this.games = [];
-    this.gameCount = 0;
-  }
-
-  endCurrentMatch(){
-
-    var aMatch: Match;
-    aMatch = new Match(this.matchNo,this.currentMatch.hTPlayer,this.currentMatch.aTPlayer,this.games,null);
-
-    aMatch.summarizeMatchInfo();
-      console.log(aMatch);
-    this.matches[this.matchNo]= aMatch;
+  addMatch(newMatch : Match){
+    console.log(newMatch);
+    if(this.matches.length < 5){
+      this.matches.push(newMatch);
+    }
   }
   prepareNextMatch(){
     this.isMatchStarted = false;
     this.areBothTeamsReady = false;
-    this.resetGames();
   }
   ngOnInit() {
+    this.homeTeamPlayer = new Player("", "", "0000", 3, 3);
+    this.awayTeamPlayer = new Player(" ", "", "0000", 3, 3);
   }
 
 }

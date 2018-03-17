@@ -8,7 +8,7 @@ import { Player } from '../../common/player.model'
 })
 export class GameComponent implements OnInit {
 
-  constructor() {}
+  constructor() { this.winVal = 0;}
 
 
   ngOnChanges(changes: SimpleChanges){
@@ -23,7 +23,27 @@ export class GameComponent implements OnInit {
   @ViewChild('p2TO') p2TimeOuts: ElementRef;
   @ViewChild('p1Def') p1Def: ElementRef;
   @ViewChild('p2Def') p2Def: ElementRef;
+  winVal: number;//modulus 3 value that will help  toggle between the players and a null value
+  toggleWinner(){
+    this.winVal++;
+    console.log("winVal after increment = " + this.winVal);
+    switch(this.winVal%3){
+      case 1:
+        console.log("home team winner");
+        this.cGame.winner = this.cGame.p1;
+        break;
+      case 2:
+      console.log("away team winner");
+        this.cGame.winner = this.cGame.p2;
+        break;
+      case 0:
+      console.log("no winner");
+        this.cGame.winner = null;
+        break;
+    }
 
+
+  }
   saveStats(){
     console.log("pushing game stats to game log")
     this.saveGame.emit(this.cGame);
@@ -59,7 +79,7 @@ export class GameComponent implements OnInit {
   setP2DefensiveShots(){
     this.cGame.p2DefensiveShots=parseInt(this.p2Def.nativeElement.value);
   }
-  
+
   ngOnInit() {
   }
 

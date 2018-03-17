@@ -13,126 +13,30 @@
 <hr>
 <div class="row">
   <div class="col-md-5">
-    {{currentMatch.hTPlayer.fName + " " + currentMatch.hTPlayer.lName }}
+    {{homeTeamPlayer.fName + " " + homeTeamPlayer.lName }}
   </div>
   <div class="col-md-2">
     <h2>VS.</h2>
     <button class="btn btn-primary" [disabled]="isMatchStarted" (click)="setOpponentsForMatch()">{{!isMatchStarted?"Ready Next Match Players" : "Match In Progress"}}</button>
   </div>
   <div class="col-md-5">
-    {{currentMatch.aTPlayer.fName + " " + currentMatch.aTPlayer.lName}}
+    {{awayTeamPlayer.fName + " " + awayTeamPlayer.lName}}
   </div>
 </div>
   <hr>
+  <ng-template [ngIf]="areBothTeamsReady">
+  <app-match [matchNumber]="matchNo" [homeTeamPlayer]="homeTeamPlayer"
+  [awayTeamPlayer]="awayTeamPlayer" (finishedMatch)="addMatch($event)"></app-match>
+  </ng-template>
 <ng-template [ngIf]="areBothTeamsReady">
-  <div id="team-matches">
-    <div class="row">
-      <table class="table table-bordered table-stripped">
-        <thead>
-          <tr>
-            <th>Team Number</th>
-            <th>Player Name</th>
-            <th>Player Number</th>
-            <th>Games Must Win</th>
-            <th>Innings and Timeouts</th>
-            <th>8 on Break (8oB)</th>
-            <th>Break and Run (BnR)</th>
-            <th>Defensive Shots</th>
-            <th>Games Won</th>
-            <th>Match Points Earned</th>
-            <th>Running Total</th>
-          </tr>
-        </thead>
-        <caption>The first row will be captured as a match component.  A separate 8-ball match component will be created and a 9-ball match component will be created</caption>
-        <tbody>
-          <tr>
-            <td>1234<hr>5678</td>
-            <td>
-              <div class="">
-                {{currentMatch.hTPlayer.fName + " " + currentMatch.hTPlayer.lName }}
-              </div><hr>
-              <div class="">
-                {{currentMatch.aTPlayer.fName + " " + currentMatch.aTPlayer.lName }}
-              </div>
-            </td>
-            <td>
-              <div class="">
-                {{currentMatch.hTPlayer.playerNumber }}
-              </div><hr>
-              <div class="">
-                {{currentMatch.aTPlayer.playerNumber }}
-              </div>
-            </td>
-            <td>  <div class="">
-                {{currentMatch.hTPlayer.raceTo }}
-              </div><hr>
-              <div class="">
-                {{currentMatch.aTPlayer.raceTo }}
-              </div></td>
-            <td>
-              <div class="row" >
-                <div class="col-md-4" *ngFor="let game of games; let i=index">
-                  <app-game [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
-                </div>
-              </div>
-              <button class="btn btn-info" (click)="showGameList()">Show games</button>
-              <button class="btn btn-success" (click)="onAddGame()">Add Game</button>
-              <button class="btn btn-danger" (click)="onRemoveGame()">Remove Game</button>
-            </td>
-            <td>
-              <div class="">
-                <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
-              </div><hr>
-              <div class="">
-                <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
-              </div>
-            </td>
-            <td>
-              <div class="">
-                <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
-              </div><hr>
-              <div class="">
-                <input type="number" name="player2" value="0" max="9" min="0" style="width:30px">
-              </div>
-            </td>
-            <td>
-              <div class="">
-                <input type="number" name="player2" value="0" max="2" min="0" style="width:30px">
-              </div><hr>
-              <div class="">
-                <input type="number" name="player2" value="0" max="2" min="0" style="width:30px">
-              </div>
-            </td>
-            <td>
-              <div class="">
-                (A computed number)
-              </div><hr>
-              <div class="">
-                (A computed number)
-              </div>
-            </td>
-            <td>
-              <div class="">
-                (A computed number)
-              </div><hr>
-              <div class="">
-                (A computed number)
-              </div>
-            </td>
-            <td>
-              <div class="">
-                (A computed number)
-              </div><hr>
-              <div class="">
-                (A computed number)
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <button class="btn btn-danger" [disabled]="!isMatchStarted" (click)="endCurrentMatch()">{{isMatchOver?"Match Not Started" : "End Match"}}</button>
+
   <button class="btn btn-info" (click)="prepareNextMatch()">Prepare Next Match</button>
 
 </ng-template>
+<div>Match results
+  <div *ngFor="let match of matches; let i = index">
+
+    <p>Match Number: {{match.matchNo}}</p><p>Winner: {{match.winner.fName}}</p><br/>
+
+  </div>
+</div>

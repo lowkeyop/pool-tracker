@@ -44,11 +44,7 @@
         Winner
       </th>
       <td colspan="2">
-        <input type="radio" id="p1-game{{gameNo}}" name="winner" (click)="setWinner(cGame.p1)">
-        <label for="p1">{{cGame.p1.fName + " " + cGame.p1.lName}}</label>
-        <br/>
-        <input type="radio" id="p2-game{{gameNo}}" name="winner" (click)="setWinner(cGame.p2)">
-        <label for="p2">{{cGame.p2.fName + " " + cGame.p2.lName}}</label>
+        <button class="btn-success" (click)=toggleWinner(winVal)>{{cGame.winner == null? "Undecided": cGame.winner.fName}}</button>
       </td>
     </tr>
     <tr>

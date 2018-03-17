@@ -1,3 +1,113 @@
-<p>
-  match works!
-</p>
+  <div id="team-match">
+    <div class="row">
+      <table class="table table-bordered table-stripped">
+        <thead>
+          <tr>
+            <th>Team Number</th>
+            <th>Player Name</th>
+            <th>Player Number</th>
+            <th>Games Must Win</th>
+            <th>Innings and Timeouts</th>
+            <th>8 on Break (8oB)</th>
+            <th>Break and Run (BnR)</th>
+            <th>Defensive Shots</th>
+            <th>Total Innings</th>
+            <th>Games Won</th>
+            <th>Match Points Earned</th>
+            <th>Running Total</th>
+          </tr>
+        </thead>
+        <caption>The first row will be captured as a match component.  A separate 8-ball match component will be created and a 9-ball match component will be created</caption>
+        <tbody>
+          <tr>
+            <td>1234<hr>5678</td>
+            <td>
+              <div class="">
+                {{currentMatch.homeTeamPlayer.fName}}
+              </div><hr>
+              <div class="">
+                {{currentMatch.awayTeamPlayer.fName}}
+              </div>
+            </td>
+            <td>
+              <div class="">
+                 {{currentMatch.homeTeamPlayer.playerNumber}}
+              </div><hr>
+              <div class="">
+                {{currentMatch.awayTeamPlayer.playerNumber}}
+              </div>
+            </td>
+            <td>  <div class="">
+                {{currentMatch.homeTeamWinGoal}}
+              </div><hr>
+              <div class="">
+                  {{currentMatch.awayTeamWinGoal}}
+              </div></td>
+            <td>
+              <div class="row" >
+                <div class="col-md-4" *ngFor="let game of games">
+                  <app-game [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
+                </div>
+              </div>
+              <button class="btn btn-success" (click)="onAddGame()">Add Game</button>
+              <button class="btn btn-danger" (click)="onRemoveGame()">Remove Game</button>
+            </td>
+            <td>
+              <div class="">
+                {{currentMatch.homeTeamPlayerEightOnBreak}}
+              </div><hr>
+              <div class="">
+                {{currentMatch.awayTeamPlayerEightOnBreak}}
+              </div>
+            </td>
+            <td>
+              <div class="">
+                {{currentMatch.homeTeamPlayerBreakAndRuns}}
+              </div><hr>
+              <div class="">
+                {{currentMatch.awayTeamPlayerBreakAndRuns}}
+              </div>
+            </td>
+            <td>
+              <div class="">
+                {{currentMatch.homeTeamPlayerTotalDefensiveShots}}
+              </div><hr>
+              <div class="">
+                {{currentMatch.awayTeamPlayerTotalDefensiveShots}}
+              </div>
+            </td>
+            <td>
+              <div class="">
+                {{currentMatch.totalInnings}}
+              </div>
+            </td>
+            <td>
+              <div class="">
+                {{currentMatch.homeTeamPlayerGamesWon}}
+              </div><hr>
+              <div class="">
+                {{currentMatch.awayTeamPlayerGamesWon}}
+              </div>
+            </td>
+            <td>
+              <div class="">
+                {{currentMatch.homeTeamPlayerPointsEarned}}
+              </div><hr>
+              <div class="">
+                {{currentMatch.awayTeamPlayerPointsEarned}}
+              </div>
+            </td>
+            <td>
+              <div class="">
+                (A computed number)
+              </div><hr>
+              <div class="">
+                (A computed number)
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-danger" [disabled]="isMatchOver" (click)="matchComplete()">{{isMatchOver?"Match Complete" : "End Match"}}</button>
+    </div>
+  </div>

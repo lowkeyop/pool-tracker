@@ -72,6 +72,18 @@ export class Match {
     }
     return count;
   }
+  countDefensiveShots(player: Player){
+    var defensiveShots :number =0;
+    for(let game of this.games){
+      if(player == this.homeTeamPlayer){
+        defensiveShots+=game.p1DefensiveShots;
+      }
+      if(player == this.awayTeamPlayer){
+        defensiveShots+=game.p2DefensiveShots;
+      }
+    }
+    return defensiveShots;
+  }
   eightOnBreaksForPlayer(player: Player){
     var totalEightOnBreaks :number =0;
     for(let game of this.games){
@@ -164,7 +176,5 @@ export class Match {
 
     this.homeTeamPlayerPointsEarned = this.determinePointsEarned(this.homeTeamPlayer);
     this.awayTeamPlayerPointsEarned = this.determinePointsEarned(this.awayTeamPlayer);
-
-
   }
 }
