@@ -119,21 +119,23 @@ export class Match {
   }
 
   determinePointsEarned(player: Player){
-    var pointsEarned: number;
+    var pointsEarned: number = 0;
     var isHomeTeamWinner:boolean = this.winner == this.homeTeamPlayer;
 
-    if(player == this.winner){
-      var opponentGamesWon = (isHomeTeamWinner? this.awayTeamPlayerGamesWon: this.homeTeamPlayerGamesWon);
-      pointsEarned = opponentGamesWon > 0? 2 : 3;
-    }
-    if(player != this.winner){
-      var gamesWon = (!isHomeTeamWinner? this.homeTeamPlayerGamesWon :this.awayTeamPlayerGamesWon);
-      var gameGoal = (!isHomeTeamWinner? this.homeTeamWinGoal:this.awayTeamWinGoal);
-      if(gameGoal - gamesWon == 1){
-        pointsEarned = 1;
+    if(this.winner != null){
+      if(player == this.winner){
+        var opponentGamesWon = (isHomeTeamWinner? this.awayTeamPlayerGamesWon: this.homeTeamPlayerGamesWon);
+        pointsEarned = opponentGamesWon > 0? 2 : 3;
       }
-      if(gameGoal - gamesWon > 1 ){
-        pointsEarned = 0;
+      if(player != this.winner){
+        var gamesWon = (!isHomeTeamWinner? this.homeTeamPlayerGamesWon :this.awayTeamPlayerGamesWon);
+        var gameGoal = (!isHomeTeamWinner? this.homeTeamWinGoal:this.awayTeamWinGoal);
+        if(gameGoal - gamesWon == 1){
+          pointsEarned = 1;
+        }
+        if(gameGoal - gamesWon > 1 ){
+          pointsEarned = 0;
+        }
       }
     }
 
@@ -173,8 +175,9 @@ export class Match {
     this.awayTeamPlayerGamesWon = this.determineGamesWon(this.awayTeamPlayer);
 
     this.determineMatchWinner();
-
-    this.homeTeamPlayerPointsEarned = this.determinePointsEarned(this.homeTeamPlayer);
-    this.awayTeamPlayerPointsEarned = this.determinePointsEarned(this.awayTeamPlayer);
+    if(this.winner != null){
+      this.homeTeamPlayerPointsEarned = this.determinePointsEarned(this.homeTeamPlayer);
+      this.awayTeamPlayerPointsEarned = this.determinePointsEarned(this.awayTeamPlayer);
+    }
   }
 }

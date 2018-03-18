@@ -1,5 +1,6 @@
 import { Component,EventEmitter, Output, OnInit, Input } from '@angular/core';
 import { Player } from '../../common/player.model';
+import { Team } from '../../common/team.model';
 
 @Component({
   selector: 'app-teams',
@@ -9,11 +10,13 @@ import { Player } from '../../common/player.model';
 export class TeamsComponent implements OnInit {
 
   constructor() { this.playedPlayers =[];this.arePlayersInMatch= false;}
+
   team: Player[] = [
     new Player("Cordell", "Kennerly", "02342", 3, 3,),
     new Player("Jacob", "Atoms", "032416", 8, 3),
     new Player("Steve", "Arnoldstlyn", "063484", 4, 3)
   ];
+  @Input() teamRoster: Team;
   playedPlayers : Player[] = [];
   @Input() arePlayersInMatch: boolean;
   @Input() matchNumber: number;

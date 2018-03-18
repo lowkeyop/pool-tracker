@@ -12,7 +12,6 @@ export class GameComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges){
-    console.log("ngOnChanges called");
     // console.log(changes);
   }
 
@@ -82,5 +81,4 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
