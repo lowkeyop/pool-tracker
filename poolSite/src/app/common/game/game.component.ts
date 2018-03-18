@@ -12,7 +12,7 @@ export class GameComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges){
-    // console.log(changes);
+    this.saveStats();//updates game stats.
   }
 
   @Input('gameCurrent') cGame: Game;

@@ -49,8 +49,8 @@
                   <app-game [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
                 </div>
               </div>
-              <button class="btn btn-success" (click)="onAddGame()">Add Game</button>
-              <button class="btn btn-danger" (click)="onRemoveGame()">Remove Game</button>
+              <button class="btn btn-success" [disabled]="currentMatch.winner!=null" (click)="onAddGame()">Add Game</button>
+              <button class="btn btn-danger" [disabled]="currentMatch.winner!=null" (click)="onRemoveGame()">Remove Game</button>
             </td>
             <td>
               <div class="">
