@@ -25,18 +25,15 @@
 </div>
   <hr>
   <ng-template [ngIf]="areBothTeamsReady">
+    <div *ngFor="let match of matches">
+      <p>Match number: {{match.matchNo}}</p>
+    </div>
   <app-match [matchNumber]="matchNo" [homeTeamPlayer]="homeTeamPlayer"
   [awayTeamPlayer]="awayTeamPlayer" (finishedMatch)="addMatch($event)"></app-match>
-  </ng-template>
-<ng-template [ngIf]="areBothTeamsReady">
-
   <button class="btn btn-info" (click)="prepareNextMatch()">Prepare Next Match</button>
-
-</ng-template>
+  </ng-template>
 <div>Match results
   <div *ngFor="let match of matches; let i = index">
-
-    <p>Match Number: {{match.matchNo}}</p><p>Winner: {{match.winner.fName}}</p><br/>
-
+    <app-match-results></app-match-results>  
   </div>
 </div>

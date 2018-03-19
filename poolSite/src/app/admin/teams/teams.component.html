@@ -17,7 +17,7 @@
       <td>{{player.playerSkillLevel}}</td>
       <td>{{player.playerNumber}}</td>
       <td>{{player.fName + " " + player.lName}} </td>
-      <td><button type="button" name="button" (click)="onChoosePlayer(player)" class="button btn-primary" [disabled]="arePlayersInMatch || matchNumber ==5">Send to Match</button></td>
+      <td><button type="button" name="button" (click)="onChoosePlayer(player)" class="button btn-primary" [disabled]="arePlayersInMatch || matchNumber ==5">{{arePlayersInMatch? "Players Locked" : "Send to Match"}}</button></td>
 
     </tr>
   </tbody>
