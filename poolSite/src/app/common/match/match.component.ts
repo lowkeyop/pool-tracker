@@ -23,9 +23,13 @@ export class MatchComponent implements OnInit {
   gameCount: number;
   isMatchOver: boolean;
 onAddGame(){
- var game = new Game(this.gameCount, this.homeTeamPlayer, this.awayTeamPlayer,null);
-   this.games.push( game);
-   this.gameCount++;
+  this.currentMatch.summarizeMatchInfo();
+  if(this.currentMatch.winner == null){
+    var game = new Game(this.gameCount, this.homeTeamPlayer, this.awayTeamPlayer,null);
+    this.games.push( game);
+    this.gameCount++;
+  }
+
 }
 
 onRemoveGame(){
@@ -33,18 +37,10 @@ onRemoveGame(){
    this.gameCount>0?this.gameCount--:this.gameCount;
 }
 setGameData( game: Game){
-  console.log("set game data. Game results are below:");
-  console.log(game);
   this.games[game.gameNo-1]= game;
   this.currentMatch.summarizeMatchInfo();
 }
-showInputs(){
-  console.log("Match number: " + this.matchNumber);
-  console.log("Home team player: "); console.log(this.homeTeamPlayer);
-  console.log("away team player: "); console.log(this.awayTeamPlayer);
-  this.currentMatch = new Match(this.matchNumber, this.homeTeamPlayer, this.awayTeamPlayer, this.games, null);
-  console.log(this.currentMatch);
-}
+
 matchComplete(){
   console.log("Utilize the Match object's function to calculate all the match's information.  Afterwards, emit the Match object with the match number.");
   this.isMatchOver=!this.isMatchOver;
