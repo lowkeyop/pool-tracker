@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { Match } from '../../common/match.model';
 @Component({
   selector: 'app-match-results',
   templateUrl: './match-results.component.html',
@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class MatchResultsComponent implements OnInit {
 
   constructor() { }
+
+  @Input() matchItems : Match[] = [];
 
   ngOnInit() {
   }

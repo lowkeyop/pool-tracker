@@ -1,39 +1,44 @@
-<p>
-  An 8-Ball APA Scoresheet:
-</p>
-<div class="row">
-  <div class="col-md-5">
-    <app-teams [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
+<div class="container-fluid">
+  <p>
+    An 8-Ball APA Scoresheet:
+  </p>
+  <div class="row">
+    <app-match-results [matchItems]="matches"></app-match-results>
   </div>
-  <div class="col-md-2"><h2>VS.</h2></div>
-  <div class="col-md-5">
-    <app-teams [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
-  </div>
-</div>
-<hr>
-<div class="row">
-  <div class="col-md-5">
-    {{homeTeamPlayer.fName + " " + homeTeamPlayer.lName }}
-  </div>
-  <div class="col-md-2">
-    <h2>VS.</h2>
-    <button class="btn btn-primary" [disabled]="isMatchStarted" (click)="setOpponentsForMatch()">{{!isMatchStarted?"Ready Next Match Players" : "Match In Progress"}}</button>
-  </div>
-  <div class="col-md-5">
-    {{awayTeamPlayer.fName + " " + awayTeamPlayer.lName}}
-  </div>
-</div>
-  <hr>
-  <ng-template [ngIf]="areBothTeamsReady">
-    <div *ngFor="let match of matches">
-      <p>Match number: {{match.matchNo}}</p>
+  <div class="row">
+    <div class="col-md-5">
+      <app-teams [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
     </div>
-  <app-match [matchNumber]="matchNo" [homeTeamPlayer]="homeTeamPlayer"
-  [awayTeamPlayer]="awayTeamPlayer" (finishedMatch)="addMatch($event)"></app-match>
-  <button class="btn btn-info" (click)="prepareNextMatch()">Prepare Next Match</button>
-  </ng-template>
-<div>Match results
-  <div *ngFor="let match of matches; let i = index">
-    <app-match-results></app-match-results>  
+    <div class="col-md-2"><h2>VS.</h2></div>
+    <div class="col-md-5">
+      <app-teams [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-5">
+      {{homeTeamPlayer.fName + " " + homeTeamPlayer.lName }}
+    </div>
+    <div class="col-md-2">
+      <h2>VS.</h2>
+      <button class="btn btn-primary" [disabled]="isMatchStarted" (click)="setOpponentsForMatch()">{{!isMatchStarted?"Ready Next Match Players" : "Match In Progress"}}</button>
+    </div>
+    <div class="col-md-5">
+      {{awayTeamPlayer.fName + " " + awayTeamPlayer.lName}}
+    </div>
+  </div>
+    <hr>
+    <ng-template [ngIf]="areBothTeamsReady">
+      <div *ngFor="let match of matches">
+        <p>Match number: {{match.matchNo}}</p>
+      </div>
+    <app-match [matchNumber]="matchNo" [homeTeamPlayer]="homeTeamPlayer"
+    [awayTeamPlayer]="awayTeamPlayer" (finishedMatch)="addMatch($event)"></app-match>
+    <button class="btn btn-info" (click)="prepareNextMatch()">Prepare Next Match</button>
+    </ng-template>
+  <div>Match results
+    <div *ngFor="let match of matches; let i = index">
+      <app-match-results></app-match-results>
+    </div>
   </div>
 </div>

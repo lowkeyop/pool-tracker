@@ -44,8 +44,8 @@
                   {{currentMatch.awayTeamWinGoal}}
               </div></td>
             <td>
-              <div class="row" >
-                <div class="col-md-4" *ngFor="let game of games">
+              <div class="row container-fluid" >
+                <div class="col-md-4 container-fluid" *ngFor="let game of games">
                   <app-game [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
                 </div>
               </div>

@@ -4,14 +4,14 @@
   <thead>
     <tr>
       <th></th>
-      <th>{{cGame.p1.fName + " " + cGame.p1.lName }}</th>
-      <th>{{cGame.p2.fName + " " + cGame.p2.lName}}</th>
+      <th>{{cGame.p1.fName + " " + cGame.p1.lName[0] + "." }}</th>
+      <th>{{cGame.p2.fName + " " + cGame.p2.lName[0] + "."}}</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>
-        Timeouts
+        T.O
       </th>
       <td>
         <input type="number" name="" value="{{cGame.p1TimeoutsTaken}}" max="2" min="0" style="width:40px" #p1TO (change)=setP1Timeouts()>
@@ -30,7 +30,7 @@
     </tr>
     <tr>
       <th>
-        Defensive Shots
+        Def Shots
       </th>
       <td>
         <input type="number" name="" value="{{cGame.p1DefensiveShots}}" style="width:40px" #p1Def (change)=setP1DefensiveShots()>
