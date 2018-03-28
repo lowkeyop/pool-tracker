@@ -1,15 +1,11 @@
 <nav class="navbar navbar-default">
-  <div class="container"  >
-    <div class="row">
-      <div class="col-md-2">
-        <strong>Match Results</strong>
+  <div class="container" *ngFor="let match of matchItems; let i = index">
+    <div class="panel panel-primary col-md-4">
+      <div class="panel-heading">
+        <div class="panel-title">Match {{match.matchNo}}</div>
       </div>
-      <div *ngFor="let match of matchItems">
-        <div class="col-md-2">
-          <p>Winner: {{match.winner.fName}}</p>
-          <p>Home Team Points Earned: {{match.homeTeamPlayerPointsEarned}}</p>
-          <p>Away Team Points Earned: {{match.awayTeamPlayerPointsEarned}}</p>
-        </div>
+      <div class="panel panel-body">
+
       </div>
     </div>
   </div>
