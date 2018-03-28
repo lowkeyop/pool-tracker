@@ -2,9 +2,7 @@
   <p>
     An 8-Ball APA Scoresheet:
   </p>
-  <div class="row">
-    <app-match-results [matchItems]="matches"></app-match-results>
-  </div>
+  <app-match-results [matchItems]="matches"></app-match-results>
   <div class="row">
     <div class="col-md-5">
       <app-teams [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, true)"></app-teams>

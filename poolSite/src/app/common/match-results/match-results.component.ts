@@ -7,11 +7,12 @@ import { Match } from '../../common/match.model';
 })
 export class MatchResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+   }
 
-  @Input() matchItems : Match[] = [];
-
+  @Input() matchItems : Match[];
   ngOnInit() {
+
   }
 
 }

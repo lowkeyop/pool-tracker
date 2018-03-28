@@ -1,14 +1,16 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-2">
-      <strong>{{matchItems.length>0?"Match Results":""}}</strong>
-    </div>
-    <div *ngFor="let match of matchItems">
+<nav class="navbar navbar-default">
+  <div class="container"  >
+    <div class="row">
       <div class="col-md-2">
-        <p>Winner: {{match.winner.fName}}</p>
-        <p>Home Team Points Earned: {{match.homeTeamPlayerPointsEarned}}</p>
-        <p>Away Team Points Earned: {{match.awayTeamPlayerPointsEarned}}</p>
+        <strong>Match Results</strong>
+      </div>
+      <div *ngFor="let match of matchItems">
+        <div class="col-md-2">
+          <p>Winner: {{match.winner.fName}}</p>
+          <p>Home Team Points Earned: {{match.homeTeamPlayerPointsEarned}}</p>
+          <p>Away Team Points Earned: {{match.awayTeamPlayerPointsEarned}}</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</nav>
