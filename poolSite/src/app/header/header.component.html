@@ -1,3 +1,5 @@
-<p>
-  header works!
-</p>
+<div class="fuild-container">
+  <button class="btn btn-default" [ngClass]="{'active btn-primary': showMatchView}" (click)="toggleView('match')">Match Tab</button>
+  <button class="btn btn-default" [ngClass]="{'active btn-primary': showTableDistributeView}" (click)="toggleView('tables')">Table Distributor</button>
+  <button class="btn btn-default" [ngClass]="{'active btn-primary': showAdministrativeView}" (click)="toggleView('admin')">Administrative Actions</button>
+</div>

@@ -5,6 +5,8 @@
         <div class="panel-title">Match {{match.matchNo}}</div>
       </div>
       <div class="panel panel-body">
+        <p [ngStyle]="{'font-weight' : match.winner == match.homeTeamPlayer? 'bold': ''}">Home Team Player: {{match.homeTeamPlayer.fName}} {{match.homeTeamPlayerPointsEarned}}</p>
+        <p [ngStyle]="{'font-weight' : match.winner == match.awayTeamPlayer? 'bold': ''}">Away Team Player: {{match.awayTeamPlayer.fName}} {{match.awayTeamPlayerPointsEarned}}</p>
 
       </div>
     </div>
