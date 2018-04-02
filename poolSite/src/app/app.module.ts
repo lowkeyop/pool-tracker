@@ -10,6 +10,7 @@ import { Game } from './common/game.model';
 import { ScoreSheetComponent } from './score-sheet/score-sheet.component';
 import { MatchComponent } from './common/match/match.component';
 import { MatchResultsComponent } from './common/match-results/match-results.component';
+import { PlayerWaitlistComponent } from './player-waitlist/player-waitlist.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatchResultsComponent } from './common/match-results/match-results.comp
     ScoreSheetComponent,
     MatchComponent,
     MatchResultsComponent,
+    PlayerWaitlistComponent,
 
   ],
   imports: [
