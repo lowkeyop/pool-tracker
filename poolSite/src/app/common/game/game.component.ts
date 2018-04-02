@@ -25,7 +25,6 @@ export class GameComponent implements OnInit {
   winVal: number;//modulus 3 value that will help  toggle between the players and a null value
   toggleWinner(){
     this.winVal++;
-    console.log("winVal after increment = " + this.winVal);
     switch(this.winVal%3){
       case 1:
         console.log("home team winner");

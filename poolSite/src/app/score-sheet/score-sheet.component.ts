@@ -70,6 +70,8 @@ export class ScoreSheetComponent implements OnInit {
   prepareNextMatch(){
     this.isMatchStarted = false;
     this.areBothTeamsReady = false;
+    this.homeTeamPlayer = new Player();
+    this.awayTeamPlayer = new Player();
   }
   ngOnInit() {
     this.homeTeamPlayer = new Player("", "", "0000", 3, 3);
