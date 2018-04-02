@@ -12,12 +12,9 @@ export class TeamsComponent implements OnInit {
 
   constructor(private teamService : TeamsService = new TeamsService()) { this.playedPlayers =[];this.arePlayersInMatch= false;}
 
-  team: Player[] = [
-    new Player("Cordell", "Kennerly", "02342", 3, 3,),
-    new Player("Jacob", "Atoms", "032416", 8, 3),
-    new Player("Steve", "Arnoldstlyn", "063484", 4, 3)
-  ];
   @Input() teamRoster: Team;
+  @Input() isHomeTeam: boolean;
+  team: Player[];
   playedPlayers : Player[] = [];
   @Input() arePlayersInMatch: boolean;
   @Input() matchNumber: number;
@@ -40,6 +37,7 @@ export class TeamsComponent implements OnInit {
     this.playedPlayers[matchPlayed] = player;
   }
   ngOnInit() {
+      this.team = this.isHomeTeam? this.teamService.homeTeam : this.teamService.awayTeam;
   }
 
 }
