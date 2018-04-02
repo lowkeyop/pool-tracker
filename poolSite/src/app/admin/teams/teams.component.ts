@@ -1,15 +1,16 @@
 import { Component,EventEmitter, Output, OnInit, Input } from '@angular/core';
 import { Player } from '../../common/player.model';
 import { Team } from '../../common/team.model';
-
+import {TeamsService} '../../services/teams.service'
 @Component({
   selector: 'app-teams',
   templateUrl: './teams.component.html',
-  styleUrls: ['./teams.component.css']
+  styleUrls: ['./teams.component.css'],
+  providers: [TeamsService]
 })
 export class TeamsComponent implements OnInit {
 
-  constructor() { this.playedPlayers =[];this.arePlayersInMatch= false;}
+  constructor(private teamService : TeamsService = new TeamsService()) { this.playedPlayers =[];this.arePlayersInMatch= false;}
 
   team: Player[] = [
     new Player("Cordell", "Kennerly", "02342", 3, 3,),

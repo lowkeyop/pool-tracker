@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let player of team">
+    <tr *ngFor="let player of teamService.team">
       <td>{{player.playerSkillLevel}}</td>
       <td>{{player.playerNumber}}</td>
       <td>{{player.fName + " " + player.lName}} </td>
