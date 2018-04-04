@@ -11,6 +11,7 @@ import { ScoreSheetComponent } from './score-sheet/score-sheet.component';
 import { MatchComponent } from './common/match/match.component';
 import { MatchResultsComponent } from './common/match-results/match-results.component';
 import { PlayerWaitlistComponent } from './player-waitlist/player-waitlist.component';
+import { PoolTableComponent } from './player-waitlist/pool-table/pool-table.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PlayerWaitlistComponent } from './player-waitlist/player-waitlist.compo
     MatchComponent,
     MatchResultsComponent,
     PlayerWaitlistComponent,
+    PoolTableComponent,
 
   ],
   imports: [

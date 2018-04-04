@@ -34,9 +34,4 @@
     [awayTeamPlayer]="awayTeamPlayer" (finishedMatch)="addMatch($event)"></app-match>
     <button class="btn btn-info" (click)="prepareNextMatch()">Prepare Next Match</button>
     </ng-template>
-  <div>Match results
-    <div *ngFor="let match of matches; let i = index">
-      <app-match-results></app-match-results>
-    </div>
-  </div>
 </div>

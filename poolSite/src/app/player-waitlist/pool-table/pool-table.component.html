@@ -1,0 +1,10 @@
+<p>
+  pool-table works!
+  {{tableInfo.tableNumber}}
+  {{tableInfo.player1.name}}
+</p>
+  <br>VS <br>
+  {{tableInfo.player2.name}} <br>
+Winner: <button type="button" name="button" (click)="toggleWinner()">{{tableInfo.winner == null? "Undecided": tableInfo.winner.name}}</button> <br>
+<button type="button" name="button"(click)="onGameFinished()"> Prepare Next Match</button>
+<hr>

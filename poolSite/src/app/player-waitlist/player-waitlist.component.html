@@ -1,3 +1,20 @@
-<p>
-  player-waitlist works!
-</p>
+<div class="container-fluid">
+  <p>
+    player-waitlist works!
+  </p>
+  <label for="">Add Players to List</label>
+  <label for="">Player Name</label>
+  <input type="text" class="form-control" #playerName>
+  <button class="btn btn-success" (click)="onAddPlayerToList(playerName)">Add Player to List</button>
+  <hr>
+  <label for="">Player List</label>
+  <ol>
+    <li *ngFor="let player of playerList">{{player.name + " Ticket Number:" + player.id}}</li>
+  </ol>
+
+  <label for=""> Number of tables:</label>
+  <input type="number" value="{{numberOfTables}}" [disabled]="isTableAmountLocked" (change)="onTableNumberModify(tableCount)" #tableCount>
+  <button type="button" name="button" (click)="onLockNumberOfTables()" [disabled]="isTableAmountLocked">Lock Table Amount</button>
+  <button class="btn btn-info" (click)="fillTables()">Fill All Spots</button>
+  <app-pool-table [tableInfo]="table" *ngFor="let table of tableList" (gameResult)=getNextPlayer($event)></app-pool-table>
+</div>
