@@ -44,9 +44,13 @@ export class PlayerWaitlistComponent implements OnInit {
   }
 
   fillTables(){
-    for(var i = 1; i < this.numberOfTables; i++){
-      this.getNextPlayer(i);
-      this.getNextPlayer(i);
+    for(var i = 0; i < this.playerList.length; i++){
+      for(var j = 0; j < this.tableList.length; j++){
+        var table = this.tableList[j];
+        if(this.isTableOpen(table)){
+          this.sendNextPlayerToTable(table);
+        }
+      }
     }
   }
 
@@ -64,28 +68,43 @@ export class PlayerWaitlistComponent implements OnInit {
      this.playerList.push(player);
     }
   }
-  getNextPlayer( tableNumber: number){ //
+  isTableEmpty(table: Table){
+    return this.isTableSlotEmpty(table, true) && this.isTableSlotEmpty(table, false);
+  }
+  isTableOpen(table: Table){
+    return this.isTableSlotEmpty(table, true) || this.isTableSlotEmpty(table, false);
+  }
+  isTableSlotEmpty(table : Table, firstSlotCheck: boolean){
+    var isSlotEmpty = true;
+    if(firstSlotCheck){
+      isSlotEmpty = (table.player1.id == undefined || table.player1.id < 0 );
+    } else if (!firstSlotCheck){
+      isSlotEmpty = (table.player2.id == undefined || table.player2.id < 0 );
+    }
+    return isSlotEmpty;
+  }
+  sendNextPlayerToTable( table: Table){ //
     if(this.playerList.length > 0){
       var nextPlayerUp = this.playerList[0];//grab the highest queue position.
-      var readyTable = this.tableList[tableNumber-1];
-      console.log(readyTable.winner);
 
-      if(readyTable.player1.id < 0){
-        readyTable.player1 = nextPlayerUp;
-      }
-      else if(readyTable.player2.id < 0){
-        readyTable.player2 = nextPlayerUp;
+      if(this.isTableEmpty(table)){
+        table.player1 = nextPlayerUp;
+      } else if(this.isTableSlotEmpty(table, true)){
+        table.player1 = nextPlayerUp;
+      } else if(this.isTableSlotEmpty(table, false)){
+        table.player2 = nextPlayerUp;
       }
 
-      if(readyTable.winner != undefined){
-        if(readyTable.winner != readyTable.player1 ){
-          console.log(readyTable.player1.name + " lost");
-          this.addPlayerBackInQueue(readyTable.player1);
-          readyTable.player1 = nextPlayerUp;
-        } else if(readyTable.winner != readyTable.player2 ){{
-          console.log(readyTable.player2.name + " lost ");
-          this.addPlayerBackInQueue(readyTable.player2);
-          readyTable.player2 = nextPlayerUp;
+
+      if(table.winner != undefined){ //winner decalred
+        if(table.winner != table.player1 ){
+          console.log(table.player1.name + " lost");
+          this.addPlayerBackInQueue(table.player1);
+          table.player1 = nextPlayerUp;
+        } else if(table.winner != table.player2 ){{
+          console.log(table.player2.name + " lost ");
+          this.addPlayerBackInQueue(table.player2);
+          table.player2 = nextPlayerUp;
         }
       }
     }
