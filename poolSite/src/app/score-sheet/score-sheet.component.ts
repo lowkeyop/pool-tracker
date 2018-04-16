@@ -2,11 +2,13 @@ import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import { Game } from '../common/game.model';
 import { Player } from '../common/player.model';
 import { Match } from '../common/match.model';
+import {TeamsService} from '../services/teams.service'
 
 @Component({
   selector: 'app-score-sheet',
   templateUrl: './score-sheet.component.html',
-  styleUrls: ['./score-sheet.component.css']
+  styleUrls: ['./score-sheet.component.css'],
+  providers: [TeamsService]
 })
 export class ScoreSheetComponent implements OnInit {
 //need to emit player data to create the game component with correct data.
