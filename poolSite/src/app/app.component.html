@@ -3,7 +3,16 @@
   <h1>
     Welcome to {{title}}!
   </h1>
-  <app-header (selectedView)="changeView($event)"></app-header>
+  <!-- <app-header (selectedView)="changeView($event)"></app-header> -->
+  <div class="fuild-container">
+    <div class="row">
+      <ul class="nav nav-tabs">
+        <li class="active"><a routerLink="/">Home</a></li>
+        <li role="presentation"><a routerLink="/match">Match</a></li>
+        <li role="presentation"><a [routerLink]="['players']">Players</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="row">
   <div class="col-md-12">
