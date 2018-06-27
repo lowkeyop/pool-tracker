@@ -5,6 +5,29 @@
 <button class="btn-default" (click)="onLoadMatch()">Switch To Match</button>
 <br/>
 <a href="#">View Player List</a>
-<div *ngFor="let player of players">
-  <p>{{player.fName}}</p>
-</div>
+<table class="table table-hover" >
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Player number</th>
+      <th>Skill Level</th>
+      <th>Matches Played</th>
+      <th>View Details</th>
+      <th>Edit Player</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let player of players">
+
+    <td >{{player.fName}}</td>
+    <td >{{player.lName}}</td>
+    <td >{{player.playerNumber}}</td>
+    <td >{{player.playerSkillLevel}}</td>
+    <td >{{player.matchesPlayed}}</td>
+    <td><button class="btn btn-info">Details</button></td>
+    <td><button class="btn btn-default">Edit Info</button></td>
+
+
+
+  </tr>
+</table>

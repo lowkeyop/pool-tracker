@@ -21,4 +21,12 @@ export class PlayersComponent implements OnInit {
   onLoadMatch(){
     this.router.navigate(['/match'], {relativeTo: this.route})
   }
+
+  onEditPlayer(){
+    this.router.navigate(['edit'], {relativeTo: this.route})
+  }
+
+  onViewPlayerDetails(){
+    this.router.navigate(['details'], {relativeTo: this.route})
+  }
 }
