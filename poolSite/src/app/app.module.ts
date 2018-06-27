@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
 import { TeamsComponent } from './admin/teams/teams.component';
@@ -13,6 +17,7 @@ import { MatchResultsComponent } from './common/match-results/match-results.comp
 import { PlayerWaitlistComponent } from './player-waitlist/player-waitlist.component';
 import { PoolTableComponent } from './player-waitlist/pool-table/pool-table.component';
 import { PlayersComponent } from './admin/players/players.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +33,14 @@ import { PlayersComponent } from './admin/players/players.component';
     PlayerWaitlistComponent,
     PoolTableComponent,
     PlayersComponent,
+    HomeComponent,
 
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

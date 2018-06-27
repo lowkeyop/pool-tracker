@@ -5,13 +5,8 @@
   </h1>
   <app-header (selectedView)="changeView($event)"></app-header>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ng-template [ngIf]="selectedView == 'match'">
-  <app-score-sheet></app-score-sheet>
-</ng-template>
-<ng-template [ngIf]="selectedView == 'tables'">
-  <app-player-waitlist></app-player-waitlist>
-</ng-template>
-<ng-template [ngIf]="selectedView == 'admin'">
-<app-players></app-players>
-</ng-template>
+<div class="row">
+  <div class="col-md-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
