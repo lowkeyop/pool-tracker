@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import {PlayerService} from '../../services/player.service'
 @Component({
   selector: 'app-players',
   templateUrl: './players.component.html',
-  styleUrls: ['./players.component.css']
+  styleUrls: ['./players.component.css'],
+  providers: [PlayerService]
 })
 export class PlayersComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  players : Players[] = [];
+
+  constructor(private router: Router,
+              private playerService: PlayerService) { }
 
   ngOnInit() {
+    this.players = this.playerService.getAllPlayers();
   }
 
   onLoadMatch(){
-    this.router.navigate(['/match'])
+    this.router.navigate(['/match'], {relativeTo: this.route})
   }
 }

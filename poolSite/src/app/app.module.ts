@@ -19,6 +19,8 @@ import { PoolTableComponent } from './player-waitlist/pool-table/pool-table.comp
 import { PlayersComponent } from './admin/players/players.component';
 import { HomeComponent } from './home/home.component';
 
+import { PlayerService } from './services/player.service';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

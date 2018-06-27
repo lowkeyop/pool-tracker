@@ -5,3 +5,6 @@
 <button class="btn-default" (click)="onLoadMatch()">Switch To Match</button>
 <br/>
 <a href="#">View Player List</a>
+<div *ngFor="let player of players">
+  <p>{{player.fName}}</p>
+</div>
