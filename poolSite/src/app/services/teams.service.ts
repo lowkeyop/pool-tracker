@@ -1,4 +1,4 @@
-import {Player} from '../common/player.model.ts'
+import {Player} from '../common/player.model'
 export class TeamsService {
   homeTeam  = [
     new Player("Cordell", "Kennerly", "02342", 3, 3,),

@@ -112,3 +112,4 @@ export class PlayerWaitlistComponent implements OnInit {
   }
 
 }
+}
