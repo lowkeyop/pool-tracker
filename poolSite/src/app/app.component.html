@@ -7,9 +7,9 @@
   <div class="fuild-container">
     <div class="row">
       <ul class="nav nav-tabs">
-        <li class="active"><a routerLink="/">Home</a></li>
-        <li role="presentation"><a routerLink="/match">Match</a></li>
-        <li role="presentation"><a [routerLink]="['players']">Players</a></li>
+        <li role="presentation"><a routerLinkActive="btn-primary" [routerLinkActiveOptions]="{exact: true}" routerLink="/">Home</a></li>
+        <li role="presentation"><a routerLinkActive="btn-primary" routerLink="/match">Match</a></li>
+        <li role="presentation"><a routerLinkActive="btn-primary" [routerLink]="['players']">Players</a></li>
       </ul>
     </div>
   </div>

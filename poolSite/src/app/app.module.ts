@@ -19,6 +19,7 @@ import { PoolTableComponent } from './player-waitlist/pool-table/pool-table.comp
 import { PlayersComponent } from './admin/players/players.component';
 import { HomeComponent } from './home/home.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { HomeComponent } from './home/home.component';
     PlayerWaitlistComponent,
     PoolTableComponent,
     PlayersComponent,
-    HomeComponent,
+    HomeComponent
 
   ],
   imports: [
