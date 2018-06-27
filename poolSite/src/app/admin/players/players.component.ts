@@ -18,10 +18,6 @@ export class PlayersComponent implements OnInit {
     this.players = this.playerService.getAllPlayers();
   }
 
-  onLoadMatch(){
-    this.router.navigate(['/match'], {relativeTo: this.route})
-  }
-
   onEditPlayer(){
     this.router.navigate(['edit'], {relativeTo: this.route})
   }
