@@ -2,7 +2,7 @@ import {Player} from '../common/player.model'
 
 export class PlayerService {
 
-  players = [
+  private players = [
     new Player("Cordell", "Kennerly", "02342", 3, 3,),
     new Player("Mike", "Jones", "032416", 8, 3),
     new Player("Steve", "Ricks", "542275", 4, 3),
