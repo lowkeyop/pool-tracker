@@ -20,6 +20,7 @@ import { PlayersComponent } from './admin/players/players.component';
 import { HomeComponent } from './home/home.component';
 
 import { PlayerService } from './services/player.service';
+import { PlayerDetailsComponent } from './admin/players/player-details/player-details.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { PlayerService } from './services/player.service';
     PlayerWaitlistComponent,
     PoolTableComponent,
     PlayersComponent,
-    HomeComponent
+    HomeComponent,
+    PlayerDetailsComponent
 
   ],
   imports: [
