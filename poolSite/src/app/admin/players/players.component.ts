@@ -6,7 +6,7 @@ import {Player} from '../../common/player.model'
   selector: 'app-players',
   templateUrl: './players.component.html',
   styleUrls: ['./players.component.css'],
-  providers: [PlayerService]
+
 })
 export class PlayersComponent implements OnInit {
 
@@ -25,6 +25,6 @@ export class PlayersComponent implements OnInit {
   }
 
   onViewPlayerDetails(player : Player){
-    this.router.navigate(['details/' + player.fName], {relativeTo: this.route})
+    this.router.navigate(['details/' + player.playerNumber], {relativeTo: this.route})
   }
 }

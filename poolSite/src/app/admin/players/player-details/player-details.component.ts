@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
+
 import {Player} from '../../../common/player.model'
+
+import {PlayerService} from '../../../services/player.service';
 
 @Component({
   selector: 'app-player-details',
@@ -9,10 +12,12 @@ import {Player} from '../../../common/player.model'
 })
 export class PlayerDetailsComponent implements OnInit {
   player : Player = new Player();
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              private playerService : PlayerService) { }
 
   ngOnInit() {
-    this.player.fName = this.route.snapshot.params['firstName'];
+    var playerNumber = this.route.snapshot.params['playerNumber'];
+    this.player = this.playerService.getPlayer(playerNumber);
   }
 
 }

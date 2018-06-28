@@ -16,6 +16,7 @@ export class PlayerService {
   ]
 
   getAllPlayers(){
+
     return this.players;
   }
   addPlayer(player: Player){
@@ -27,5 +28,9 @@ export class PlayerService {
     if(i > -1){
       this.players.splice(i,0);
     }
+  }
+  getPlayer(pNumber: string){
+    const player =  this.getAllPlayers().find(player => player.playerNumber == pNumber);
+    return player;
   }
 }

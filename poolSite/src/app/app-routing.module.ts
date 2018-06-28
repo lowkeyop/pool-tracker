@@ -10,7 +10,7 @@ import { ScoreSheetComponent } from './score-sheet/score-sheet.component';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'players', component: PlayersComponent},
-  { path: 'players/details/:firstName', component: PlayerDetailsComponent},
+  { path: 'players/details/:playerNumber', component: PlayerDetailsComponent},
   { path: 'match', component: ScoreSheetComponent}
 ];
 
