@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+import {Player} from '../../../common/player.model'
 
 @Component({
   selector: 'app-player-details',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player-details.component.css']
 })
 export class PlayerDetailsComponent implements OnInit {
-
-  constructor() { }
+  player : Player = new Player();
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.player.fName = this.route.snapshot.params['firstName'];
   }
 
 }
