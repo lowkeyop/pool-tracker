@@ -21,4 +21,8 @@ export class LeaguesService {
     this.availableLeagues.push(league);
   }
 
+  getLeague(name: string){
+    const foundLeague =  this.getAllLeagues().find(league => league.name == name);
+    return foundLeague;
+  }
 }
