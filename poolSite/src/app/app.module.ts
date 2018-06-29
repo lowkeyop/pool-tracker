@@ -18,9 +18,10 @@ import { PlayerWaitlistComponent } from './player-waitlist/player-waitlist.compo
 import { PoolTableComponent } from './player-waitlist/pool-table/pool-table.component';
 import { PlayersComponent } from './admin/players/players.component';
 import { HomeComponent } from './home/home.component';
+import { PlayerDetailsComponent } from './admin/players/player-details/player-details.component';
 
 import { PlayerService } from './services/player.service';
-import { PlayerDetailsComponent } from './admin/players/player-details/player-details.component';
+import { LeaguesService } from './services/leagues.service';
 
 
 @NgModule({
@@ -47,7 +48,7 @@ import { PlayerDetailsComponent } from './admin/players/player-details/player-de
     HttpModule,
     AppRoutingModule
   ],
-  providers: [PlayerService],
+  providers: [PlayerService,LeaguesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

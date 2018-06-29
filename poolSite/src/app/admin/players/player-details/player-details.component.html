@@ -2,3 +2,66 @@
   player-details works!
   {{player.fName}}
 </p>
+<div class="row">
+  <div class="col-md-8 col-xs-12 col-md-offset-2">
+    <div class="form-group">
+      <div class="col-md-2">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" [value]="player.fName" #firstName>
+      </div>
+      <div class="col-md-2">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" [value]="player.lName" #lastName>
+      </div>
+      <div class="col-md-2">
+        <label for="firstName">Player Number</label>
+        <input type="text" class="form-control" [value]="player.playerNumber" #playerNumber>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-xs-12 col-md-offset-2">
+    <div class="form-group">
+        <div class="col-md-4">
+          <label for="leagues">League</label>
+          <select name="leagues" id="" class="form-control" >
+            <option [value]="league.name" *ngFor="let league of leagues">{{league.name}} - {{league.description}}</option>
+          </select>
+        </div>
+        <div class="col-md-4 form-group">
+          Can't find your league? Add it here: <hr>
+          <label for="">League Name</label>
+          <input type="text" name="" value="" #newLeagueName>
+          <label for="">Available Formats</label><br>
+          <input type="checkbox" name="8-ball" value="8-ball" #avail8>8-ball <br>
+          <input type="checkbox" name="9-ball" value="9-ball" #avail9>9-ball <br>
+          <input type="checkbox" name="10-ball" value="10-ball" #avail10>10-ball <br>
+          <label for="">Description (Optional)</label><br>
+          <textarea name="" value="" #newLeagueDescription></textarea>
+          <button class="btn btn-success" (click)="onAddNewLeague(newLeagueName.value, avail8.checked, avail9.checked, avail10.checked, newLeagueDescription.value )">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-8 col-xs-12 col-md-offset-2">
+        <label for="">Skill Level(s)</label>
+        <hr>
+        <label for="">ABC</label>
+        <ul>
+          <li>8-ball {{player.playerSkillLevel}}</li>
+          <li>9-ball {{player.playerSkillLevel+1}}</li>
+        </ul>
+        <label for="">MEH</label>
+        <ul>
+          <li>8-ball : NA</li>
+          <li>9-ball : NA</li>
+        </ul>
+        <label for="">PRO</label>
+        <ul>
+          <li>8-ball : NA</li>
+          <li>9-ball : NA</li>
+        </ul>
+      </div>
+  </div>
