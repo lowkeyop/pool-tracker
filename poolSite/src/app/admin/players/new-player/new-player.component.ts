@@ -55,7 +55,7 @@ export class NewPlayerComponent implements OnInit {
     var sLs = [];
     for( let format of formats){
       console.log(format);
-      sLs.push({format : "4"})
+      sLs.push({format: format , SkillLevel: "4"})
     }
 
     var sL = [new SkillLevel(league.name, sLs)];
@@ -68,6 +68,7 @@ export class NewPlayerComponent implements OnInit {
     this.player.playerSkillLevel = sL;
 
     this.playerService.addPlayer(tempPlayer);
+    this.playerService.registerPlayer(this.player);
     console.log("Player registered")
   }
 }

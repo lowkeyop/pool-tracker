@@ -1,8 +1,9 @@
 import {Player} from '../common/player.model';
+import {RegisteredPlayer} from '../common/register-player.model';
 
 export class PlayerService {
 
-
+  private newRegisteredPlayers : RegisteredPlayers[] = [];
   private players = [
     new Player("Cordell", "Kennerly", "02342", 3, 3,),
     new Player("Mike", "Jones", "032416", 8, 3),
@@ -22,6 +23,10 @@ export class PlayerService {
   }
   addPlayer(player: Player){
     this.players.push(player);
+  }
+  registerPlayer(player: RegisteredPlayer){
+    this.newRegisteredPlayers.push(player);
+    console.log(this.newRegisteredPlayers);
   }
 
   removePlayer(player: Player){
