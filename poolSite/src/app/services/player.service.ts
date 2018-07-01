@@ -1,6 +1,7 @@
-import {Player} from '../common/player.model'
+import {Player} from '../common/player.model';
 
 export class PlayerService {
+
 
   private players = [
     new Player("Cordell", "Kennerly", "02342", 3, 3,),
@@ -32,5 +33,8 @@ export class PlayerService {
   getPlayer(pNumber: string){
     const player =  this.getAllPlayers().find(player => player.playerNumber == pNumber);
     return player;
+  }
+  getPlayersCount(){
+    return this.players.length.toString();
   }
 }

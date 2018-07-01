@@ -25,6 +25,6 @@ export class PlayersComponent implements OnInit {
   }
 
   onViewPlayerDetails(player : Player){
-    this.router.navigate(['details/' + player.playerNumber], {relativeTo: this.route})
+    this.router.navigate(['details/' , player.playerNumber], {relativeTo: this.route})
   }
 }

@@ -1,21 +1,17 @@
-<p>
-  player-details works!
-  {{player.fName}}
-</p>
 <div class="row">
   <div class="col-md-8 col-xs-12 col-md-offset-2">
     <div class="form-group">
       <div class="col-md-2">
         <label for="firstName">First Name</label>
-        <input type="text" class="form-control" [value]="player.fName" #firstName>
+        <input type="text" class="form-control" [value]="" #firstName>
       </div>
       <div class="col-md-2">
         <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" [value]="player.lName" #lastName>
+        <input type="text" class="form-control" [value]="" #lastName>
       </div>
       <div class="col-md-2">
         <label for="firstName">Player Number</label>
-        <input type="text" class="form-control" [value]="player.playerNumber" #playerNumber>
+        <input type="text" class="form-control" [value]="" #playerNumber>
       </div>
     </div>
   </div>
@@ -25,7 +21,7 @@
     <div class="form-group">
         <div class="col-md-4">
           <label for="leagues">League</label>
-          <select name="leagues" id="" class="form-control" >
+          <select #selectedLeague name="leagues" id="" class="form-control" (change)="onSelectedLeague(selectedLeague.value)">
             <option [value]="league.name" *ngFor="let league of leagues">{{league.name}} - {{league.description}}</option>
           </select>
         </div>
@@ -46,24 +42,12 @@
   </div>
   <div class="row">
       <div class="col-md-8 col-xs-12 col-md-offset-2">
-        <label for="">Skill Level(s)</label>
+        <label for="">Select Formats To Play</label>
         <hr>
-        <label for="">ABC</label>
-        <ul>
-          <li>8-ball {{player.playerSkillLevel}}</li>
-          <li>9-ball {{player.playerSkillLevel+1}}</li>
-        </ul>
-        <label for="">MEH</label>
-        <ul>
-          <li>8-ball : NA</li>
-          <li>9-ball : NA</li>
-        </ul>
-        <label for="">PRO</label>
-        <ul>
-          <li>8-ball : NA</li>
-          <li>9-ball : NA</li>
-        </ul>
+          <label >{{chosenLeague.name}}</label>
+          <select #chosenFormats multiple class="form-control" >
+            <option  *ngFor="let format of chosenLeague.formats" value="format">{{format}}</option>
+          </select>
+          <button class="btn btn-success" (click)="onAddNewPlayer(firstName.value, lastName.value, playerNumber.value, chosenLeague, formats)">Register</button>
       </div>
-
-
   </div>

@@ -31,6 +31,8 @@ export class ScoreSheetComponent implements OnInit {
 
   isMatchStarted: boolean = false;
 
+  placeHolderPlayer = new Player(" ", "", "0000", 3, 3);
+
   setMatchPlayer(playerInfo: { teamName: string, matchPlayer: Player}, isTeam1: boolean){
     if( isTeam1){
       console.log("Setting the home team's player");
@@ -72,12 +74,12 @@ export class ScoreSheetComponent implements OnInit {
   prepareNextMatch(){
     this.isMatchStarted = false;
     this.areBothTeamsReady = false;
-    this.homeTeamPlayer = new Player();
-    this.awayTeamPlayer = new Player();
+    this.homeTeamPlayer =this.placeHolderPlayer
+    this.awayTeamPlayer = this.placeHolderPlayer
   }
   ngOnInit() {
-    this.homeTeamPlayer = new Player("", "", "0000", 3, 3);
-    this.awayTeamPlayer = new Player(" ", "", "0000", 3, 3);
+    this.homeTeamPlayer = this.placeHolderPlayer
+    this.awayTeamPlayer = this.placeHolderPlayer
   }
 
 }

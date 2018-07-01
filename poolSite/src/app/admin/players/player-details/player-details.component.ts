@@ -14,7 +14,7 @@ import {LeaguesService} from '../../../services/leagues.service';
   styleUrls: ['./player-details.component.css']
 })
 export class PlayerDetailsComponent implements OnInit {
-  player : Player[];
+  player : Player;
   leagues : League[];
   formats : string[];
   constructor(private route: ActivatedRoute,

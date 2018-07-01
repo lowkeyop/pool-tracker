@@ -22,6 +22,7 @@ import { PlayerDetailsComponent } from './admin/players/player-details/player-de
 
 import { PlayerService } from './services/player.service';
 import { LeaguesService } from './services/leagues.service';
+import { NewPlayerComponent } from './admin/players/new-player/new-player.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { LeaguesService } from './services/leagues.service';
     PoolTableComponent,
     PlayersComponent,
     HomeComponent,
-    PlayerDetailsComponent
+    PlayerDetailsComponent,
+    NewPlayerComponent
 
   ],
   imports: [
