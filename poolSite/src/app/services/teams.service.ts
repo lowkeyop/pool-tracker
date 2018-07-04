@@ -1,19 +1,43 @@
+import { Injectable } from '@angular/core';
+
 import {Player} from '../common/player.model'
+
+import {PlayerService} from './player.service';
+
+@Injectable()
 export class TeamsService {
-  homeTeam  = [
-    new Player("Cordell", "Kennerly", "02342", 3, 3,),
-    new Player("Mike", "Jones", "032416", 8, 3),
-    new Player("Steve", "Ricks", "542275", 4, 3),
-    new Player("Jake", "LeGuard", "759465", 4, 3),
-    new Player("Dave", "Turtle", "781364", 4, 3)
-  ]
-  awayTeam  = [
-    new Player("Barry", "Lox", "32513", 3, 3,),
-    new Player("Nic", "Wilters", "77625", 8, 3),
-    new Player("Jojo", "Zolla", "54227", 4, 3),
-    new Player("Harry", "Maupza", "43142", 4, 3),
-    new Player("Niles", "Fillips", "11324", 4, 3)
-  ]
+
+  constructor(private playerService : PlayerService){}
+
+  hTeam : Player[] = [];
+  aTeam : Player[] = [];
+  homeTeam  = this.createTeam(5, this.hTeam);
+  awayTeam  =  this.createTeam(5, this.aTeam);
+
+
+  createTeam(teamSize: number, team: Player[]){
+
+    var allPlayers = this.playerService.getAllPlayers();
+
+    for( var i = 0; i < teamSize ; i++){
+      var randNumber = Math.floor(Math.random() * allPlayers.length);
+      var player = allPlayers[randNumber];
+      var isUnique = team.findIndex(p => p == player) == -1;
+
+      while(!isUnique){
+        var randNumber = Math.floor(Math.random() * allPlayers.length);
+        var player = allPlayers[randNumber];
+        var isUnique = team.findIndex(p => p == player) == -1;
+      }
+
+      var index = team.findIndex(p => p == player);
+      allPlayers.splice(index,0);
+      team.push(player);
+
+
+    }
+    return team;
+  }
   addPlayer(player : Player, isHomeTeam: boolean){
     if(isHomeTeam){
       this.homeTeam.push(player);

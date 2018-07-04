@@ -33,6 +33,7 @@ export class PlayerService {
     var index  =  this.getAllPlayers().findIndex(player => player.playerNumber == pNumber);
     this.getAllPlayers[index] = updatedPlayer;
   }
+
   removePlayer(player: Player){
     var i = this.players.indexOf(player,0);
     if(i > -1){
@@ -43,6 +44,7 @@ export class PlayerService {
     const player =  this.getAllPlayers().find(player => player.playerNumber == pNumber);
     return player;
   }
+  
   getPlayersCount(){
     return this.players.length.toString();
   }
