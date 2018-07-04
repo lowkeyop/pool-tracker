@@ -23,6 +23,7 @@ import { PlayerDetailsComponent } from './admin/players/player-details/player-de
 import { PlayerService } from './services/player.service';
 import { LeaguesService } from './services/leagues.service';
 import { NewPlayerComponent } from './admin/players/new-player/new-player.component';
+import { EditPlayerComponent } from './admin/players/edit-player/edit-player.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { NewPlayerComponent } from './admin/players/new-player/new-player.compon
     PlayersComponent,
     HomeComponent,
     PlayerDetailsComponent,
-    NewPlayerComponent
+    NewPlayerComponent,
+    EditPlayerComponent
 
   ],
   imports: [

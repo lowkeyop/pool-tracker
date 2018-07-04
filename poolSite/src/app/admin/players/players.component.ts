@@ -20,11 +20,11 @@ export class PlayersComponent implements OnInit {
     this.players = this.playerService.getAllPlayers();
   }
 
-  onEditPlayer(){
-    this.router.navigate(['edit'], {relativeTo: this.route})
+  onEditPlayer(player: Player){
+    this.router.navigate(['edit', player.playerNumber], {relativeTo: this.route})
   }
 
   onViewPlayerDetails(player : Player){
-    this.router.navigate(['details/' , player.playerNumber], {relativeTo: this.route})
+    this.router.navigate(['details' , player.playerNumber], {relativeTo: this.route});
   }
 }

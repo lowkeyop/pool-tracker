@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PlayersComponent } from './admin/players/players.component';
+import { EditPlayerComponent } from './admin/players/edit-player/edit-player.component';
+import { TeamsComponent } from './admin/teams/teams.component';
 import { NewPlayerComponent } from './admin/players/new-player/new-player.component';
 import { PlayerDetailsComponent } from './admin/players/player-details/player-details.component';
 import { ScoreSheetComponent } from './score-sheet/score-sheet.component';
@@ -12,7 +14,9 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'players', component: PlayersComponent},
   { path: 'players/details/:playerNumber', component: PlayerDetailsComponent},
+  { path: 'players/edit/:playerNumber', component: EditPlayerComponent},
   { path: 'players/new', component: NewPlayerComponent},
+  { path: 'teams', component: TeamsComponent},
 
   { path: 'match', component: ScoreSheetComponent}
 ];

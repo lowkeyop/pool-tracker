@@ -18,17 +18,21 @@ export class PlayerService {
   ]
 
   getAllPlayers(){
-
     return this.players;
   }
   addPlayer(player: Player){
     this.players.push(player);
   }
   registerPlayer(player: RegisteredPlayer){
+    confirm("Do are you sure you want to?");
     this.newRegisteredPlayers.push(player);
     console.log(this.newRegisteredPlayers);
   }
 
+  updatePlayer(updatedPlayer: Player, pNumber: string){
+    var index  =  this.getAllPlayers().findIndex(player => player.playerNumber == pNumber);
+    this.getAllPlayers[index] = updatedPlayer;
+  }
   removePlayer(player: Player){
     var i = this.players.indexOf(player,0);
     if(i > -1){

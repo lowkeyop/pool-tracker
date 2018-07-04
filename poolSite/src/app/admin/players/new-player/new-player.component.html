@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-md-8 col-xs-12 col-md-offset-2">
+    <h3><span class="label label-primary">Create A New Player</span></h3>
     <div class="form-group">
       <div class="col-md-2">
         <label for="firstName">First Name</label>
@@ -14,40 +15,7 @@
         <input type="text" class="form-control" [value]="" #playerNumber>
       </div>
     </div>
+    <button class="btn btn-success" (click)="onAddNewPlayer(firstName.value, lastName.value, playerNumber.value)">Register</button>
   </div>
+
 </div>
-<div class="row">
-  <div class="col-md-8 col-xs-12 col-md-offset-2">
-    <div class="form-group">
-        <div class="col-md-4">
-          <label for="leagues">League</label>
-          <select #selectedLeague name="leagues" id="" class="form-control" (change)="onSelectedLeague(selectedLeague.value)">
-            <option [value]="league.name" *ngFor="let league of leagues">{{league.name}} - {{league.description}}</option>
-          </select>
-        </div>
-        <div class="col-md-4 form-group">
-          Can't find your league? Add it here: <hr>
-          <label for="">League Name</label>
-          <input type="text" name="" value="" #newLeagueName>
-          <label for="">Available Formats</label><br>
-          <input type="checkbox" name="8-ball" value="8-ball" #avail8>8-ball <br>
-          <input type="checkbox" name="9-ball" value="9-ball" #avail9>9-ball <br>
-          <input type="checkbox" name="10-ball" value="10-ball" #avail10>10-ball <br>
-          <label for="">Description (Optional)</label><br>
-          <textarea name="" value="" #newLeagueDescription></textarea>
-          <button class="btn btn-success" (click)="onAddNewLeague(newLeagueName.value, avail8.checked, avail9.checked, avail10.checked, newLeagueDescription.value )">Add</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-      <div class="col-md-8 col-xs-12 col-md-offset-2">
-        <label for="">Select Formats To Play</label>
-        <hr>
-          <label >{{chosenLeague.name}}</label>
-          <select #chosenFormats multiple class="form-control" >
-            <option  *ngFor="let format of chosenLeague.formats" value="format">{{format}}</option>
-          </select>
-          <button class="btn btn-success" (click)="onAddNewPlayer(firstName.value, lastName.value, playerNumber.value, chosenLeague, formats)">Register</button>
-      </div>
-  </div>
