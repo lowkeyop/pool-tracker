@@ -11,11 +11,15 @@
         <input type="text" class="form-control" [value]="" #lastName>
       </div>
       <div class="col-md-2">
-        <label for="firstName">Player Number</label>
+        <label for="playerNumber">Player Number</label>
         <input type="text" class="form-control" [value]="" #playerNumber>
       </div>
+      <div class="col-md-2">
+        <label for="SkillLevel">SkillLevel</label>
+        <input type="text" class="form-control" [value]="" #skillLevel>
+      </div>
     </div>
-    <button class="btn btn-success" (click)="onAddNewPlayer(firstName.value, lastName.value, playerNumber.value)">Register</button>
+    <button class="btn btn-success" (click)="onAddNewPlayer(firstName.value, lastName.value, playerNumber.value, skillLevel.value)">Register</button>
   </div>
 
 </div>

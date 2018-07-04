@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 
 import {Player} from '../../../common/player.model';
 import {League} from '../../../common/league.model';
@@ -17,7 +17,8 @@ export class NewPlayerComponent implements OnInit {
 
   player : Player;
 
-  constructor(private playerService : PlayerService) { }
+  constructor(private playerService : PlayerService,
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -25,15 +26,17 @@ export class NewPlayerComponent implements OnInit {
 
   }
 
-  onAddNewPlayer(first: string, last: string, pNumber: string){
+  onAddNewPlayer(first: string, last: string, pNumber: string, skillLevel? : number){
     const DEAFULT_SKILL_LEVEL = 4;
 
     this.player.fName = first;
     this.player.lName = last;
     this.player.playerNumber = pNumber;
-    this.player.playerSkillLevel = DEAFULT_SKILL_LEVEL;
+    this.player.playerSkillLevel = skillLevel == null? DEAFULT_SKILL_LEVEL : +skillLevel;
 
     this.playerService.addPlayer(this.player);
-    console.log("Player registered")
+    console.log("Player registered");
+    this.router.navigate(['/players']);
+
   }
 }
