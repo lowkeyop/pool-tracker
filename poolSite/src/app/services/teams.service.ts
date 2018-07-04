@@ -7,16 +7,14 @@ import {PlayerService} from './player.service';
 @Injectable()
 export class TeamsService {
 
-  constructor(private playerService : PlayerService){}
+  constructor(private playerService : PlayerService ){}
 
-  hTeam : Player[] = [];
-  aTeam : Player[] = [];
-  homeTeam  = this.createTeam(5, this.hTeam);
-  awayTeam  =  this.createTeam(5, this.aTeam);
+  homeTeam  = this.createTeam(5);
+  awayTeam  =  this.createTeam(5);
 
 
-  createTeam(teamSize: number, team: Player[]){
-
+  createTeam(teamSize: number){
+    var team = [];
     var allPlayers = this.playerService.getAllPlayers();
 
     for( var i = 0; i < teamSize ; i++){

@@ -22,8 +22,10 @@ import { PlayerDetailsComponent } from './admin/players/player-details/player-de
 
 import { PlayerService } from './services/player.service';
 import { LeaguesService } from './services/leagues.service';
+import { TeamsService } from './services/teams.service';
 import { NewPlayerComponent } from './admin/players/new-player/new-player.component';
 import { EditPlayerComponent } from './admin/players/edit-player/edit-player.component';
+import { TeamComponent } from './score-sheet/team/team.component';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { EditPlayerComponent } from './admin/players/edit-player/edit-player.com
     HomeComponent,
     PlayerDetailsComponent,
     NewPlayerComponent,
-    EditPlayerComponent
+    EditPlayerComponent,
+    TeamComponent
 
   ],
   imports: [
@@ -52,7 +55,7 @@ import { EditPlayerComponent } from './admin/players/edit-player/edit-player.com
     HttpModule,
     AppRoutingModule
   ],
-  providers: [PlayerService,LeaguesService],
+  providers: [PlayerService,LeaguesService,TeamsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

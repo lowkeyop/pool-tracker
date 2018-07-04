@@ -12,11 +12,12 @@ import { ScoreSheetComponent } from './score-sheet/score-sheet.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'teams', component: TeamsComponent},
   { path: 'players', component: PlayersComponent},
   { path: 'players/details/:playerNumber', component: PlayerDetailsComponent},
   { path: 'players/edit/:playerNumber', component: EditPlayerComponent},
   { path: 'players/new', component: NewPlayerComponent},
-  { path: 'teams', component: TeamsComponent},
+
 
   { path: 'match', component: ScoreSheetComponent}
 ];

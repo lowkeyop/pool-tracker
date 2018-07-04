@@ -5,11 +5,11 @@
   <app-match-results [matchItems]="matches"></app-match-results>
   <div class="row">
     <div class="col-md-5">
-      <app-teams [isHomeTeam]=true [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, true)"></app-teams>
+      <app-team [isHomeTeam]=true [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, true)"></app-team>
     </div>
     <div class="col-md-2"><h2>VS.</h2></div>
     <div class="col-md-5">
-      <app-teams [isHomeTeam]=false [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, false)"></app-teams>
+      <app-team [isHomeTeam]=false [matchNumber]="matchNo" [arePlayersInMatch]="isMatchStarted" (playerSelected)="setMatchPlayer($event, false)"></app-team>
     </div>
   </div>
   <hr>
