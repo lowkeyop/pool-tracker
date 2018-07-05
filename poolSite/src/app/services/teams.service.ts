@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import {Player} from '../common/player.model'
+import {Player} from '../common/player.model';
+import {Team} from '../common/team.model';
 
 import {PlayerService} from './player.service';
 
@@ -42,6 +43,33 @@ export class TeamsService {
     } else
       this.awayTeam.push(player);
 
+  }
+
+  createTeams(amountOfTeams: number){
+    const MINIMUM_AMOUNT_OF_PLAYER_ON_TEAM = 6;
+    var allTeams : Team[] = [];
+    var totalPlayerAmount = +this.playerService.getPlayersCount();
+    console.log(totalPlayerAmount);
+    const NEEDED_AMOUNT_OF_PLAYERS = amountOfTeams*MINIMUM_AMOUNT_OF_PLAYER_ON_TEAM-totalPlayerAmount;
+      console.log("Adding more players");
+      if(NEEDED_AMOUNT_OF_PLAYERS > totalPlayerAmount){
+        for(var i = 0; i <  (NEEDED_AMOUNT_OF_PLAYERS) ; i++){
+          var fName = "Test";
+          var lName = "Player"+i;
+          var pNumber = ( i + 10000).toString();
+          var player = new Player(fName, lName, pNumber, (Math.floor(Math.random() * 8 )+ 2));
+          this.playerService.addPlayer(player);
+        }
+      }
+
+    for(var i = 0; i < amountOfTeams; i++){
+      var playerList : Player[];
+      playerList = this.createTeam(MINIMUM_AMOUNT_OF_PLAYER_ON_TEAM);
+      var teamName = playerList[0].fName + " " + playerList[0].lName + "'s Team";
+      var tempTeam = new Team(playerList, teamName);
+      allTeams.push(tempTeam);
+    }
+    return allTeams;
   }
 
   removePlayerByPlayerNumber(player: Player, isHomeTeam: boolean){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Team } from '../common/team.model';
 import { Player } from '../../common/player.model';
 
 import {TeamsService} from '../../services/teams.service'
@@ -11,11 +12,12 @@ import {TeamsService} from '../../services/teams.service'
 export class TeamsComponent implements OnInit {
 
   constructor(private teamService : TeamsService) { }
-  team1 : Player[];
+  allTeams = [];
 
   ngOnInit() {
-this.team1 = this.teamService.homeTeam;
-
+    this.allTeams = this.teamService.createTeams(5);
+    console.log(this.allTeams);
+    
   }
 
 }
