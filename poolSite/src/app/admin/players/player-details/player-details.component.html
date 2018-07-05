@@ -7,19 +7,24 @@
     <div class="form-group">
       <div class="col-md-2">
         <label for="firstName">First Name</label>
-        <input type="text" class="form-control" [value]="player.fName" #firstName>
+        <div>{{player.fName}}</div>
       </div>
       <div class="col-md-2">
         <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" [value]="player.lName" #lastName>
+        <div class="">
+          {{player.lName}}
+        </div>
       </div>
       <div class="col-md-2">
-        <label for="firstName">Player Number</label>
-        <input type="text" class="form-control" [value]="player.playerNumber" #playerNumber>
+        <label for="playerNumber">Player Number</label>
+        <div class="">
+          {{player.playerNumber}}
+        </div>
       </div>
     </div>
   </div>
 </div>
+<br>
 <div class="row">
     <div class="col-md-8 col-xs-12 col-md-offset-2">
       <label for="">Skill Level(s)</label>
@@ -30,4 +35,5 @@
         <li>9-ball {{player.playerSkillLevel+1}}</li>
       </ul>
     </div>
+    <a [routerLink]="['/players']" >Back to Player list</a>
 </div>

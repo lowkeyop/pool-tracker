@@ -49,9 +49,7 @@ export class TeamsService {
     const MINIMUM_AMOUNT_OF_PLAYER_ON_TEAM = 6;
     var allTeams : Team[] = [];
     var totalPlayerAmount = +this.playerService.getPlayersCount();
-    console.log(totalPlayerAmount);
     const NEEDED_AMOUNT_OF_PLAYERS = amountOfTeams*MINIMUM_AMOUNT_OF_PLAYER_ON_TEAM-totalPlayerAmount;
-      console.log("Adding more players");
       if(NEEDED_AMOUNT_OF_PLAYERS > totalPlayerAmount){
         for(var i = 0; i <  (NEEDED_AMOUNT_OF_PLAYERS) ; i++){
           var fName = "Test";
