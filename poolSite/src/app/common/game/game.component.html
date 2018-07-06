@@ -52,10 +52,10 @@
         Special
       </th>
       <td colspan="2">
-        <input type="checkbox" id="bnr" name="winner" (change)="breakAndRun()">
+        <input type="checkbox" id="bnr" name="bnr" [checked]="bnr" (change)="breakAndRun()">
         <label for="bnr">Break and Run</label>
         <br/>
-        <input type="checkbox" id="eob" name="eob"  (change)="eightOnBreak()" >
+        <input type="checkbox" id="eob" name="eob" [checked]="eob" (change)="eightOnBreak()" >
         <label for="eob">8 on the Break</label>
       </td>
     </tr>

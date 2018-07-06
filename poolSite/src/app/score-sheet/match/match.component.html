@@ -44,11 +44,17 @@
                   {{currentMatch.awayTeamWinGoal}}
               </div></td>
             <td>
-              <div class="row container-fluid" >
+              <div class="row container-fluid" *ngFor="let game of games; let i = index">
+                <label for="" class="label label-primary" (click)="showGameDetails(game)">Game {{i+1}} : {{game.winner == null? "Undecided" : game.winner.fName}}</label>
+              </div>
+              <div *ngIf="currentGame != undefined">
+                <app-game [gameCurrent]="currentGame" (saveGame)="setGameData(currentGame)"></app-game>
+              </div>
+              <!-- <div class="row container-fluid" >
                 <div class="col-md-4 container-fluid" *ngFor="let game of games">
                   <app-game [gameCurrent]="game" (saveGame)="setGameData(game)"></app-game>
                 </div>
-              </div>
+              </div> -->
               <button class="btn btn-success" [disabled]="currentMatch.winner!=null" (click)="onAddGame()">Add Game</button>
               <button class="btn btn-danger" [disabled]="currentMatch.winner!=null" (click)="onRemoveGame()">Remove Game</button>
             </td>

@@ -22,16 +22,22 @@ export class MatchComponent implements OnInit {
   currentMatch : Match;
   gameCount: number;
   isMatchOver: boolean;
+  currentGame: Game;
 onAddGame(){
   this.currentMatch.summarizeMatchInfo();
   if(this.currentMatch.winner == null){
-    var game = new Game(this.gameCount, this.homeTeamPlayer, this.awayTeamPlayer,null);
-    this.games.push( game);
+    this.currentGame = new Game(this.gameCount, this.homeTeamPlayer, this.awayTeamPlayer,null);
+    this.games.push( this.currentGame);
     this.gameCount++;
   }
 
 }
 
+showGameDetails(game: Game){
+  console.log("Game data:");
+  console.log(game);
+  this.currentGame = game;
+}
 onRemoveGame(){
    this.games.pop();
    this.gameCount>0?this.gameCount--:this.gameCount;
@@ -39,6 +45,7 @@ onRemoveGame(){
 setGameData( game: Game){
   this.games[game.gameNo-1]= game;
   this.currentMatch.summarizeMatchInfo();
+  //TODO: Change Game's Special's checkboxes to badges.
 }
 
 matchComplete(){
