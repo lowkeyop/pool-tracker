@@ -48,6 +48,7 @@ export class GameComponent implements OnInit {
   }
   breakAndRun(){
     this.cGame.bnr = !this.cGame.bnr;
+    console.log("bnr=" + this.cGame.bnr);
   }
 
   eightOnBreak(){

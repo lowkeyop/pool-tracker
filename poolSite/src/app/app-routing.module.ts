@@ -9,6 +9,7 @@ import { TeamsComponent } from './admin/teams/teams.component';
 import { NewPlayerComponent } from './admin/players/new-player/new-player.component';
 import { PlayerDetailsComponent } from './admin/players/player-details/player-details.component';
 import { ScoreSheetComponent } from './score-sheet/score-sheet.component';
+import { PlayerWaitlistComponent } from './player-waitlist/player-waitlist.component'
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'players/details/:playerNumber', component: PlayerDetailsComponent},
   { path: 'players/edit/:playerNumber', component: EditPlayerComponent},
   { path: 'players/new', component: NewPlayerComponent},
+  { path: 'wait-list', component: PlayerWaitlistComponent}
 
 
   { path: 'match', component: ScoreSheetComponent}

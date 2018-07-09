@@ -44,7 +44,7 @@
         Winner
       </th>
       <td colspan="2">
-        <button class="btn-success" (click)=toggleWinner(winVal)>{{cGame.winner == null? "Undecided": cGame.winner.fName}}</button>
+        <button class="btn-info" (click)=toggleWinner(winVal)>{{cGame.winner == null? "Undecided": cGame.winner.fName}}</button>
       </td>
     </tr>
     <tr>
@@ -52,11 +52,9 @@
         Special
       </th>
       <td colspan="2">
-        <input type="checkbox" id="bnr" name="bnr" [checked]="bnr" (change)="breakAndRun()">
-        <label for="bnr">Break and Run</label>
+        <button class="btn" [ngClass]="{'btn-success' : cGame.bnr, 'btn-default' : !cGame.bnr }" (click)="breakAndRun()">Break N Run {{cGame.bnr? " Congrats!" : ""}}</button>
         <br/>
-        <input type="checkbox" id="eob" name="eob" [checked]="eob" (change)="eightOnBreak()" >
-        <label for="eob">8 on the Break</label>
+        <button class="btn" [ngClass]="{'btn-success' : cGame.eob, 'btn-default' : !cGame.eob }" (click)="eightOnBreak()">Eight On Break{{cGame.eob? " Congrats!" : ""}}</button>
       </td>
     </tr>
   </tbody>
