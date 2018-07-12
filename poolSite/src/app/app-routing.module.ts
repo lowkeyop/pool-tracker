@@ -18,9 +18,7 @@ const appRoutes: Routes = [
   { path: 'players/details/:playerNumber', component: PlayerDetailsComponent},
   { path: 'players/edit/:playerNumber', component: EditPlayerComponent},
   { path: 'players/new', component: NewPlayerComponent},
-  { path: 'wait-list', component: PlayerWaitlistComponent}
-
-
+  { path: 'wait-list', component: PlayerWaitlistComponent},
   { path: 'match', component: ScoreSheetComponent}
 ];
 

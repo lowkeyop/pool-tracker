@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Team } from '../common/team.model';
+import { Team } from '../../common/team.model';
 import { Player } from '../../common/player.model';
 
 import {TeamsService} from '../../services/teams.service'
@@ -17,7 +17,7 @@ export class TeamsComponent implements OnInit {
   ngOnInit() {
     this.allTeams = this.teamService.createTeams(5);
     console.log(this.allTeams);
-    
+
   }
 
 }
