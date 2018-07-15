@@ -9,7 +9,7 @@
       <ul class="list-group">
           <li class="list-group-item" *ngFor="let player of newTeam.players"
           (click)="removeFromTeam(player)">
-            {{player.getFullName()}} <button class="btn btn-danger">Drop <span class="glyphicon glyphicon-remove"></span></button>
+            {{player.getFullName()}} <span class="badge progress-bar-danger"><span class="glyphicon glyphicon-remove"></span></span>
           </li>
       </ul>
       <button class="btn btn-success" (click)="registerTeam(teamName.value)">
@@ -23,7 +23,22 @@
           Available Players
       </h3>
     </div>
-    <ul class="list-group">
+    <div [ngClass]="{'panel-info' : isAlreadyOnRoster(player), 'panel-default' : !isAlreadyOnRoster(player) }" class="panel col-md-4"  *ngFor="let player of
+            availablePlayerList; let i=index" (click)="addToRoster(player)">
+      <div class="panel-heading">
+        <h4 class="panel-title">{{player.getFullName()}}</h4>
+      </div>
+      <ul class="list-group">
+        <li class="col-md-offset-2 list-group-item" *ngIf="isAlreadyOnRoster(player)">
+          <label for="" class="label label-info">
+            Selected<span class="glyphicon glyphicon-ok"></span>
+          </label>
+        </li>
+        <li class="list-group-item">Skill Level<span class="badge">4</span></li>
+      </ul>
+
+    </div>
+    <!-- <ul class="list-group">
       <li class="list-group-item col-md-4" *ngFor="let player of
               availablePlayerList; let i=index" (click)="addToRoster(player)">
         <label for="" class="label label-info">Name: </label>
@@ -32,6 +47,6 @@
         <p>{{player.playerSkillLevel}} </p>
         <span [ngClass]="{'glyphicon glyphicon-ban-circle': isAlreadyOnRoster(player)}"></span>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </div>

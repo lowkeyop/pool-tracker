@@ -3,12 +3,16 @@
     <div class="col-md-3">
       <h3>Teams List</h3>
       <p>Number of Teams : {{allTeams.length}}</p>
-      <li *ngFor="let team of allTeams; let i = index">
-        {{team.teamName}}
-        <ul *ngFor="let player of team.players">
-          <li>{{player.fName + " " + player.lName}}</li>
-        </ul>
-      </li>
+      <div class="panel panel-default" *ngFor="let team of allTeams; let i = index">
+        <div class="panel-heading">
+          <h4 class="panel-title">{{team.teamName}}</h4>
+        </div>
+        <div class="panel-body">
+          <ul class="list-group">
+            <li *ngFor="let player of team.players" class="list-group-item">{{player.getFullName() }}  <span class="badge">{{player.playerSkillLevel}}</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="col-md-9">
       <button class="btn btn-success" (click)="onCreateNewTeam()">Create New Team</button>
