@@ -20,6 +20,15 @@ export class NewTeamComponent implements OnInit {
               private route :ActivatedRoute) { }
   newTeam : Team;
   availablePlayerList : Player[];
+  skillLevels : {skillLvl : number, amount? : number}[]= [
+    {skillLvl: 2, amount: 0},
+    {skillLvl:3, amount: 0},
+    {skillLvl:4, amount: 0},
+    {skillLvl:5, amount: 0},
+    {skillLvl:6, amount: 0},
+    {skillLvl:7, amount: 0},
+    {skillLvl:8, amount: 0},
+    {skillLvl:9, amount: 0}];
   @ViewChild('teamName') tName : ElementRef;
   ngOnInit() {
     this.availablePlayerList = this.playerService.getAllPlayers();
@@ -29,18 +38,23 @@ export class NewTeamComponent implements OnInit {
     console.log(player.getFullName() + " added to Roster");
     if(!this.isAlreadyOnRoster(player)){
         this.newTeam.players.push(player);
+        const count = this.newTeam.players.filter(p=>p.playerSkillLevel == player.playerSkillLevel).length
+        var i = this.skillLevels.findIndex(s=> s.skillLvl == player.playerSkillLevel);
+        this.skillLevels[i].amount = count;
     }
 
   }
+
   isAlreadyOnRoster(player : Player){
     var locatePlayer = this.newTeam.players.indexOf(player);
     return locatePlayer !== -1;
   }
   removeFromTeam(player: Player){
     const playerIndex = this.newTeam.players.indexOf(player,0);
-    console.log("removing player from roster " + playerIndex);
     this.newTeam.players.splice(playerIndex, 1);
-    console.log("new size of array: " + this.newTeam.players.length);
+    const count = this.newTeam.players.filter(p=>p.playerSkillLevel == player.playerSkillLevel).length
+    var i = this.skillLevels.findIndex(s=> s.skillLvl == player.playerSkillLevel);
+    this.skillLevels[i].amount = count;
   }
 
   registerTeam(teamName: string){

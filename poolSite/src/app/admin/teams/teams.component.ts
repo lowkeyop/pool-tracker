@@ -21,7 +21,6 @@ export class TeamsComponent implements OnInit {
   ngOnInit() {
     this.teamService.createTeams(5);
     this.allTeams = this.teamService.getAllTeams();
-    console.log(this.allTeams);
 
   }
 
