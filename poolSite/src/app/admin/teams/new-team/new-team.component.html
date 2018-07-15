@@ -1,0 +1,37 @@
+<div class="row">
+  <h2>Create your team</h2>
+  <div class="form-group">
+    <div class="col-md-4">
+      <label for="" class="label label-primary">Team Name:</label>
+      <input type="text" class="form-control" [value]="newTeam.teamName" #teamName>
+      <hr>
+      <label for="" class="label label-primary">Current Roster</label>
+      <ul class="list-group">
+          <li class="list-group-item" *ngFor="let player of newTeam.players"
+          (click)="removeFromTeam(player)">
+            {{player.getFullName()}} <button class="btn btn-danger">Drop <span class="glyphicon glyphicon-remove"></span></button>
+          </li>
+      </ul>
+      <button class="btn btn-success" (click)="registerTeam(teamName.value)">
+        Register Team
+      </button>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="jumbotron col-md-8 col-md-offset-2">
+      <h3>
+          Available Players
+      </h3>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item col-md-4" *ngFor="let player of
+              availablePlayerList; let i=index" (click)="addToRoster(player)">
+        <label for="" class="label label-info">Name: </label>
+        <p>{{player.getFullName()}} </p>
+        <label for="" class="label label-info">Skill Level: </label>
+        <p>{{player.playerSkillLevel}} </p>
+        <span [ngClass]="{'glyphicon glyphicon-ban-circle': isAlreadyOnRoster(player)}"></span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -10,10 +10,18 @@ export class TeamsService {
 
   constructor(private playerService : PlayerService ){}
 
+
   homeTeam  = this.createTeam(5);
   awayTeam  =  this.createTeam(5);
 
+  teamPool : Team[] = [];
 
+  getAllTeams(){
+    return this.teamPool;
+  }
+  addTeam(team: Team){
+    this.teamPool.push(team);
+  }
   createTeam(teamSize: number){
     var team = [];
     var allPlayers = this.playerService.getAllPlayers();
@@ -63,8 +71,9 @@ export class TeamsService {
     for(var i = 0; i < amountOfTeams; i++){
       var playerList : Player[];
       playerList = this.createTeam(MINIMUM_AMOUNT_OF_PLAYER_ON_TEAM);
-      var teamName = playerList[0].fName + " " + playerList[0].lName + "'s Team";
+      var teamName = playerList[0].getFullName() + "'s Team";
       var tempTeam = new Team(playerList, teamName);
+      this.addTeam(tempTeam);
       allTeams.push(tempTeam);
     }
     return allTeams;

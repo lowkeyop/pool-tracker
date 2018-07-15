@@ -30,7 +30,7 @@ export class PlayerService {
   removePlayer(player: Player){
     var i = this.players.indexOf(player,0);
     if(i > -1){
-      this.players.splice(i,0);
+      this.players.splice(i,1);
     }
   }
   getPlayer(pNumber: string){

@@ -6,4 +6,8 @@ export class Player {
     public playerSkillLevel: number,
     public matchesPlayed?: number,
   ){}
+
+  getFullName(){
+    return this.fName + " " + this.lName;
+  }
 }

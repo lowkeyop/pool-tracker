@@ -26,6 +26,7 @@ import { TeamsService } from './services/teams.service';
 import { NewPlayerComponent } from './admin/players/new-player/new-player.component';
 import { EditPlayerComponent } from './admin/players/edit-player/edit-player.component';
 import { TeamComponent } from './score-sheet/team/team.component';
+import { NewTeamComponent } from './admin/teams/new-team/new-team.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { TeamComponent } from './score-sheet/team/team.component';
     PlayerDetailsComponent,
     NewPlayerComponent,
     EditPlayerComponent,
-    TeamComponent
+    TeamComponent,
+    NewTeamComponent
 
   ],
   imports: [

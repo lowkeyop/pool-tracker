@@ -1,10 +1,18 @@
-<h3>Teams List</h3>
-<p>Number of Teams : {{allTeams.length}}</p>
-<ul>
-  <li *ngFor="let team of allTeams; let i = index">
-    {{team.teamName}}
-    <ul *ngFor="let player of team.players">
-      <li>{{player.fName + " " + player.lName}}</li>
-    </ul>
-  </li>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Teams List</h3>
+      <p>Number of Teams : {{allTeams.length}}</p>
+      <li *ngFor="let team of allTeams; let i = index">
+        {{team.teamName}}
+        <ul *ngFor="let player of team.players">
+          <li>{{player.fName + " " + player.lName}}</li>
+        </ul>
+      </li>
+    </div>
+    <div class="col-md-9">
+      <button class="btn btn-success" (click)="onCreateNewTeam()">Create New Team</button>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

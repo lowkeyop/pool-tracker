@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+
 import { Team } from '../../common/team.model';
 import { Player } from '../../common/player.model';
 
@@ -11,13 +13,20 @@ import {TeamsService} from '../../services/teams.service'
 
 export class TeamsComponent implements OnInit {
 
-  constructor(private teamService : TeamsService) { }
+  constructor(private teamService : TeamsService,
+              private router : Router,
+              private route : ActivatedRoute) { }
   allTeams = [];
 
   ngOnInit() {
-    this.allTeams = this.teamService.createTeams(5);
+    this.teamService.createTeams(5);
+    this.allTeams = this.teamService.getAllTeams();
     console.log(this.allTeams);
 
+  }
+
+  onCreateNewTeam(){
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
 }

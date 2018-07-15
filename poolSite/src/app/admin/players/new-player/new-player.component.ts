@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 
 import {Player} from '../../../common/player.model';
-import {League} from '../../../common/league.model';
-import {SkillLevel} from '../../../common/skill-level.model';
-
-
 import {PlayerService} from '../../../services/player.service';
 
 @Component({
