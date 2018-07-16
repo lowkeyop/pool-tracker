@@ -8,13 +8,18 @@
   <button class="btn btn-success" (click)="onAddPlayerToList(playerName)">Add Player to List</button>
   <hr>
   <label for="">Player List</label>
-  <ol>
-    <li *ngFor="let player of playerList">{{player.name + " ID:" + player.id}}</li>
+  <ol class="list-group" style="list-style: decimal inside" >
+    <li class="list-group-item" style="display: list-item" *ngFor="let player of playerList">{{player.name}}</li>
   </ol>
 
   <label for=""> Number of tables:</label>
   <input type="number" value="{{numberOfTables}}" [disabled]="isTableAmountLocked" (change)="onTableNumberModify(tableCount)" #tableCount>
   <button type="button" name="button" (click)="onLockNumberOfTables()" [disabled]="isTableAmountLocked">Lock Table Amount</button>
   <button class="btn btn-info" (click)="fillTables()">Fill All Spots</button>
-  <app-pool-table [tableInfo]="table" *ngFor="let table of tableList" (gameResult)=getNextPlayer($event)></app-pool-table>
+  <div class="row">
+    <div class="col-md-4"  *ngFor="let table of tableList">
+      <app-pool-table [tableInfo]="table"
+       (gameResult)=getNextPlayer($event)></app-pool-table>
+    </div>
+  </div>
 </div>

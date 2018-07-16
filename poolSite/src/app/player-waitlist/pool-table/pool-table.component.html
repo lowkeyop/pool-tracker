@@ -1,10 +1,27 @@
-<p>
-  pool-table works!
-  {{tableInfo.tableNumber}}
-  {{tableInfo.player1.name}}
-</p>
-  <br>VS <br>
-  {{tableInfo.player2.name}} <br>
-Winner: <button type="button" name="button" (click)="toggleWinner()">{{tableInfo.winner == null? "Undecided": tableInfo.winner.name}}</button> <br>
-<button type="button" name="button"(click)="onGameFinished()"> Prepare Next Match</button>
-<hr>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="panel-title">Table {{tableInfo.tableNumber}}</h2>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-5">
+        {{tableInfo.player1.name}}
+      </div>
+      <div class="col-md-2">
+        Vs
+      </div>
+      <div class="col-md-5">
+        {{tableInfo.player2.name}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        Winner:
+        <button class="btn btn-success" type="button" name="button" (click)="toggleWinner()">
+          {{tableInfo.winner == null? "Undecided": tableInfo.winner.name}}
+        </button>
+        <button type="button" class="btn btn-primary" name="button"(click)="onGameFinished()"> Prepare Next Match</button>
+      </div>
+    </div>
+  </div>
+</div>

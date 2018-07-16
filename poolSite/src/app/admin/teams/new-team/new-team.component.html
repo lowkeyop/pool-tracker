@@ -7,7 +7,7 @@
       <hr>
       <label for="" class="label label-primary">Current Roster</label>
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let player of newTeam.players"
+        <li class="list-group-item list-group-item-info" *ngFor="let player of newTeam.players"
           (click)="removeFromTeam(player)">
           {{player.getFullName()}} <span class="badge progress-bar-danger"><span class="glyphicon glyphicon-remove"></span></span>
         </li>
