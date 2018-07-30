@@ -1,25 +1,35 @@
 <div class="row">
   <div class="col-md-8 col-xs-12 col-md-offset-2">
     <h3><span class="label label-primary">Create A New Player</span></h3>
-    <div class="form-group">
-      <div class="col-md-2">
-        <label for="firstName">First Name</label>
-        <input type="text" class="form-control" [value]="" #firstName>
+    <form (ngSubmit)="onSubmit(newPlayerForm)" #newPlayerForm="ngForm">
+      <div id="user-data">
+        <div class="form-group">
+          <div class="col-md-2">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              [value]=""
+              ngModel
+              name="first_name"
+              #firstName>
+          </div>
+          <div class="col-md-2">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" ngModel name="last_name" [value]="" #lastName>
+          </div>
+          <div class="col-md-2">
+            <label for="playerNumber">Player Number</label>
+            <input type="number" min="1000" max="9999" class="form-control" name="player_number" ngModel [value]="1000" #playerNumber>
+          </div>
+          <div class="col-md-2">
+            <label for="SkillLevel">SkillLevel</label>
+            <input type="number" min="2" max="8" class="form-control" name="skill_level" ngModel [value]="" #skillLevel>
+          </div>
+        </div>
       </div>
-      <div class="col-md-2">
-        <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" [value]="" #lastName>
-      </div>
-      <div class="col-md-2">
-        <label for="playerNumber">Player Number</label>
-        <input type="text" class="form-control" [value]="" #playerNumber>
-      </div>
-      <div class="col-md-2">
-        <label for="SkillLevel">SkillLevel</label>
-        <input type="text" class="form-control" [value]="" #skillLevel>
-      </div>
-    </div>
-    <button class="btn btn-success" (click)="onAddNewPlayer(firstName.value, lastName.value, playerNumber.value, skillLevel.value)">Register</button>
+      <button class="btn btn-success" type="submit">Register</button>
+      <!-- (click)="onAddNewPlayer(firstName.value, lastName.value, playerNumber.value, skillLevel.value)" -->
+    </form>
   </div>
-
 </div>

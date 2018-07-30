@@ -46,7 +46,7 @@
             <td>
               <div class="container-fluid">
                 <div class="row">
-                  <label  *ngFor="let game of games; let i = index" for="" class="label label-primary col-md-3" (click)="showGameDetails(game)">Game {{i+1}} : {{game.winner == null? "Undecided" : game.winner.fName}}</label>
+                  <label  *ngFor="let game of games; let i = index" for="" class="label label-primary col-md-6" (click)="showGameDetails(game)">Game {{i+1}} : {{game.winner == null? "Undecided" : game.winner.fName}}</label>
                 </div>
                 <div class="row" *ngIf="currentGame != undefined">
                   <app-game [gameCurrent]="currentGame" (saveGame)="setGameData(currentGame)"></app-game>

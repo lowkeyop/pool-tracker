@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 import {Player} from '../../../common/player.model';
 import {PlayerService} from '../../../services/player.service';
@@ -34,5 +35,9 @@ export class NewPlayerComponent implements OnInit {
     console.log("Player registered");
     this.router.navigate(['/players']);
 
+  }
+
+  onSubmit(fData: NgForm){
+    console.log(fData);
   }
 }
