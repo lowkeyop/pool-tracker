@@ -2,34 +2,72 @@
   <div class="col-md-8 col-xs-12 col-md-offset-2">
     <h3><span class="label label-primary">Create A New Player</span></h3>
     <form (ngSubmit)="onSubmit(newPlayerForm)" #newPlayerForm="ngForm">
-      <div id="user-data">
-        <div class="form-group">
-          <div class="col-md-2">
-            <label for="firstName">First Name</label>
-            <input
-              type="text"
-              class="form-control"
-              [value]=""
-              ngModel
-              name="first_name"
-              #firstName>
+      <div id="user-data" ngModelGroup="userData">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control" ngModel name="first_name" [value]="" required #first=ngModel>
+              <span class="help-block" *ngIf="!first.valid&&first.touched">Please enter first  name</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" class="form-control" ngModel name="last_name" [value]="" required #last=ngModel>
+              <span class="help-block" *ngIf="!last.valid&&last.touched">Please enter last name</span>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="lastName">Email Address</label>
+              <input type="email" class="form-control" ngModel name="email" [value]="" required email #email=ngModel>
+              <span class="help-block" *ngIf="!email.valid&&email.touched">Please enter a proper email address</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-offset-1 col-md-3">
+            <div class="form-group">
+              <label for="playerNumber">Player Number</label>
+              <input required type="number" min="1000" max="9999" class="form-control" name="player_number" ngModel [value]="" #playerNumber>
+            </div>
           </div>
           <div class="col-md-2">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" ngModel name="last_name" [value]="" #lastName>
+            <div class="form-group">
+              <label for="skill_level">SkillLevel</label>
+              <input required type="number" min="2" max="8" class="form-control" name="skill_level" ngModel [value]="" #skillLevel>
+            </div>
           </div>
           <div class="col-md-2">
-            <label for="playerNumber">Player Number</label>
-            <input type="number" min="1000" max="9999" class="form-control" name="player_number" ngModel [value]="1000" #playerNumber>
+            <div class="form-group">
+              <label for="format">Format</label>
+              <select  multiple name="format" id="gender" class="form-control" [ngModel]="'8ball'">
+                <option value="8ball">8-Ball</option>
+                <option value="9ball">9-Ball</option>
+              </select>
+            </div>
           </div>
-          <div class="col-md-2">
-            <label for="SkillLevel">SkillLevel</label>
-            <input type="number" min="2" max="8" class="form-control" name="skill_level" ngModel [value]="" #skillLevel>
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="gender" ngModel [value]="'male'" > Male
+                </label>
+                <label>
+                  <input type="radio" name="gender" ngModel [value]="'female'" > Female
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-offset-3 col-md-5">
+            <button class="btn btn-success" type="submit" [disabled]="!newPlayerForm.valid">Register</button>
+            <button class="btn btn-default" type="reset">Clear/Reset</button>
           </div>
         </div>
       </div>
-      <button class="btn btn-success" type="submit">Register</button>
-      <!-- (click)="onAddNewPlayer(firstName.value, lastName.value, playerNumber.value, skillLevel.value)" -->
     </form>
   </div>
 </div>
