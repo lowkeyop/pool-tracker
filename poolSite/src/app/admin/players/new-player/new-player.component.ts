@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -13,6 +13,8 @@ import {PlayerService} from '../../../services/player.service';
 export class NewPlayerComponent implements OnInit {
 
   player : Player;
+  @ViewChild('newPlayerForm') newPlayerForm : NgForm;
+
 
   constructor(private playerService : PlayerService,
               private router: Router) { }
@@ -23,13 +25,27 @@ export class NewPlayerComponent implements OnInit {
 
   }
 
-  onAddNewPlayer(first: string, last: string, pNumber: string, skillLevel? : number){
+  // old way to retrieve form data.  through element references
+  // onAddNewPlayer(first: string, last: string, pNumber: string, skillLevel? : number){
+  //   const DEAFULT_SKILL_LEVEL = 4;
+  //
+  //   this.player.fName = first;
+  //   this.player.lName = last;
+  //   this.player.playerNumber = pNumber;
+  //   this.player.playerSkillLevel = skillLevel == null? DEAFULT_SKILL_LEVEL : +skillLevel;
+  //
+  //   this.playerService.addPlayer(this.player);
+  //   console.log("Player registered");
+  //   this.router.navigate(['/players']);
+  //
+  // }
+  onCreateNewPlayer(){
     const DEAFULT_SKILL_LEVEL = 4;
-
-    this.player.fName = first;
-    this.player.lName = last;
-    this.player.playerNumber = pNumber;
-    this.player.playerSkillLevel = skillLevel == null? DEAFULT_SKILL_LEVEL : +skillLevel;
+    var userData = this.newPlayerForm.form.value.userData;
+    this.player.fName = userData.first_name ;
+    this.player.lName = userData.last_name;
+    this.player.playerNumber = userData.player_number;
+    this.player.playerSkillLevel = userData.skill_level == null? DEAFULT_SKILL_LEVEL : +userData.skill_level;
 
     this.playerService.addPlayer(this.player);
     console.log("Player registered");
@@ -39,5 +55,7 @@ export class NewPlayerComponent implements OnInit {
 
   onSubmit(fData: NgForm){
     console.log(fData);
+    this.onCreateNewPlayer();
+
   }
 }
