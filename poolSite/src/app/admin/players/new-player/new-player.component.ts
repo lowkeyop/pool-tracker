@@ -48,6 +48,7 @@ export class NewPlayerComponent implements OnInit {
     this.player.playerSkillLevel = userData.skill_level == null? DEAFULT_SKILL_LEVEL : +userData.skill_level;
 
     this.playerService.addPlayer(this.player);
+    this.newPlayerForm.reset();
     console.log("Player registered");
     this.router.navigate(['/players']);
 
