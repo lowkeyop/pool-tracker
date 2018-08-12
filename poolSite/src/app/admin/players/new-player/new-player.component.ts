@@ -25,31 +25,20 @@ export class NewPlayerComponent implements OnInit {
 
   }
 
-  // old way to retrieve form data.  through element references
-  // onAddNewPlayer(first: string, last: string, pNumber: string, skillLevel? : number){
-  //   const DEAFULT_SKILL_LEVEL = 4;
-  //
-  //   this.player.fName = first;
-  //   this.player.lName = last;
-  //   this.player.playerNumber = pNumber;
-  //   this.player.playerSkillLevel = skillLevel == null? DEAFULT_SKILL_LEVEL : +skillLevel;
-  //
-  //   this.playerService.addPlayer(this.player);
-  //   console.log("Player registered");
-  //   this.router.navigate(['/players']);
-  //
-  // }
   onCreateNewPlayer(){
+
     const DEAFULT_SKILL_LEVEL = 4;
     var userData = this.newPlayerForm.form.value.userData;
     this.player.fName = userData.first_name ;
     this.player.lName = userData.last_name;
     this.player.playerNumber = userData.player_number;
     this.player.playerSkillLevel = userData.skill_level == null? DEAFULT_SKILL_LEVEL : +userData.skill_level;
+    this.player.matchesPlayed = 0;
 
     this.playerService.addPlayer(this.player);
     this.newPlayerForm.reset();
     console.log("Player registered");
+    alert(userData.first_name + " was added to the player list");
     this.router.navigate(['/players']);
 
   }

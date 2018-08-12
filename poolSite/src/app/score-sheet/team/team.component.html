@@ -2,7 +2,7 @@
 <h3>{{teamName}}</h3>
 <hr>
 <h3>{{matchNumber == 0 ? "" : "Currently in Match " + matchNumber + " of 5."}} {{5 - matchNumber == 0? "Final Match" : (5-matchNumber) + " matches remaining"}} </h3>
-<table>
+<table class="table table-hover">
   <thead>
     <tr><th><h2>Roster</h2></th></tr>
     <tr>
@@ -17,7 +17,7 @@
       <td>{{player.playerSkillLevel}}</td>
       <td>{{player.playerNumber}}</td>
       <td>{{player.fName + " " + player.lName}} </td>
-      <td><button type="button" name="button" (click)="onChoosePlayer(player)" class="button btn-primary" [disabled]="arePlayersInMatch || matchNumber ==5">{{arePlayersInMatch? "Players Locked" : "Send to Match"}}</button></td>
+      <td><button type="button" name="button" (click)="onChoosePlayer(player)" class="btn" [ngClass]="{'' : arePlayersInMatch , 'btn-primary' : !arePlayersInMatch}" [disabled]="arePlayersInMatch || matchNumber ==5">{{arePlayersInMatch? "Players Locked" : "Send to Match"}}</button></td>
 
     </tr>
   </tbody>

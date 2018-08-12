@@ -24,6 +24,14 @@ export class PlayersComponent implements OnInit {
     this.router.navigate(['edit', player.playerNumber], {relativeTo: this.route})
   }
 
+  onDeletePlayer(player: Player){
+    var confirmDeletion = confirm("Are you sure you want to delete " + player.fName + "?");
+    if(confirmDeletion){
+      this.playerService.removePlayer(player);
+      alert(player.fName + " was successfully deleted");
+    }
+  }
+
   onViewPlayerDetails(player : Player){
     this.router.navigate(['details' , player.playerNumber], {relativeTo: this.route});
   }
