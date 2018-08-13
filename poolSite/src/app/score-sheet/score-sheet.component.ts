@@ -19,7 +19,6 @@ export class ScoreSheetComponent implements OnInit {
   awayTeamPlayer:Player;
 
   matches: Match[] = [];
-  @Output() newGameCreated = new EventEmitter<{gameNo: number, homeTeamPlayer : Player, awayTeamPlayer : Player}>();
 
   matchNo: number;
   isHomeTeamPlayerReady: boolean = false;
