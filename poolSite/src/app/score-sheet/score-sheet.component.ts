@@ -7,12 +7,11 @@ import {TeamsService} from '../services/teams.service'
 @Component({
   selector: 'app-score-sheet',
   templateUrl: './score-sheet.component.html',
-  styleUrls: ['./score-sheet.component.css'],
-  providers: [TeamsService]
+  styleUrls: ['./score-sheet.component.css']
 })
 export class ScoreSheetComponent implements OnInit {
 //need to emit player data to create the game component with correct data.
-  constructor() { this.gameCount = 1; this.matchNo = 0}
+  constructor(private teamService: TeamsService) { this.gameCount = 1; this.matchNo = 0}
   gameCount: number;
 
   homeTeamPlayer:Player;

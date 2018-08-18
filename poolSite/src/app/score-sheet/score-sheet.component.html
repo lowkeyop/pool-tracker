@@ -14,10 +14,10 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-5 col-md-offset-3">
-      {{homeTeamPlayer.fName + " " + homeTeamPlayer.lName }}
+    <div class="col-md-6 col-md-offset-3">
+        {{homeTeamPlayer.fName + " " + homeTeamPlayer.lName }}
       <button class="btn btn-primary" [disabled]="isMatchStarted" (click)="setOpponentsForMatch()">{{!isMatchStarted?"Ready Next Match Players" : "Match In Progress"}}</button>
-      {{awayTeamPlayer.fName + " " + awayTeamPlayer.lName}}
+        {{awayTeamPlayer.fName + " " + awayTeamPlayer.lName}}
     </div>
   </div>
     <hr>

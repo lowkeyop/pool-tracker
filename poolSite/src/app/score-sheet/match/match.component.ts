@@ -3,6 +3,8 @@ import { Match } from '../../common/match.model';
 import { Game } from '../../common/game.model';
 import { Player } from '../../common/player.model';
 
+import { MatchService } from '../../services/match.service';
+
 @Component({
   selector: 'app-match',
   templateUrl: './match.component.html',
@@ -10,7 +12,14 @@ import { Player } from '../../common/player.model';
 })
 export class MatchComponent implements OnInit {
 
-  constructor() {  this.gameCount = 1; }
+  constructor(private matchService : MatchService) {
+
+    this.gameCount = 1;
+    this.matchService.updateGameStats.subscribe(
+      (next: string)=>{
+      console.log("initializing currentGame Subject in Match Component. Recieved Game" +  next);
+    });
+  }
 
   defaultNumber = 0;//will be used for Match Constructor parameter value
   @Input() matchNumber : number;
@@ -29,6 +38,7 @@ onAddGame(){
     this.currentGame = new Game(this.gameCount, this.homeTeamPlayer, this.awayTeamPlayer,null);
     this.games.push( this.currentGame);
     this.gameCount++;
+
   }
 
 }
@@ -37,6 +47,7 @@ showGameDetails(game: Game){
   console.log("Game data:");
   console.log(game);
   this.currentGame = game;
+  this.matchService.showCurrentGame.next(game);
 }
 onRemoveGame(){
    this.games.pop();

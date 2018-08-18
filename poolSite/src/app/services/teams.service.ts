@@ -6,15 +6,19 @@ import {Team} from '../common/team.model';
 import {PlayerService} from './player.service';
 
 @Injectable()
-export class TeamsService {
+export class TeamsService{
 
-  constructor(private playerService : PlayerService ){}
-
+  constructor(private playerService : PlayerService ){
+    console.log("constructor called");
+    this.teamPool = this.createTeams(2);
+    console.log(this.teamPool.length);
+  }
 
   homeTeam  = this.createTeam(5);
   awayTeam  =  this.createTeam(5);
 
   teamPool : Team[] = [];
+
 
   getAllTeams(){
     return this.teamPool;

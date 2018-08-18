@@ -9,9 +9,18 @@ import {TeamsService} from '../../services/teams.service'
 })
 export class TeamComponent implements OnInit {
 
-  constructor(private teamService : TeamsService) { this.playedPlayers =[];this.arePlayersInMatch= false;}
+  constructor(private teamService : TeamsService) {
+    this.playedPlayers =[];
+    this.arePlayersInMatch= false;
 
-  @Input() teamRoster: Team;
+    var teamAmount = this.teamService.getAllTeams.length;
+    var randomTeamPick = Math.floor(Math.random()* this.teamService.getAllTeams().length);
+    this.usedTeam = this.teamService.getAllTeams()[randomTeamPick];
+    this.team = this.usedTeam.players;
+    this.teamName  = this.usedTeam.teamName;
+  }
+
+  usedTeam : Team = null;
   @Input() isHomeTeam: boolean;
   team: Player[];
   playedPlayers : Player[] = [];
@@ -19,7 +28,7 @@ export class TeamComponent implements OnInit {
   @Input() matchNumber: number;
   hostLocation: string = "Cue Club Cafe";
   teamNumber: string = "84313";
-  teamName : string = "Leave'em with Skittles"
+  teamName : string;
 
 
   @Output() playerSelected = new EventEmitter<{teamName : string ,matchPlayer: Player}>();
@@ -36,7 +45,7 @@ export class TeamComponent implements OnInit {
     this.playedPlayers[matchPlayed] = player;
   }
   ngOnInit() {
-      this.team = this.isHomeTeam? this.teamService.homeTeam : this.teamService.awayTeam;
+
   }
 
 

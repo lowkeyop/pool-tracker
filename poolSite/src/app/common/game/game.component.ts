@@ -1,6 +1,9 @@
 import { EventEmitter, Component, OnInit,Input, Output,SimpleChanges,ElementRef,ViewChild, ContentChild } from '@angular/core';
 import { Game } from '../../common/game.model';
-import { Player } from '../../common/player.model'
+import { Player } from '../../common/player.model';
+
+import { MatchService } from '../../services/match.service';
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -8,8 +11,14 @@ import { Player } from '../../common/player.model'
 })
 export class GameComponent implements OnInit {
 
-  constructor() { this.winVal = 0;}
-
+  constructor(private matchService : MatchService) {
+    this.winVal = 0;
+    this.matchService.showCurrentGame.subscribe(
+      (next:Game)=>{
+        console.log("Displaying current game: " + next.gameNo);
+      }
+    );
+  }
 
   ngOnChanges(changes: SimpleChanges){
     this.saveStats();//updates game stats.
@@ -45,6 +54,7 @@ export class GameComponent implements OnInit {
   saveStats(){
     console.log("pushing game stats to game log")
     this.saveGame.emit(this.cGame);
+    this.matchService.updateGameStats.next(this.cGame.gameNo);
   }
   breakAndRun(){
     this.cGame.bnr = !this.cGame.bnr;
