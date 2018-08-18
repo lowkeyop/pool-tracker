@@ -29,6 +29,7 @@ import { NewPlayerComponent } from './admin/players/new-player/new-player.compon
 import { EditPlayerComponent } from './admin/players/edit-player/edit-player.component';
 import { TeamComponent } from './score-sheet/team/team.component';
 import { NewTeamComponent } from './admin/teams/new-team/new-team.component';
+import { MatchRecapComponent } from './score-sheet/match-recap/match-recap.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { NewTeamComponent } from './admin/teams/new-team/new-team.component';
     NewPlayerComponent,
     EditPlayerComponent,
     TeamComponent,
-    NewTeamComponent
+    NewTeamComponent,
+    MatchRecapComponent
 
   ],
   imports: [

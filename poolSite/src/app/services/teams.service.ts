@@ -9,13 +9,8 @@ import {PlayerService} from './player.service';
 export class TeamsService{
 
   constructor(private playerService : PlayerService ){
-    console.log("constructor called");
-    this.teamPool = this.createTeams(2);
-    console.log(this.teamPool.length);
+    this.teamPool = this.createTeams(12);
   }
-
-  homeTeam  = this.createTeam(5);
-  awayTeam  =  this.createTeam(5);
 
   teamPool : Team[] = [];
 
@@ -83,34 +78,19 @@ export class TeamsService{
     return allTeams;
   }
 
-  removePlayerByPlayerNumber(player: Player, isHomeTeam: boolean){
-    var i;
-    if(isHomeTeam){
-        i = this.homeTeam.indexOf(player,0);
-        if(i > -1){
-          this.homeTeam.splice(i,0);
-        }
-    } else{
-        i = this.awayTeam.indexOf(player,0);
-        if(i > -1){
-          this.awayTeam.splice(i,0);
-        }
+  removePlayerByPlayerNumber(player: Player, team: Team){
+    var i = team.players.indexOf(player,0);
+    if(i > -1){
+      team.splice(i,0);
     }
-
-
   }
-  updatePlayer(playerNumber: string, player: Player, isHomeTeam: boolean){
-    var i;
-    if(isHomeTeam){
-        i = this.homeTeam.indexOf(player,0);
-        if(i > -1){
-          this.homeTeam[i] = player;
-        }
-    } else{
-        i = this.awayTeam.indexOf(player,0);
-        if(i > -1){
-          this.awayTeam[i] = player;
-        }
+  updatePlayer(playerNumber: string, player: Player, team: Team){
+    var players = team.players;
+
+    for(var i = 0; i < players.length; i++){
+      if(player.playerNumber == players[i].playerNumber){
+        team.players[i] = player;
+      }
     }
   }
 }

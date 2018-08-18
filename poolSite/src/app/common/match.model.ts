@@ -37,8 +37,6 @@ export class Match {
 
 
   determineWinPlayerWinGoal(player: Player, opp: Player){
-    console.log(player);
-    console.log(opp);
     var tSkillLevel = player.playerSkillLevel;
     var oSkillLevel = opp.playerSkillLevel;
     var winGoal = 0;
