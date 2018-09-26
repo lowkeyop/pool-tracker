@@ -44,13 +44,7 @@ export class TeamsService{
     }
     return team;
   }
-  addPlayer(player : Player, isHomeTeam: boolean){
-    if(isHomeTeam){
-      this.homeTeam.push(player);
-    } else
-      this.awayTeam.push(player);
 
-  }
 
   createTeams(amountOfTeams: number){
     const MINIMUM_AMOUNT_OF_PLAYER_ON_TEAM = 6;
@@ -59,10 +53,9 @@ export class TeamsService{
     const NEEDED_AMOUNT_OF_PLAYERS = amountOfTeams*MINIMUM_AMOUNT_OF_PLAYER_ON_TEAM-totalPlayerAmount;
       if(NEEDED_AMOUNT_OF_PLAYERS > totalPlayerAmount){
         for(var i = 0; i <  (NEEDED_AMOUNT_OF_PLAYERS) ; i++){
-          var fName = "Test";
-          var lName = "Player"+i;
+          var name = this.playerService.generateRandomName();
           var pNumber = ( i + 10000).toString();
-          var player = new Player(fName, lName, pNumber, (Math.floor(Math.random() * 8 )+ 2));
+          var player = new Player(name.split(" ")[0], name.split(" ")[1], pNumber, (Math.floor(Math.random() * 8 )+ 2));
           this.playerService.addPlayer(player);
         }
       }
@@ -81,7 +74,7 @@ export class TeamsService{
   removePlayerByPlayerNumber(player: Player, team: Team){
     var i = team.players.indexOf(player,0);
     if(i > -1){
-      team.splice(i,0);
+      team.players.splice(i,0);
     }
   }
   updatePlayer(playerNumber: string, player: Player, team: Team){

@@ -14,7 +14,64 @@ export class PlayerService {
     new Player("Harry", "Maupza", "43142", 4, 3),
     new Player("Niles", "Fillips", "11324", 4, 3)
   ]
+  private playerFirstNames = [
+    "Apryl",
+    "Jessica",
+    "Naomi",
+    "Ehtel",
+    "Kattie",
+    "Tuyet",
+    "Thuy",
+    "Desiree",
+    "Sha",
+    "Monserrate",
+    "Bruno",
+    "Kris",
+    "Eliana",
+    "Scarlett",
+    "Apolonia",
+    "Floy",
+    "Malinda",
+    "Thi",
+    "Mercedes",
+    "Enrique",
+    "Eugenia",
+    "Parker",
+    "Lacey",
+    "Shelley",
+    "Tangela",
+    "Kendrick",
+    "Coreen"
+  ]
+  private playerLastNames = [
+    "Pell ",
+    "Macfarlane ",
+    "Hartlage ",
+    "Billick ",
+    "Anker ",
+    "Hornbaker ",
+    "Felmlee ",
+    "Durrell ",
+    "Mattei ",
+    "Branscome ",
+    "Wild ",
+    "Herrin ",
+    "Korus ",
+    "Wray ",
+    "Greenbaum ",
+    "Gettings ",
+    "Knutsen ",
+    "Quan ",
+    "Talarico ",
+    "Milstead "
+  ]
 
+  generateRandomName(){
+    var fNameIndex = (Math.floor(Math.random() * this.playerFirstNames.length-1 ));
+    var lNameIndex = (Math.floor(Math.random() * this.playerLastNames.length-1 ));
+
+    return this.playerFirstNames[fNameIndex] + " " + this.playerLastNames[lNameIndex];
+  }
   getAllPlayers(){
     return this.players;
   }

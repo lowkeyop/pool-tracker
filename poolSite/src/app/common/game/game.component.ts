@@ -53,7 +53,7 @@ export class GameComponent implements OnInit {
   }
   saveStats(){
     console.log("pushing game stats to game log")
-    this.saveGame.emit(this.cGame);
+    // this.saveGame.emit(this.cGame);
     this.matchService.updateGameStats.next(this.cGame.gameNo);
   }
   breakAndRun(){
