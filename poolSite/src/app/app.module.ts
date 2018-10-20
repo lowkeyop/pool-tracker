@@ -31,6 +31,7 @@ import { EditPlayerComponent } from './admin/players/edit-player/edit-player.com
 import { TeamComponent } from './score-sheet/team/team.component';
 import { NewTeamComponent } from './admin/teams/new-team/new-team.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { NewTeamComponent } from './admin/teams/new-team/new-team.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [PlayerService,LeaguesService,TeamsService, MatchService, DataStorageService],
   bootstrap: [AppComponent]

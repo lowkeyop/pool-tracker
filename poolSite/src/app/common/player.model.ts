@@ -1,13 +1,13 @@
 export class Player {
   constructor(
-    public fName: string,
-    public lName: string,
+    public firstName: string,
+    public lastName: string,
     public playerNumber: string,
     public playerSkillLevel: number,
     public matchesPlayed?: number,
   ){}
 
   getFullName(){
-    return this.fName + " " + this.lName;
+    return this.firstName + " " + this.lastName;
   }
 }

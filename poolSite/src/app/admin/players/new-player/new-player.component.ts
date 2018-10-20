@@ -31,8 +31,8 @@ export class NewPlayerComponent implements OnInit {
 
     const DEAFULT_SKILL_LEVEL = 4;
     var userData = this.newPlayerForm.form.value.userData;
-    this.player.fName = userData.first_name ;
-    this.player.lName = userData.last_name;
+    this.player.firstName = userData.first_name ;
+    this.player.lastName = userData.last_name;
     this.player.playerNumber = userData.player_number;
     this.player.playerSkillLevel = userData.skill_level == null? DEAFULT_SKILL_LEVEL : +userData.skill_level;
     this.player.matchesPlayed = 0;

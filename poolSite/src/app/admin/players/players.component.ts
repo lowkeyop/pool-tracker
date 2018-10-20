@@ -25,10 +25,10 @@ export class PlayersComponent implements OnInit {
   }
 
   onDeletePlayer(player: Player){
-    var confirmDeletion = confirm("Are you sure you want to delete " + player.fName + "?");
+    var confirmDeletion = confirm("Are you sure you want to delete " + player.firstName + "?");
     if(confirmDeletion){
       this.playerService.removePlayer(player);
-      alert(player.fName + " was successfully deleted");
+      alert(player.firstName + " was successfully deleted");
     }
   }
 

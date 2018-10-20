@@ -34,7 +34,7 @@ export class TeamComponent implements OnInit {
   @Output() playerSelected = new EventEmitter<{teamName : string ,matchPlayer: Player}>();
 
   onChoosePlayer(player: Player){
-    console.log(player.fName + "  "+ player.lName + " selected.");
+    console.log(player.firstName + "  "+ player.lastName + " selected.");
     this.playerSelected.emit({teamName: this.teamName, matchPlayer: player});
     this.addPlayerToPlayedList(player, this.matchNumber)
   }

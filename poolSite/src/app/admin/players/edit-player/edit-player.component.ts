@@ -27,8 +27,8 @@ export class EditPlayerComponent implements OnInit {
     onUpdatePlayer(first: string, last: string){
       const DEAFULT_SKILL_LEVEL = 4;
 
-      this.player.fName = first;
-      this.player.lName = last;
+      this.player.firstName = first;
+      this.player.lastName = last;
 
       this.playerService.addPlayer(this.player);
       console.log("Player updated");
