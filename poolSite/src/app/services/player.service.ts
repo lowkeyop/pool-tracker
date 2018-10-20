@@ -70,7 +70,7 @@ export class PlayerService {
     var fNameIndex = (Math.floor(Math.random() * this.playerFirstNames.length-1 ));
     var lNameIndex = (Math.floor(Math.random() * this.playerLastNames.length-1 ));
 
-    return this.playerFirstNames[(fNameIndex < 0 ? 0 : fNameIndex)] + " " + this.playerLastNames[(lNameIndex < 0? 0 : lNameIndex);
+    return this.playerFirstNames[(fNameIndex < 0 ? 0 : fNameIndex)] + " " + this.playerLastNames[(lNameIndex < 0? 0 : lNameIndex)];
   }
   getAllPlayers(){
     return this.players;

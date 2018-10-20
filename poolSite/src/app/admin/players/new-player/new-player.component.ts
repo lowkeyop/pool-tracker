@@ -5,6 +5,8 @@ import { NgForm } from '@angular/forms';
 import {Player} from '../../../common/player.model';
 import {PlayerService} from '../../../services/player.service';
 
+import {DataStorageService} from '../../../services/data-storage.service';
+
 @Component({
   selector: 'app-new-player',
   templateUrl: './new-player.component.html',
@@ -17,7 +19,7 @@ export class NewPlayerComponent implements OnInit {
 
 
   constructor(private playerService : PlayerService,
-              private router: Router) { }
+              private router: Router, private dataStorageService : DataStorageService) { }
 
   ngOnInit() {
 
@@ -37,8 +39,8 @@ export class NewPlayerComponent implements OnInit {
 
     this.playerService.addPlayer(this.player);
     this.newPlayerForm.reset();
-    console.log("Player registered");
     alert(userData.first_name + " was added to the player list");
+    this.dataStorageService.storeSingleUser(this.player);
     this.router.navigate(['/players']);
 
   }

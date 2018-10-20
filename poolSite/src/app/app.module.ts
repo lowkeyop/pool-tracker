@@ -24,6 +24,7 @@ import { PlayerService } from './services/player.service';
 import { LeaguesService } from './services/leagues.service';
 import { TeamsService } from './services/teams.service';
 import { MatchService } from './services/match.service';
+import { DataStorageService } from './services/data-storage.service';
 
 import { NewPlayerComponent } from './admin/players/new-player/new-player.component';
 import { EditPlayerComponent } from './admin/players/edit-player/edit-player.component';
@@ -59,7 +60,7 @@ import { NewTeamComponent } from './admin/teams/new-team/new-team.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [PlayerService,LeaguesService,TeamsService, MatchService],
+  providers: [PlayerService,LeaguesService,TeamsService, MatchService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
