@@ -36,7 +36,6 @@ export class NewPlayerComponent implements OnInit {
     this.player.playerNumber = userData.player_number;
     this.player.playerSkillLevel = userData.skill_level == null? DEAFULT_SKILL_LEVEL : +userData.skill_level;
     this.player.matchesPlayed = 0;
-
     this.playerService.addPlayer(this.player);
     this.newPlayerForm.reset();
     alert(userData.first_name + " was added to the player list");

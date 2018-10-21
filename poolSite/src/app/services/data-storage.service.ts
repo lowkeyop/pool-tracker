@@ -17,11 +17,12 @@ export class DataStorageService {
   }
   storeSingleUser(player: Player){
     console.log("API call made");
-    console.log(player);
-    let body = JSON.stringify({ player });
+
+    let body = JSON.stringify(player);
+    console.log();
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      headers.append('Access-Control-Allow-Origin','192.168.1.13:8080');
+      headers.append('Access-Control-Allow-Origin','*');
       let options = new RequestOptions({ headers: headers });
     return this.http.post('/pool-site-rest/players/', body,options).subscribe((response: Response)=>{
       console.log(response);
