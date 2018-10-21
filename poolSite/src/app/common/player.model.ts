@@ -3,7 +3,7 @@ export class Player {
     public firstName: string,
     public lastName: string,
     public playerNumber: string,
-    public playerSkillLevel: number,
+    public skillLevels: number,
     public matchesPlayed?: number,
   ){}
 

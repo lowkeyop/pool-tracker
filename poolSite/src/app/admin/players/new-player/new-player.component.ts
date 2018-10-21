@@ -3,6 +3,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import {Player} from '../../../common/player.model';
+
 import {PlayerService} from '../../../services/player.service';
 
 import {DataStorageService} from '../../../services/data-storage.service';
@@ -15,6 +16,7 @@ import {DataStorageService} from '../../../services/data-storage.service';
 export class NewPlayerComponent implements OnInit {
 
   player : Player;
+
   @ViewChild('newPlayerForm') newPlayerForm : NgForm;
 
 
@@ -34,7 +36,7 @@ export class NewPlayerComponent implements OnInit {
     this.player.firstName = userData.first_name ;
     this.player.lastName = userData.last_name;
     this.player.playerNumber = userData.player_number;
-    this.player.playerSkillLevel = userData.skill_level == null? DEAFULT_SKILL_LEVEL : +userData.skill_level;
+    this.player.skillLevels = userData.skill_level == null? DEAFULT_SKILL_LEVEL : +userData.skill_level;
     this.player.matchesPlayed = 0;
     this.playerService.addPlayer(this.player);
     this.newPlayerForm.reset();
