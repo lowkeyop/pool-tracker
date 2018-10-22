@@ -38,8 +38,8 @@ export class NewTeamComponent implements OnInit {
     console.log(player.getFullName() + " added to Roster");
     if(!this.isAlreadyOnRoster(player)){
         this.newTeam.players.push(player);
-        const count = this.newTeam.players.filter(p=>p.playerSkillLevel == player.playerSkillLevel).length
-        var i = this.skillLevels.findIndex(s=> s.skillLvl == player.playerSkillLevel);
+        const count = this.newTeam.players.filter(p=>p.skillLevels == player.skillLevels).length
+        var i = this.skillLevels.findIndex(s=> s.skillLvl == player.skillLevels);
         this.skillLevels[i].amount = count;
     }
 
@@ -52,8 +52,8 @@ export class NewTeamComponent implements OnInit {
   removeFromTeam(player: Player){
     const playerIndex = this.newTeam.players.indexOf(player,0);
     this.newTeam.players.splice(playerIndex, 1);
-    const count = this.newTeam.players.filter(p=>p.playerSkillLevel == player.playerSkillLevel).length
-    var i = this.skillLevels.findIndex(s=> s.skillLvl == player.playerSkillLevel);
+    const count = this.newTeam.players.filter(p=>p.skillLevels == player.skillLevels).length
+    var i = this.skillLevels.findIndex(s=> s.skillLvl == player.skillLevels);
     this.skillLevels[i].amount = count;
   }
 

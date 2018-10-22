@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import {PlayerService} from '../../services/player.service';
+import {DataStorageService} from '../../services/data-storage.service';
+
 import {Player} from '../../common/player.model'
+
 @Component({
   selector: 'app-players',
   templateUrl: './players.component.html',
@@ -14,10 +18,16 @@ export class PlayersComponent implements OnInit {
 
   constructor(private router: Router,
               private route :ActivatedRoute,
-              private playerService: PlayerService) { }
+              private playerService: PlayerService,
+              private dds : DataStorageService
+              ) { }
 
   ngOnInit() {
-    this.players = this.playerService.getAllPlayers();
+     this.dds.getAllUsers();
+     this.playerService.playersChanged.subscribe((players: Player[])=>{
+       this.players=players;
+     })
+    //  this.players = this.playerService.getAllPlayers();
   }
 
   onEditPlayer(player: Player){

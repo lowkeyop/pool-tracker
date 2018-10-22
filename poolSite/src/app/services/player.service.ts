@@ -1,7 +1,10 @@
 import {Player} from '../common/player.model';
 
+import { Subject } from 'rxjs/Subject';
+
 export class PlayerService {
 
+  playersChanged = new Subject<Player[]>()
   private players = [
     new Player("Cordell", "Kennerly", "02342", 3, 3,),
     new Player("Mike", "Jones", "032416", 8, 3),
@@ -75,6 +78,10 @@ export class PlayerService {
   getAllPlayers(){
     return this.players;
   }
+  setAllPlayers(playersArray: Player[]){
+    this.players = playersArray;
+    this.playersChanged.next(this.players);
+  }
   addPlayer(player: Player){
     this.players.push(player);
   }
@@ -89,6 +96,7 @@ export class PlayerService {
     if(i > -1){
       this.players.splice(i,1);
     }
+    
   }
   getPlayer(pNumber: string){
     const player =  this.getAllPlayers().find(player => player.playerNumber == pNumber);
