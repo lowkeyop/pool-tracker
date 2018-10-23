@@ -14,9 +14,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let player of team">
-      <td>{{player.playerSkillLevel}}</td>
+      <td>{{player.skillLevels}}</td>
       <td>{{player.playerNumber}}</td>
-      <td>{{player.fName + " " + player.lName}} </td>
+      <td>{{player.firstName + " " + player.lastName}} </td>
       <td><button type="button" name="button" (click)="onChoosePlayer(player)" class="btn" [ngClass]="{'' : arePlayersInMatch , 'btn-primary' : !arePlayersInMatch}" [disabled]="arePlayersInMatch || matchNumber ==5">{{arePlayersInMatch? "Players Locked" : "Send to Match"}}</button></td>
 
     </tr>

@@ -96,7 +96,8 @@ export class PlayerService {
     if(i > -1){
       this.players.splice(i,1);
     }
-    
+    this.playersChanged.next(this.players);
+
   }
   getPlayer(pNumber: string){
     const player =  this.getAllPlayers().find(player => player.playerNumber == pNumber);
