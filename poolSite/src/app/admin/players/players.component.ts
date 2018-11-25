@@ -38,6 +38,7 @@ export class PlayersComponent implements OnInit {
     var confirmDeletion = confirm("Are you sure you want to delete " + player.firstName + "?");
     if(confirmDeletion){
       this.playerService.removePlayer(player);
+      this.dds.removeSingleUser(player);
       alert(player.firstName + " was successfully deleted");
     }
   }
